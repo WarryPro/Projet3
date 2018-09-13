@@ -1,0 +1,49 @@
+.main-container {
+    padding: 3rem 0;
+    .btn-primary {
+        padding: 0.5rem 1rem;
+        color: $firstColor;
+        border: 2px solid $firstColor;
+        border-radius: 5px;
+        &:hover {
+            color: #fff;
+            background-color: $firstColor;
+        }
+    }
+    .news-container {
+        padding: 3rem 0;
+        .news-title {
+            h1 {
+                font-size: $fsH1;
+                line-height: 0.5;
+            }
+            .news-date {
+                color: rgba($textColor, 0.6);
+                font-size: $fsPostDate;
+            }
+        }
+        .news-content {
+            padding: 1rem 0;
+        }
+    }
+}
+
+.form-comments {
+    padding: 0;
+}
+.subtitle {
+    font-size: $fsH2;
+}
+
+.btn-form {
+    width: 100%;
+    background-color: transparent;
+}
+
+.container-comments {
+    padding: 5rem 0;
+    .comment-date {
+        font-size: 0.7rem;
+        color: rgba($textColor, .7);
+    }
+}

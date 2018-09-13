@@ -1,0 +1,12 @@
+.main-header {
+    padding: 1rem auto;
+    align-items: center;
+    border-bottom: 2px solid $borderColor;
+    .header {
+        padding: 1rem 0;
+    }
+    .main-header__title {
+        margin: 0;
+        font-size: 2rem;
+    }
+}
