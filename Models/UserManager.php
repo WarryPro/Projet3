@@ -69,6 +69,26 @@ class UserManager extends Manager {
         return $connUser;
     }
 
+    public function inscrUser(User $user) {
+
+        $db = $this -> dbConnect();
+        //todo creer une metho d'incryptation pour le mdp
+//        $hash = hash('sha512', $user -> getPass());
+
+        $requete = $db -> prepare("INSERT INTO users(user, email, pass, user_role) VALUES(:user, :email, :pass, 'User')");
+
+        $requete -> bindValue(':user', $user -> getUser());
+
+        $requete -> bindValue(':email', $user -> getEmail());
+
+        $requete -> bindValue(':pass', $user -> getPass());
+
+        $requete -> execute();
+
+
+        return $addUser = $requete;
+    }
+
 
     public function updatePass(User $user) {
 
