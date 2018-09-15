@@ -5,7 +5,7 @@
 
 <div class="grid-container">
 
-    <form action="index.php?action=connectuser" method="POST">
+    <form action="index.php?action=inscripuser" method="POST">
         <div class="row">
             <div class="large-12 columns">
                 <label for="user">Utilisateur</label>
