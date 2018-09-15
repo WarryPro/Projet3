@@ -13,26 +13,22 @@ use entity\User;
 class InscriptionController {
 
     /**
-     *Gere les données du formulaire de connexion (connForm) pour l'envoyer au model
+     *Gere les données du formulaire de'inscription (inscripForm) pour l'envoyer au model
      */
     public function inscrUser($db, User $user) {
 
         $UserManager = new UserManager($db);
 
-        $ConnUser = $UserManager->ConnUser($user);
+        $InscrUser = $UserManager->InscrUser($user);
 
-        if ($ConnUser == 1) {
-
-            $_SESSION['user'] = $user->getUser();
-
-            header('location: index.php?admin=accueil');
+        if ($InscrUser == FALSE) {
+            throw new \Exception("Erreur d'inscription d'un nouveau utilisateur");
+        }
+        else {
+            //todo  Creer le message de bienvenue et rediriger ver l'accueil
+            header('location: index.php');
 
             exit();
-        }
-
-        elseif ($ConnUser == 0 ) {
-
-            throw new \Exception('votre mot de passe ou votre pseudo est incorrect');
         }
     }
 
