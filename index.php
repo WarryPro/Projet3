@@ -8,6 +8,7 @@ require ('entity/Autoloader.php');
 require ('Controllers/frontend.php');
 
 use \Controllers\ConnexionController;
+use \Controllers\InscriptionController;
 use \Controllers\ViewController;
 use \entity\User;
 
@@ -60,6 +61,21 @@ try {
 
             $view -> inscription();
         }
+
+        elseif($_GET['action'] === 'inscripuser') {
+        if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
+
+            $user = new User(['user' => $_POST['user'], 'email' => $_POST['email'], 'pass' => $_POST['pass']]);
+
+            $inscription = new InscriptionController();
+
+            $inscription -> inscrUser($db, $user);
+        }
+        elseif( empty( $_GET['user']) OR empty( $_GET['email']) OR empty( $_GET['pass'])) {
+
+            throw new \Exception('Il faut remplir tous les champs !');
+        }
+    }
 
 
 
