@@ -7,6 +7,7 @@ require ('Models/Autoloader.php');
 require ('entity/Autoloader.php');
 require ('Controllers/frontend.php');
 
+use \Controllers\UserController;
 use \Controllers\ConnexionController;
 use \Controllers\InscriptionController;
 use \Controllers\ViewController;
@@ -25,6 +26,7 @@ try {
 
             listPosts();
         }
+
 
 //        Redirige vers la page de connection
         elseif ($_GET['action'] === 'connexion') {
@@ -63,20 +65,37 @@ try {
         }
 
         elseif($_GET['action'] === 'inscripuser') {
-        if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
 
-            $user = new User(['user' => $_POST['user'], 'email' => $_POST['email'], 'pass' => $_POST['pass']]);
+            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
 
-            $inscription = new InscriptionController();
+                $user = new User(['user' => $_POST['user'], 'email' => $_POST['email'], 'pass' => $_POST['pass']]);
 
-            $inscription -> inscrUser($db, $user);
+                $inscription = new InscriptionController();
+
+                $inscription -> inscrUser($db, $user);
+            }
+            elseif( empty( $_GET['user']) OR empty( $_GET['email']) OR empty( $_GET['pass'])) {
+
+                throw new \Exception('Il faut remplir tous les champs !');
+            }
         }
-        elseif( empty( $_GET['user']) OR empty( $_GET['email']) OR empty( $_GET['pass'])) {
 
-            throw new \Exception('Il faut remplir tous les champs !');
+
+
+        //    redirige vers la page de recuperation de mdp (forgotpassword)
+        elseif($_GET['action'] === 'forgotpassword') {
+
+            if(!empty($_POST['email'])) {
+
+                $user = new User(['email' => $_POST['email']]);
+                $update = new UserController();
+                $update -> emailExist($db, $user);
+            }
+            else {
+                $view = new ViewController();
+                $view -> forgotPass();
+            }
         }
-    }
-
 
 
 
@@ -92,6 +111,7 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+
 
 
         elseif ($_GET['action'] == 'addComment') {
