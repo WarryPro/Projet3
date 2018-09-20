@@ -12,15 +12,26 @@ namespace Controllers;
 class ViewController {
 
     /**
-     *
+     * connexion appelle la view connexion.php
      */
-    public function connexion()
-    {
+    public function connexion(){
+
         require('Views/frontend/connexion.php');
     }
 
-    public function inscription()
-    {
+    /**
+     * inscription appelle la view inscription.php
+     */
+    public function inscription(){
+
         require('Views/frontend/inscription.php');
+    }
+
+    /**
+     * connexion appelle la view forgotpassword.php
+     */
+    public function forgotPass(){
+
+        require('Views/frontend/forgotpassword.php');
     }
 }
