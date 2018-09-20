@@ -7,7 +7,7 @@
         <div class="form-container">
 
             <form action="index.php?action=forgotpassword" method="POST" class="form">
-                <h2 class="form-group">Veuillez saisir votre email</h2>
+                <p class="form-group">Veuillez saisir votre email</p>
 
                 <div class="grid-x">
                     <div class="form-group">
