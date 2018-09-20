@@ -26,6 +26,16 @@ Class UserController {
         }
     }
 
+    public function emailExist($db, User $user) {
+
+        $emailExist = new UserManager($db);
+
+        //todo: Metho compareEmail à créér dans la class UserManager
+        if($emailExist -> compareEmail($user) == 1) {
+            //todo: Demander à Max comment faire pour envoyer un email de recuperation à l'user
+        }
+    }
+
     /**
      * envoie un objet avec le nouveau password
      *
