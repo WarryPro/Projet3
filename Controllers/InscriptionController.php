@@ -31,17 +31,4 @@ class InscriptionController {
             exit();
         }
     }
-
-
-    /**
-     *finalisation de la connexion admin
-     */
-    public function deconnexion() {
-
-        $_SESSION = array();
-
-        session_destroy();
-
-        header('location: index.php');
-    }
 }
