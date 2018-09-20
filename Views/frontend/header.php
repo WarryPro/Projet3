@@ -1,6 +1,6 @@
 <div class="grid-container header cell grid-x">
         <div class="cell small-4 container-title">
-            <h1 class="main-header__title">Mon testBlog!</h1>
+            <h1 class="main-header__title">Jean Forteroche Blog!</h1>
         </div>
         <div class="container-main-menu cell auto">
             <nav class="main-nav">
