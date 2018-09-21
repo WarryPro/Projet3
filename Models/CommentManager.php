@@ -3,7 +3,8 @@ namespace Models;
 
 require_once('Models/Manager.php');
 
-class CommentManager {
+
+class CommentManager extends Manager {
 
     // Obtenir commentaires
     public function getComments($postId) {
