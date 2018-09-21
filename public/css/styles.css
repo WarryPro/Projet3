@@ -1,8 +1,70 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+/* line 4, public/scss/config/typography.scss */
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 /* line 1, public/scss/blocks/base.scss */
 body {
-  background-color: #FAFDFF;
-  font-family: "Montserrat";
-  color: #53575A;
+  background-color: #f6f5ff;
+  color: #999999;
+}
+
+/* line 6, public/scss/blocks/base.scss */
+h1, h2, h3 {
+  color: #555555;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* line 12, public/scss/blocks/base.scss */
+h1 {
+  font-size: 1.8rem;
+}
+
+/* line 13, public/scss/blocks/base.scss */
+h2 {
+  font-size: 1.5rem;
+}
+
+/* line 14, public/scss/blocks/base.scss */
+h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* line 19, public/scss/blocks/base.scss */
+a {
+  color: #555555;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+}
+
+/* line 23, public/scss/blocks/base.scss */
+a:hover {
+  color: #999999;
+}
+
+/* line 28, public/scss/blocks/base.scss */
+p {
+  font-size: 0.95rem;
+}
+
+/* line 29, public/scss/blocks/base.scss */
+span, p {
+  color: #999999;
+  font-weight: 400;
+}
+
+/* line 34, public/scss/blocks/base.scss */
+span {
+  font-size: 0.8rem;
+  font-family: "Roboto", sans-serif;
+}
+
+/* line 37, public/scss/blocks/base.scss */
+span:hover {
+  color: #555555;
 }
 
 /* line 1, public/scss/blocks/header.scss */
@@ -17,76 +79,122 @@ body {
   padding: 1rem 0;
 }
 
-/* line 8, public/scss/blocks/header.scss */
-.main-header .main-header__title {
-  margin: 0;
-  font-size: 2rem;
+/* line 7, public/scss/blocks/header.scss */
+.main-header .header .container-title {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem 0;
 }
 
-/* line 1, public/scss/blocks/main.scss */
+/* line 12, public/scss/blocks/header.scss */
+.main-header .header .container-title .main-header__title {
+  margin: 0;
+}
+
+/* line 16, public/scss/blocks/header.scss */
+.main-header .header .container-main-menu {
+  justify-content: center;
+}
+
+/* line 2, public/scss/blocks/reseaux.scss */
+.reseaux-socieux .reseau-link {
+  line-height: 2;
+  font-size: 1.2rem;
+  color: #999999;
+  padding: 0 0.8rem;
+}
+
+/* line 7, public/scss/blocks/reseaux.scss */
+.reseaux-socieux .reseau-link:hover {
+  color: #555555;
+}
+
+/* line 2, public/scss/blocks/main.scss */
+.derniers-billets {
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+/* line 7, public/scss/blocks/main.scss */
+.card {
+  margin: 0 1rem 2rem;
+}
+
+/* line 9, public/scss/blocks/main.scss */
+.card .card__text {
+  margin: 0.5rem 0 1rem;
+}
+
+/* line 13, public/scss/blocks/main.scss */
+.card .card__btns {
+  justify-content: space-between;
+}
+
+/* line 19, public/scss/blocks/main.scss */
 .main-container {
   padding: 3rem 0;
 }
 
-/* line 3, public/scss/blocks/main.scss */
+/* line 21, public/scss/blocks/main.scss */
 .main-container .btn-primary {
   padding: 0.5rem 1rem;
-  color: #007BDF;
-  border: 2px solid #007BDF;
+  color: #555555;
+  border: 2px solid #555555;
   border-radius: 5px;
 }
 
-/* line 8, public/scss/blocks/main.scss */
+/* line 26, public/scss/blocks/main.scss */
 .main-container .btn-primary:hover {
   color: #fff;
-  background-color: #007BDF;
+  background-color: #555555;
 }
 
-/* line 13, public/scss/blocks/main.scss */
+/* line 31, public/scss/blocks/main.scss */
 .main-container .news-container {
   padding: 3rem 0;
 }
 
-/* line 16, public/scss/blocks/main.scss */
+/* line 34, public/scss/blocks/main.scss */
 .main-container .news-container .news-title h1 {
-  font-size: 2em;
+  font-size: 1.8rem;
   line-height: 0.5;
 }
 
-/* line 20, public/scss/blocks/main.scss */
+/* line 38, public/scss/blocks/main.scss */
 .main-container .news-container .news-title .news-date {
-  color: rgba(83, 87, 90, 0.6);
+  color: rgba(153, 153, 153, 0.6);
   font-size: 0.7em;
 }
 
-/* line 25, public/scss/blocks/main.scss */
+/* line 43, public/scss/blocks/main.scss */
 .main-container .news-container .news-content {
   padding: 1rem 0;
 }
 
-/* line 31, public/scss/blocks/main.scss */
+/* line 49, public/scss/blocks/main.scss */
 .form-comments {
   padding: 0;
 }
 
-/* line 34, public/scss/blocks/main.scss */
+/* line 52, public/scss/blocks/main.scss */
 .subtitle {
-  font-size: 1.6em;
+  font-size: 1.5rem;
 }
 
-/* line 38, public/scss/blocks/main.scss */
+/* line 56, public/scss/blocks/main.scss */
 .btn-form {
   width: 100%;
   background-color: transparent;
 }
 
-/* line 43, public/scss/blocks/main.scss */
+/* line 61, public/scss/blocks/main.scss */
 .container-comments {
   padding: 5rem 0;
 }
 
-/* line 45, public/scss/blocks/main.scss */
+/* line 63, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
-  color: rgba(83, 87, 90, 0.7);
+  color: rgba(153, 153, 153, 0.7);
 }

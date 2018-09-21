@@ -4,9 +4,17 @@
     border-bottom: 2px solid $borderColor;
     .header {
         padding: 1rem 0;
-    }
-    .main-header__title {
-        margin: 0;
-        font-size: 2rem;
+        .container-title {
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 1rem 0;
+            .main-header__title {
+                margin: 0;
+            }
+        }
+        .container-main-menu {
+            justify-content: center;
+        }
     }
 }
