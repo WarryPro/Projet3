@@ -1,3 +1,20 @@
+//PAGE listPostsView.php
+.derniers-billets {
+    justify-content: center;
+    padding: 2rem 0;
+}
+
+.card {
+    margin: 0 1rem 2rem;
+    .card__text {
+        margin: 0.5rem 0 1rem;
+    }
+    .card__btns {
+        justify-content: space-between;
+    }
+}
+
+
 .main-container {
     padding: 3rem 0;
     .btn-primary {
@@ -18,7 +35,7 @@
                 line-height: 0.5;
             }
             .news-date {
-                color: rgba($textColor, 0.6);
+                color: rgba($secondColor, 0.6);
                 font-size: $fsPostDate;
             }
         }
@@ -44,6 +61,6 @@
     padding: 5rem 0;
     .comment-date {
         font-size: 0.7rem;
-        color: rgba($textColor, .7);
+        color: rgba($secondColor, .7);
     }
 }
