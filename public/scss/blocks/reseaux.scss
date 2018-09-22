@@ -2,10 +2,10 @@
   .reseau-link {
     line-height: 2;
     font-size: 1.2rem;
-    color: $secondColor;
+    color: $firstColor;
     padding: 0 0.8rem;
     &:hover {
-      color: $firstColor;
+      color: $secondColor;
     }
   }
 }
