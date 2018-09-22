@@ -101,13 +101,13 @@ span:hover {
 .reseaux-socieux .reseau-link {
   line-height: 2;
   font-size: 1.2rem;
-  color: #999999;
+  color: #555555;
   padding: 0 0.8rem;
 }
 
 /* line 7, public/scss/blocks/reseaux.scss */
 .reseaux-socieux .reseau-link:hover {
-  color: #555555;
+  color: #999999;
 }
 
 /* line 2, public/scss/blocks/main.scss */
@@ -126,17 +126,17 @@ span:hover {
   margin: 0.5rem 0 1rem;
 }
 
-/* line 13, public/scss/blocks/main.scss */
+/* line 12, public/scss/blocks/main.scss */
 .card .card__btns {
   justify-content: space-between;
 }
 
-/* line 19, public/scss/blocks/main.scss */
+/* line 18, public/scss/blocks/main.scss */
 .main-container {
   padding: 3rem 0;
 }
 
-/* line 21, public/scss/blocks/main.scss */
+/* line 20, public/scss/blocks/main.scss */
 .main-container .btn-primary {
   padding: 0.5rem 1rem;
   color: #555555;
@@ -144,57 +144,68 @@ span:hover {
   border-radius: 5px;
 }
 
-/* line 26, public/scss/blocks/main.scss */
+/* line 25, public/scss/blocks/main.scss */
 .main-container .btn-primary:hover {
   color: #fff;
   background-color: #555555;
 }
 
-/* line 31, public/scss/blocks/main.scss */
+/* line 30, public/scss/blocks/main.scss */
 .main-container .news-container {
   padding: 3rem 0;
 }
 
-/* line 34, public/scss/blocks/main.scss */
+/* line 33, public/scss/blocks/main.scss */
 .main-container .news-container .news-title h1 {
   font-size: 1.8rem;
   line-height: 0.5;
 }
 
-/* line 38, public/scss/blocks/main.scss */
+/* line 37, public/scss/blocks/main.scss */
 .main-container .news-container .news-title .news-date {
   color: rgba(153, 153, 153, 0.6);
   font-size: 0.7em;
 }
 
-/* line 43, public/scss/blocks/main.scss */
+/* line 42, public/scss/blocks/main.scss */
 .main-container .news-container .news-content {
   padding: 1rem 0;
 }
 
-/* line 49, public/scss/blocks/main.scss */
+/* line 48, public/scss/blocks/main.scss */
 .form-comments {
   padding: 0;
 }
 
-/* line 52, public/scss/blocks/main.scss */
+/* line 51, public/scss/blocks/main.scss */
 .subtitle {
   font-size: 1.5rem;
 }
 
-/* line 56, public/scss/blocks/main.scss */
+/* line 55, public/scss/blocks/main.scss */
 .btn-form {
   width: 100%;
   background-color: transparent;
 }
 
-/* line 61, public/scss/blocks/main.scss */
+/* line 60, public/scss/blocks/main.scss */
 .container-comments {
   padding: 5rem 0;
 }
 
-/* line 63, public/scss/blocks/main.scss */
+/* line 62, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
+}
+
+/* line 1, public/scss/blocks/footer.scss */
+.container-footer {
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+/* line 5, public/scss/blocks/footer.scss */
+.container-footer .copyright {
+  margin: 0;
 }
