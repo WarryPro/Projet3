@@ -21,10 +21,7 @@
         </main>
 
         <footer class="grid-x">
-        <!-- footer content -->
-<!--            --><?php
-//                require('footer.php');
-//            ?>
+            <?php require('footer.php'); ?>
         </footer>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/6.2.2/js/vendor/jquery.js"></script>
