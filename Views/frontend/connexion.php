@@ -2,7 +2,6 @@
 
 <?php ob_start(); ?>
 
-
 <div class="grid-container">
 
     <form action="index.php?action=connectuser" method="POST">
