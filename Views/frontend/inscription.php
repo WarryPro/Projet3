@@ -25,7 +25,7 @@
 
             <div class="large-12 columns">
                 <label>Repetez votre mot de pass</label>
-                <input type="password" name="pass" id="pass" required>
+                <input type="password" name="repass" id="repass" required>
             </div>
 
             <div class="large-12 columns">
