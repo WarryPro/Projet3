@@ -11,79 +11,79 @@ html {
 
 /* line 4, public/scss/blocks/base.scss */
 body {
-  position: relative;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: #f6f5ff;
   color: #999999;
 }
 
-/* line 11, public/scss/blocks/base.scss */
+/* line 12, public/scss/blocks/base.scss */
 footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  margin-top: auto;
 }
 
-/* line 17, public/scss/blocks/base.scss */
+/* line 18, public/scss/blocks/base.scss */
 h1, h2, h3 {
   color: #555555;
   font-weight: 500;
   text-transform: uppercase;
 }
 
-/* line 23, public/scss/blocks/base.scss */
+/* line 24, public/scss/blocks/base.scss */
 h1 {
   font-size: 1.8rem;
 }
 
-/* line 24, public/scss/blocks/base.scss */
+/* line 25, public/scss/blocks/base.scss */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 25, public/scss/blocks/base.scss */
+/* line 26, public/scss/blocks/base.scss */
 h3 {
   font-size: 1.1rem;
   margin-bottom: 0;
 }
 
-/* line 30, public/scss/blocks/base.scss */
+/* line 31, public/scss/blocks/base.scss */
 a {
   color: #555555;
   text-transform: uppercase;
   font-size: 0.875rem;
 }
 
-/* line 34, public/scss/blocks/base.scss */
+/* line 35, public/scss/blocks/base.scss */
 a:hover {
   color: #999999;
 }
 
-/* line 39, public/scss/blocks/base.scss */
+/* line 40, public/scss/blocks/base.scss */
 p {
   font-size: 0.95rem;
 }
 
-/* line 40, public/scss/blocks/base.scss */
+/* line 41, public/scss/blocks/base.scss */
 span, p {
   color: #999999;
   font-weight: 400;
 }
 
-/* line 45, public/scss/blocks/base.scss */
+/* line 46, public/scss/blocks/base.scss */
 span {
   font-size: 0.8rem;
   font-family: "Roboto", sans-serif;
 }
 
-/* line 48, public/scss/blocks/base.scss */
+/* line 49, public/scss/blocks/base.scss */
 span:hover {
   color: #555555;
 }
 
 /* line 1, public/scss/blocks/header.scss */
 .main-header {
-  padding: 1rem auto;
+  width: 100%;
   align-items: center;
   border-bottom: 2px solid #DFE0E0;
 }

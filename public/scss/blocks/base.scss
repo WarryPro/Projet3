@@ -2,16 +2,17 @@ html {
     height: 100%;
 }
 body {
-    position: relative;
-    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: $bodyBg;
     color: $secondColor;
 }
 
 footer {
     width: 100%;
-    position: absolute;
-    bottom: 0;
+    margin-top: auto; //pour resoudre le probleme avec le header que se faisait plus grande dans certains pages et le footer restais en haut dans cettes pages
+
 }
 
 h1, h2, h3 {
