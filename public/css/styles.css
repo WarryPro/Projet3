@@ -111,19 +111,6 @@ span:hover {
   justify-content: center;
 }
 
-/* line 2, public/scss/blocks/reseaux.scss */
-.reseaux-socieux .reseau-link {
-  line-height: 2;
-  font-size: 1.2rem;
-  color: #555555;
-  padding: 0 0.8rem;
-}
-
-/* line 7, public/scss/blocks/reseaux.scss */
-.reseaux-socieux .reseau-link:hover {
-  color: #999999;
-}
-
 /* line 2, public/scss/blocks/main.scss */
 .derniers-billets {
   justify-content: center;
@@ -222,4 +209,22 @@ span:hover {
 /* line 5, public/scss/blocks/footer.scss */
 .container-footer .copyright {
   margin: 0;
+}
+
+/* line 2, public/scss/blocks/reseaux.scss */
+.reseaux-socieux .reseau-link {
+  line-height: 2;
+  font-size: 1.2rem;
+  color: #555555;
+  padding: 0 0.8rem;
+}
+
+/* line 7, public/scss/blocks/reseaux.scss */
+.reseaux-socieux .reseau-link:hover {
+  color: #999999;
+}
+
+/* line 1, public/scss/components/cards.scss */
+.card {
+  box-shadow: 0 5px 25px -10px #999999;
 }
