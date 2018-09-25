@@ -12,7 +12,16 @@ function listPosts() {
 
     $posts = $postManager->getPosts(); // Appel de la methode getPosts() de cet objet
 
-    require('Views/frontend/listPostsView.php');
+    require('Views/frontend/listePostsView.php');
+}
+
+function derniersPosts() {
+
+    $postManager = new PostManager(); // Création de l'objet postManager
+
+    $posts = $postManager->getDerniersPosts(); // Appel de la methode getPosts() de cet objet
+
+    require('Views/frontend/derniersPostsView.php');
 }
 
 
