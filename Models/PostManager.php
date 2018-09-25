@@ -18,10 +18,20 @@ class PostManager extends Manager {
     public function getPosts() {
 
         $db = $this->dbConnect();
-        
+
+        // Recupere la liste de posts
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id ASC LIMIT 0, 6');
+
+        return $req;
+    }
+
+    public function getDerniersPosts() {
+
+        $db = $this->dbConnect();
+
         // Recupere les 5 derniers posts
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 5');
-    
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 3');
+
         return $req;
     }
 
