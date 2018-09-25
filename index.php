@@ -22,7 +22,7 @@ $db = \Models\Manager::dbConnect();
 try {
     if (isset($_GET['action'])) {
 
-        if ($_GET['action'] == 'listPosts') {
+        if ($_GET['action'] == 'billets') {
 
             listPosts();
         }
@@ -136,7 +136,7 @@ try {
     }
     else {
 
-        listPosts();
+        derniersPosts();
     }
 }
 catch(Exception $e) {
