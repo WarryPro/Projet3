@@ -13,10 +13,10 @@
                         <a href="./index.php" class="main-menu__link">Accueil</a>
                     </li>
                     <li class="main-menu__item">
-                        <a href="./index.php" class="main-menu__link">Billets</a>
+                        <a href="./index.php?action=billets" class="main-menu__link">Billets</a>
                     </li>
                     <li class="main-menu__item">
-                        <a href="./index.php" class="main-menu__link">Contact</a>
+                        <a href="./index.php?action=contact" class="main-menu__link">Contact</a>
                     </li>
                     <li class="main-menu__item">
                         <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
