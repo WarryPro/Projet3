@@ -8,8 +8,9 @@ class User {
 	protected $user;
 	protected $email;
 	protected $pass;
-    
-    
+	protected $role;
+
+
 	function __construct($donnee =[]) {
         
         $this -> hydrate($donnee);
@@ -54,6 +55,12 @@ class User {
         
         return $this -> pass;
     }
+
+
+    public function getUserRole() {
+
+        return $this -> role;
+    }
     
     
 
@@ -64,7 +71,7 @@ class User {
     }
     
 
-	public function setuser($user) {
+	public function setUser($user) {
         
         $this -> user = $user;
     }
@@ -79,6 +86,12 @@ class User {
 	public function setPass($pass) {
 	
 		$this -> pass = $pass;
+	}
+
+
+	public function setUserRole($role) {
+
+		$this -> role = $role;
 	}
 	
 }
