@@ -48,32 +48,41 @@ class UserManager extends Manager {
     }
 
 
+    /*
+     * @var $passIn : recois le mdp envoyé par l'utilisateur (dans le fichier index.php)
+     * @return true si la requete a au moin une ligne et si le mdp inseré est le même que celui de la bdd, false sinon
+     * */
     public function connUser(User $user) {
 
         $db = $this -> dbConnect();
 
-//        $hash = hash('sha512', $user -> getPass());
+        $passIn = $user -> getPass();
 
-        $requete = $db -> prepare('SELECT COUNT(*) AS existe FROM users WHERE user = :user AND pass = :pass');
+        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1');
 
-        $requete -> bindValue(':user', $user -> getUser());
+        $requete -> execute(array(':user' => $user -> getUser()));
 
-        $requete -> bindValue(':pass', $user -> getPass());
+        $userRow = $requete -> fetch(\PDO::FETCH_ASSOC);
 
-        $requete -> execute();
+        if($requete -> rowCount() > 0) {
 
-        $pass = $requete -> fetch(\PDO::FETCH_ASSOC);
+            if(password_verify($passIn, $userRow['pass'])) {
 
-        $connUser = $pass['existe'];
-
-        return $connUser;
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     }
+
+
 
     public function inscrUser(User $user) {
 
         $db = $this -> dbConnect();
-        //todo creer une metho d'incryptation pour le mdp
-//        $hash = hash('sha512', $user -> getPass());
+
+        $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
 
         $requete = $db -> prepare("INSERT INTO users(user, email, pass, user_role) VALUES(:user, :email, :pass, 'User')");
 
@@ -81,7 +90,7 @@ class UserManager extends Manager {
 
         $requete -> bindValue(':email', $user -> getEmail());
 
-        $requete -> bindValue(':pass', $user -> getPass());
+        $requete -> bindValue(':pass', $hash);
 
         $requete -> execute();
 
@@ -93,7 +102,7 @@ class UserManager extends Manager {
     public function updatePass(User $user) {
 
         $db = $this -> dbConnect();
-        $hash = hash('sha512',$user->getPass());
+        $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
 
         $req = $db -> prepare('UPDATE users SET pass = :pass');
 
