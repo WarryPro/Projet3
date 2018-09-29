@@ -228,3 +228,144 @@ span:hover {
 .card {
   box-shadow: 0 5px 25px -10px #999999;
 }
+
+/* line 1, public/scss/components/form-log-in-out.scss */
+.container-login, .container-logout {
+  display: flex;
+  justify-content: center;
+}
+
+/* line 6, public/scss/components/form-log-in-out.scss */
+.main-container-form {
+  margin-top: 2rem;
+  max-width: 400px;
+}
+
+/* line 10, public/scss/components/form-log-in-out.scss */
+.container-photo-profile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  background-image: url("https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress");
+  background-position: center;
+  background-size: cover;
+  min-height: 200px;
+}
+
+/* line 20, public/scss/components/form-log-in-out.scss */
+.container-photo-profile:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(72, 84, 157, 0.4);
+}
+
+/* line 27, public/scss/components/form-log-in-out.scss */
+.container-photo-profile .photo-profile {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #999999;
+}
+
+/* line 33, public/scss/components/form-log-in-out.scss */
+.container-photo-profile .photo-profile, .container-photo-profile .text-connexion {
+  z-index: 10;
+}
+
+/* line 36, public/scss/components/form-log-in-out.scss */
+.container-photo-profile .text-connexion {
+  color: white;
+  font-size: 1.1rem;
+}
+
+/* line 42, public/scss/components/form-log-in-out.scss */
+.container-form {
+  justify-content: center;
+}
+
+/* line 44, public/scss/components/form-log-in-out.scss */
+.container-form .form-group {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+/* line 48, public/scss/components/form-log-in-out.scss */
+.container-form .form-group .fas {
+  color: #48549D;
+  font-size: 1.05rem;
+}
+
+/* line 52, public/scss/components/form-log-in-out.scss */
+.container-form .form-group input {
+  margin-bottom: 0;
+  border: none;
+  outline: none;
+}
+
+/* line 56, public/scss/components/form-log-in-out.scss */
+.container-form .form-group input:focus {
+  border: none;
+}
+
+/* line 62, public/scss/components/form-log-in-out.scss */
+.container-form .group-mdp-oublie {
+  justify-content: flex-end;
+}
+
+/* line 64, public/scss/components/form-log-in-out.scss */
+.container-form .group-mdp-oublie .mdp-oublie {
+  margin-bottom: 0;
+}
+
+/* line 66, public/scss/components/form-log-in-out.scss */
+.container-form .group-mdp-oublie .mdp-oublie__link {
+  color: #999999;
+  font-size: 0.7rem;
+}
+
+/* line 69, public/scss/components/form-log-in-out.scss */
+.container-form .group-mdp-oublie .mdp-oublie__link:hover {
+  color: #48549D;
+}
+
+/* line 76, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* line 79, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider .btn-valider {
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  background-color: #48549D;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px -3px black;
+  cursor: pointer;
+}
+
+/* line 87, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider .btn-valider:hover {
+  background-color: #404b8c;
+}
+
+/* line 91, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider p, .container-form .group-valider .creer-compte__link {
+  font-size: 0.8rem;
+}
+
+/* line 94, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider .creer-compte__link {
+  text-transform: lowercase;
+}
+
+/* line 96, public/scss/components/form-log-in-out.scss */
+.container-form .group-valider .creer-compte__link:hover {
+  color: #48549D;
+}
