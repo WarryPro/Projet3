@@ -19,13 +19,8 @@
 
         <div class="row">
             <div class="large-12 columns">
-                <label for="pass">Mot de pass</label>
-                <input type="password" name="pass" id="pass" required>
-            </div>
-
-            <div class="large-12 columns">
-                <label>Repetez votre mot de pass</label>
-                <input type="password" name="repass" id="repass" required>
+                <label for="pass">Mot de passe</label>
+                <input type="password" name="pass" id="pass" required placeholder="mot de passe">
             </div>
 
             <div class="large-12 columns">
