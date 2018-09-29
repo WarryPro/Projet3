@@ -16,7 +16,7 @@
             ?>
         </header>
 
-        <main class="grid-x grid-container">
+        <main class="grid-x">
             <?= $content; ?>
         </main>
 
