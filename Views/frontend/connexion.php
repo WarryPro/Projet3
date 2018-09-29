@@ -2,35 +2,41 @@
 
 <?php ob_start(); ?>
 
-<div class="grid-container">
+<div class="small-10 medium-6 large-4 grid-container container-login">
 
-    <form action="index.php?action=connectuser" method="POST">
-        <div class="row">
-            <div class="large-12 columns">
-                <label for="user">Utilisateur</label>
-                <input type="text" name="user" id="user" placeholder="Utilisater" required>
+    <div class="main-container-form card">
+        <div class="container-photo-profile">
+            <div class="photo-profile">
             </div>
+            <p class="text-connexion">Se connecter</p>
         </div>
 
-        <div class="row">
-            <div class="large-12 columns">
-                <label for="pass">Mot de pass</label>
-                <input type="password" name="pass" id="pass" required>
-            </div>
-            <div class="large-12 columns">
-                <p>
-                    <a href="index.php?action=forgotpassword">j'ai oublié mon mot de passe</a>
-                </p>
-            </div>
-        </div>
+        <div class="container-form grid-x">
+            <form action="index.php?action=connectuser" method="POST" class="small-10">
+                <div class="form-group">
+                    <span class="fas fa-user icon-user"></span>
+                    <input type="text" name="user" id="user" placeholder="Utilisater" required>
+                </div>
 
-        <div class="row">
-            <div class="large-6 columns">
-                <input type="submit" name="Connection" value="Se connecter">
-            </div>
+                <div class="form-group">
+                    <span class="fas fa-lock icon-password"></span>
+                    <input type="password" name="pass" id="pass" required placeholder="Mot de passe">
+                </div>
+
+                <div class="form-group group-mdp-oublie">
+                    <p class="mdp-oublie">
+                        <a class="mdp-oublie__link" href="index.php?action=forgotpassword">Mot de passe oublié?</a>
+                    </p>
+                </div>
+                <div class="form-group group-valider">
+                    <input class="btn-valider" type="submit" name="Connection" value="Se connecter">
+                    <p> Vous n'avez pas de compte?
+                        <a class="creer-compte__link" href="index.php?action=inscription">créer un maintenant!</a>
+                    </p>
+                </div>
+            </form>
         </div>
-    </form>
-</div>
+    </div>
 
 
 <?php $content = ob_get_clean();
