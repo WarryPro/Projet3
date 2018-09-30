@@ -336,7 +336,7 @@ span:hover {
 /* line 76, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider {
   justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
 }
 
 /* line 79, public/scss/components/form-log-in-out.scss */
