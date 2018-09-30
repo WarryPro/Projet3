@@ -53,7 +53,7 @@ class PostManager extends Manager {
 
         $db = $this->dbConnect();
         
-        $req = $db->prepare('UPDATE SET title = :title, content = :content, DATE_FORMAT(modif_date, NOW()) AS modif_date_fr FROM episodes WHERE id = :id');
+        $req = $db->prepare("UPDATE SET title = :title, content = :content, DATE_FORMAT(modif_date, NOW()) AS modif_date_fr FROM episodes WHERE id = :id");
 
         $req->execute(array($postId));
 
@@ -66,7 +66,7 @@ class PostManager extends Manager {
 
         $db = $this -> dbConnect();
 
-        $req = $db -> prepare("DELETE FROM episodes WHERE id = ':id'");
+        $req = $db -> prepare("DELETE FROM episodes WHERE id = :id");
 
         $req -> execute( array( $postId ));
 
