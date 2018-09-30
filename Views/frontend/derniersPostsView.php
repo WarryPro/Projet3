@@ -27,7 +27,7 @@
                             <?= substr(htmlspecialchars($data['content']), 0,200) .'...' ?>
                         </p>
                         <div class="card__btns grid-x">
-                            <a class="card__comment-link far fa-comment" href="index.php?action=post&amp;id=<?= $data['id'] ?>"><span> <i class="nb-comments"> 14</i> Commentaires</span></a>
+                            <a class="card__comment-link far fa-comment" href="index.php?action=post&amp;id=<?= $data['id'] ?>"><span> <i class="nb-comments"> <!-- mettre le nombre de commentaires dynamiquement pour ce billet --></i> Commentaires</span></a>
                             <a class="card__share-link fas fa-share-alt" href="#"> <span> Share</span></a>
                         </div>
                     </div>
