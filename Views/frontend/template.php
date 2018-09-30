@@ -12,7 +12,17 @@
     <body>
         <header class ="grid-x main-header">
             <?php
-                require('header.php');
+                if(isset($_GET['action'])) {
+
+                    if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
+                        || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription') {
+
+                        require('header.php');
+                    }
+                }
+                else {
+                    require('header.php');
+                }
             ?>
         </header>
 
