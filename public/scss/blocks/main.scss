@@ -15,8 +15,7 @@
 }
 
 
-.main-container {
-    padding: 3rem 0;
+.post-main-container {
     .btn-primary {
         padding: 0.5rem 1rem;
         color: $firstColor;
@@ -27,19 +26,19 @@
             background-color: $firstColor;
         }
     }
-    .news-container {
-        padding: 3rem 0;
-        .news-title {
+    .post {
+        padding: 2rem;
+        .post-title {
             h1 {
                 font-size: $fsH1;
                 line-height: 0.5;
             }
-            .news-date {
+            .post-date {
                 color: rgba($secondColor, 0.6);
                 font-size: $fsPostDate;
             }
         }
-        .news-content {
+        .post-content {
             padding: 1rem 0;
         }
     }
