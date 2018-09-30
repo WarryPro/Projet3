@@ -132,72 +132,80 @@ span:hover {
   justify-content: space-between;
 }
 
-/* line 18, public/scss/blocks/main.scss */
-.main-container {
-  padding: 3rem 0;
-}
-
-/* line 20, public/scss/blocks/main.scss */
-.main-container .btn-primary {
+/* line 19, public/scss/blocks/main.scss */
+.post-main-container .btn-primary {
   padding: 0.5rem 1rem;
   color: #555555;
   border: 2px solid #555555;
   border-radius: 5px;
 }
 
-/* line 25, public/scss/blocks/main.scss */
-.main-container .btn-primary:hover {
+/* line 24, public/scss/blocks/main.scss */
+.post-main-container .btn-primary:hover {
   color: #fff;
   background-color: #555555;
 }
 
-/* line 30, public/scss/blocks/main.scss */
-.main-container .news-container {
-  padding: 3rem 0;
+/* line 29, public/scss/blocks/main.scss */
+.post-main-container .post {
+  padding: 2rem;
 }
 
-/* line 33, public/scss/blocks/main.scss */
-.main-container .news-container .news-title h1 {
+/* line 32, public/scss/blocks/main.scss */
+.post-main-container .post .post-title h1 {
   font-size: 1.8rem;
   line-height: 0.5;
 }
 
-/* line 37, public/scss/blocks/main.scss */
-.main-container .news-container .news-title .news-date {
+/* line 36, public/scss/blocks/main.scss */
+.post-main-container .post .post-title .post-date {
   color: rgba(153, 153, 153, 0.6);
   font-size: 0.7em;
 }
 
-/* line 42, public/scss/blocks/main.scss */
-.main-container .news-container .news-content {
+/* line 41, public/scss/blocks/main.scss */
+.post-main-container .post .post-content {
   padding: 1rem 0;
 }
 
-/* line 48, public/scss/blocks/main.scss */
+/* line 47, public/scss/blocks/main.scss */
 .form-comments {
   padding: 0;
 }
 
-/* line 51, public/scss/blocks/main.scss */
+/* line 50, public/scss/blocks/main.scss */
 .subtitle {
   font-size: 1.5rem;
 }
 
-/* line 55, public/scss/blocks/main.scss */
+/* line 54, public/scss/blocks/main.scss */
 .btn-form {
   width: 100%;
   background-color: transparent;
 }
 
-/* line 60, public/scss/blocks/main.scss */
+/* line 59, public/scss/blocks/main.scss */
 .container-comments {
   padding: 5rem 0;
 }
 
-/* line 62, public/scss/blocks/main.scss */
+/* line 61, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
+}
+
+/* line 1, public/scss/components/banner.scss */
+.banner {
+  max-height: 20rem;
+}
+
+/* line 3, public/scss/components/banner.scss */
+.banner__img {
+  max-height: 20rem;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 /* line 1, public/scss/blocks/footer.scss */

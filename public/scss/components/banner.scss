@@ -1,0 +1,8 @@
+.banner {
+  max-height: 20rem;
+  &__img {
+    max-height: 20rem;
+    width: 100%;
+    object-fit: cover;
+  }
+}
