@@ -3,39 +3,43 @@
 <?php ob_start(); ?>
 
 
-<div class="grid-container">
+<div class="small-10 medium-6 large-4 grid-container container-logout">
 
-    <form action="index.php?action=inscripuser" method="POST">
-        <div class="row">
-            <div class="large-12 columns">
-                <label for="user">Utilisateur</label>
-                <input type="text" name="user" id="user" placeholder="Utilisater" required>
+    <div class="main-container-form card">
+        <div class="container-photo-profile">
+            <div class="photo-profile">
+
             </div>
-            <div class="large-12 columns">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email">
-            </div>
+            <p class="text-connexion">S'inscrire</p>
         </div>
 
-        <div class="row">
-            <div class="large-12 columns">
-                <label for="pass">Mot de passe</label>
-                <input type="password" name="pass" id="pass" required placeholder="mot de passe">
-            </div>
+        <div class="container-form grid-x">
+            <form action="index.php?action=inscripuser" method="POST" class="small-10">
+                <div class="form-group">
+                    <span class="fas fa-user icon-user"></span>
+                    <input type="text" name="user" id="user" placeholder="Utilisater" required>
+                </div>
 
-            <div class="large-12 columns">
-                <p>
-                    <a href="index.php?action=connexion">Déja un compte? se connecter</a>
-                </p>
-            </div>
-        </div>
+                <div class="form-group">
+                    <span class="fas fa-envelope icon-email"></span>
+                    <input type="text" name="email" id="email" placeholder="Email" required>
+                </div>
 
-        <div class="row">
-            <div class="large-6 columns">
-                <input type="submit" name="inscription" value="S'inscrire">
-            </div>
+                <div class="form-group">
+                    <span class="fas fa-lock icon-password"></span>
+                    <input type="password" name="pass" id="pass" required placeholder="Mot de passe">
+                </div>
+
+
+                <div class="form-group group-valider">
+                    <input class="btn-valider" type="submit" name="inscription" value="S'inscrire">
+                    <p> Vous avez déjà un compte?
+                        <a class="creer-compte__link" href="index.php?action=connexion">se connecter</a>
+                    </p>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 
 
