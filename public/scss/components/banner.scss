@@ -1,5 +1,14 @@
 .banner {
   max-height: 20rem;
+  position: relative;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($postFirstColor, .5);
+  }
   &__img {
     max-height: 20rem;
     width: 100%;
