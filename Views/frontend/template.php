@@ -37,5 +37,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/6.2.2/js/vendor/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/6.2.2/js/vendor/what-input.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/js/foundation.min.js"></script>
+        <script>
+            $('#menu-toggle').click(function(){
+                $(this).toggleClass('open');
+            })
+        </script>
     </body>
 </html>
