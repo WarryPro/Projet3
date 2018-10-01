@@ -1,3 +1,68 @@
 .post-main-container {
+  .post-aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $postFirstColor;
+    padding: 2rem;
+    h1, a {
+      color: #fff;
+    }
 
+    .post-header {
+      &-blog {
+        display: flex;
+        justify-content: space-between;
+        .main-header__title {
+          text-transform: capitalize;
+          font-weight: 500;
+        }
+      }
+      a {
+        padding: 0.5rem 0;
+        text-transform: inherit;
+        &:hover {
+          color: $postThirdColor;
+        }
+      }
+      .main-menu__link {
+        position: relative;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          height: 3px;
+          background-color: $postThirdColor;
+        }
+        &:hover {
+          &:before {
+            width: 100%;
+            transition: width 0.3s ease-in-out;
+          }
+        }
+      }
+    }
+
+    .container-titre-livre {
+      .auteur {
+        position: relative;
+        color: $postThirdColor;
+        font-weight: 500;
+        padding-bottom: 5px;
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          width: 2rem;
+          height: 3px;
+          background-color: $postThirdColor;
+        }
+      }
+      .titre-livre {
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
