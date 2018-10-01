@@ -111,6 +111,115 @@ span:hover {
   justify-content: center;
 }
 
+/* line 1, public/scss/components/btn-hamburger.scss */
+.nav-toggle {
+  position: relative;
+  width: 2.1rem;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* line 6, public/scss/components/btn-hamburger.scss */
+.nav-toggle .btn-toggle {
+  background-color: white;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  transition: width .5s ease;
+}
+
+/* line 12, public/scss/components/btn-hamburger.scss */
+.nav-toggle .btn-toggle:before, .nav-toggle .btn-toggle:after {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+/* line 20, public/scss/components/btn-hamburger.scss */
+.nav-toggle .btn-toggle:before {
+  bottom: 9px;
+  background: yellow;
+  transition: width .625s ease;
+}
+
+/* line 25, public/scss/components/btn-hamburger.scss */
+.nav-toggle .btn-toggle:after {
+  bottom: 0;
+  background: red;
+  transition: width .75s ease;
+}
+
+/* line 31, public/scss/components/btn-hamburger.scss */
+.nav-toggle .cross {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+/* line 37, public/scss/components/btn-hamburger.scss */
+.nav-toggle .cross:before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 25%;
+  top: -6px;
+  right: 1rem;
+  transition: all .5s ease;
+}
+
+/* line 47, public/scss/components/btn-hamburger.scss */
+.nav-toggle .cross:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  left: 0;
+  top: 0.5rem;
+  transition: all .25s ease;
+}
+
+/* line 60, public/scss/components/btn-hamburger.scss */
+.nav-toggle.open .btn-toggle {
+  width: 0;
+  transition-delay: 0s;
+}
+
+/* line 63, public/scss/components/btn-hamburger.scss */
+.nav-toggle.open .btn-toggle:before {
+  width: 0;
+  content: '';
+  transition-delay: .125s;
+}
+
+/* line 68, public/scss/components/btn-hamburger.scss */
+.nav-toggle.open .btn-toggle:after {
+  width: 0;
+  content: '';
+  transition-delay: .25s;
+}
+
+/* line 76, public/scss/components/btn-hamburger.scss */
+.nav-toggle.open #cross:before {
+  content: '';
+  height: 2rem;
+  background-color: white;
+  transition-delay: .625s;
+}
+
+/* line 82, public/scss/components/btn-hamburger.scss */
+.nav-toggle.open #cross:after {
+  content: '';
+  width: 2rem;
+  background-color: white;
+  transition-delay: .375s;
+}
+
 /* line 2, public/scss/blocks/main.scss */
 .container-titre {
   justify-content: center;
@@ -195,12 +304,105 @@ span:hover {
   color: rgba(153, 153, 153, 0.7);
 }
 
+/* line 2, public/scss/components/post-aside.scss */
+.post-main-container .post-aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #48549D;
+  padding: 2rem;
+}
+
+/* line 8, public/scss/components/post-aside.scss */
+.post-main-container .post-aside h1, .post-main-container .post-aside a {
+  color: #fff;
+}
+
+/* line 13, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header-blog {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* line 16, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header-blog .main-header__title {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+/* line 21, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header a {
+  padding: 0.5rem 0;
+  text-transform: inherit;
+}
+
+/* line 24, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header a:hover {
+  color: #fad917;
+}
+
+/* line 28, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header .main-menu__link {
+  position: relative;
+}
+
+/* line 30, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header .main-menu__link:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background-color: #fad917;
+}
+
+/* line 39, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .post-header .main-menu__link:hover:before {
+  width: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+/* line 48, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .container-titre-livre .auteur {
+  position: relative;
+  color: #fad917;
+  font-weight: 500;
+  padding-bottom: 5px;
+}
+
+/* line 53, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .container-titre-livre .auteur:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 2rem;
+  height: 3px;
+  background-color: #fad917;
+}
+
+/* line 62, public/scss/components/post-aside.scss */
+.post-main-container .post-aside .container-titre-livre .titre-livre {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
 /* line 1, public/scss/components/banner.scss */
 .banner {
   max-height: 20rem;
+  position: relative;
 }
 
-/* line 3, public/scss/components/banner.scss */
+/* line 4, public/scss/components/banner.scss */
+.banner:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(72, 84, 157, 0.5);
+}
+
+/* line 12, public/scss/components/banner.scss */
 .banner__img {
   max-height: 20rem;
   width: 100%;
