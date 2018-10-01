@@ -3,12 +3,13 @@
 
     <div class="post-header">
 
-        <div class="btn-menu">
-            Menu
-        </div>
-
         <div class="post-header-blog">
-            <a class="main-header__title">JEAN FORTEROCHE BLOG!</a>
+            <div class="btn-menu">
+                <?php require('partials/btn-hamburger.php'); ?>
+            </div>
+            <div class="container-title">
+                <a class="main-header__title">Jean Forteroche Blog!</a>
+            </div>
         </div>
 
         <div class="container-post-menu grid-x small-12">
