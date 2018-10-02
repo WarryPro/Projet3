@@ -10,21 +10,27 @@
     </head>
         
     <body>
-        <header class ="grid-x main-header">
-            <?php
-                if(isset($_GET['action'])) {
+    <?php if (isset($_GET['action'])) {
 
-                    if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
-                        || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription') {
+        if ($_GET['action'] !== 'post') {
 
-                        require('header.php');
-                    }
-                }
-                else {
+            print('<header class ="grid-x main-header">');
+
+                if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
+                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription') {
+
                     require('header.php');
                 }
-            ?>
-        </header>
+
+            print('</header>');
+        }
+    }
+    else {
+        print('<header class ="grid-x main-header">');
+        require('header.php');
+        print('</header>');
+    }
+    ?>
 
         <main class="grid-x">
             <?= $content; ?>
@@ -39,7 +45,8 @@
         <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/js/foundation.min.js"></script>
         <script>
             $('#menu-toggle').click(function(){
-                $(this).toggleClass('open');
+                $(this).toggleClass('open')
+                $('.main-nav').toggleClass('show-menu')
             })
         </script>
     </body>
