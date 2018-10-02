@@ -1,5 +1,5 @@
 
-<div class="post-aside small-12 large-4">
+<div class="post-aside small-12 medium-4 large-3">
 
     <div class="post-header">
 
