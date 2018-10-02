@@ -28,21 +28,23 @@
     }
     .post {
         padding: 2rem;
-        .post-title {
-            h1 {
-                font-size: $fsH1;
-                line-height: 0.5;
-            }
-            .post-date {
-                color: rgba($secondColor, 0.6);
-                font-size: $fsPostDate;
-            }
+        &-title {
+            font-size: $fsH2;
+            font-weight: 700;
+            margin-bottom: 0;
+            color: $postFirstColor;
         }
-        .post-content {
+        &-date {
+            color: rgba($secondColor, 0.6);
+            font-size: $fsPostDate;
+        }
+        &-content {
             padding: 1rem 0;
+          color: lighten( $postFirstColor, 15%);
         }
     }
 }
+
 
 .form-comments {
     padding: 0;
