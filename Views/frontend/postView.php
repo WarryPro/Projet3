@@ -7,20 +7,20 @@
 
     <?php require('postAside.php') ?>
 
-    <div class="post-container small-12 large-8">
+    <div class="post-container small-12 medium-8 large-9">
 
         <?php require('partials/bannerPost.php') ?>
 
-        <div class="small-12 medium-6 large-8">
+        <div class="small-12 medium-8 large-9">
             <div class="post grid-y">
-                <div class="post-title ">
-                    <h2>
+                <div>
+                    <h2 class="post-title">
                         <?= htmlspecialchars($post['title']) ?>
                     </h2>
                     <span class="post-date"><em><?= $post['created_date_fr'] ?></em></span>
                 </div>
-                <div class="post-content ">
-                    <p>
+                <div class="post-content-container ">
+                    <p class="post-content">
                         <?= nl2br(htmlspecialchars($post['content'])) ?>
                     </p>
                 </div>
