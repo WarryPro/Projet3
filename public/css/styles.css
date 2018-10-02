@@ -111,6 +111,26 @@ span:hover {
   justify-content: center;
 }
 
+/* line 3, public/scss/components/menu.scss */
+.post-aside .main-nav {
+  position: relative;
+  width: 100%;
+  min-height: 50vh;
+  overflow: hidden;
+}
+
+/* line 8, public/scss/components/menu.scss */
+.post-aside .main-nav .menu {
+  position: absolute;
+  left: -100%;
+  transition: left 0.5s ease-in-out;
+}
+
+/* line 14, public/scss/components/menu.scss */
+.post-aside .main-nav.show-menu .menu {
+  left: 0;
+}
+
 /* line 1, public/scss/components/btn-hamburger.scss */
 .nav-toggle {
   position: relative;
@@ -260,45 +280,48 @@ span:hover {
   padding: 2rem;
 }
 
-/* line 32, public/scss/blocks/main.scss */
-.post-main-container .post .post-title h1 {
-  font-size: 1.8rem;
-  line-height: 0.5;
+/* line 31, public/scss/blocks/main.scss */
+.post-main-container .post-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #48549D;
 }
 
-/* line 36, public/scss/blocks/main.scss */
-.post-main-container .post .post-title .post-date {
+/* line 37, public/scss/blocks/main.scss */
+.post-main-container .post-date {
   color: rgba(153, 153, 153, 0.6);
   font-size: 0.7em;
 }
 
 /* line 41, public/scss/blocks/main.scss */
-.post-main-container .post .post-content {
+.post-main-container .post-content {
   padding: 1rem 0;
+  color: #737ebf;
 }
 
-/* line 47, public/scss/blocks/main.scss */
+/* line 49, public/scss/blocks/main.scss */
 .form-comments {
   padding: 0;
 }
 
-/* line 50, public/scss/blocks/main.scss */
+/* line 52, public/scss/blocks/main.scss */
 .subtitle {
   font-size: 1.5rem;
 }
 
-/* line 54, public/scss/blocks/main.scss */
+/* line 56, public/scss/blocks/main.scss */
 .btn-form {
   width: 100%;
   background-color: transparent;
 }
 
-/* line 59, public/scss/blocks/main.scss */
+/* line 61, public/scss/blocks/main.scss */
 .container-comments {
   padding: 5rem 0;
 }
 
-/* line 61, public/scss/blocks/main.scss */
+/* line 63, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
