@@ -8,7 +8,7 @@
                 <?php require('partials/btn-hamburger.php'); ?>
             </div>
             <div class="container-title">
-                <a class="main-header__title">Jean Forteroche Blog!</a>
+                <a href="./index.php" class="main-header__title">Jean Forteroche Blog!</a>
             </div>
         </div>
 
