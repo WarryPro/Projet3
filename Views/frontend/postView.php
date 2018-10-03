@@ -27,25 +27,23 @@
             </div>
         </div>
 
-        <div class=" grid-x post-main-container form-comments">
-            <div class="grid-container post-main-container form-comments grid-x ">
-                <h2 class=" subtitle">Commentaires</h2>
-            <div class=" grid-container grid-x container-form">
-                <form class=" small-6" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+        <div class="post post-main-container form-comments grid-x">
+            <div class="container-form card">
+                <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+<!--                    <div class="input-form">-->
+<!--                        <label for="user">Utilisateur</label><br />-->
+<!--                        <input type="text" id="user" name="user" />-->
+<!--                    </div>-->
                     <div class="input-form">
-                        <label for="user">Utilisateur</label><br />
-                        <input type="text" id="user" name="user" />
-                    </div>
-                    <div class="input-form">
-                        <label for="comment">Commentaire</label><br />
-                        <textarea id="comment" name="comment"></textarea>
+                        <label class="label-form" for="comment">Laissez un commentaire</label>
+                        <textarea class="textarea-form" id="comment" name="comment"></textarea>
                     </div>
                     <div class="btn-container">
-                        <input class="btn-primary btn-form"type="submit" />
+                        <input class="btn-form"type="submit" />
                     </div>
                 </form>
             </div>
-            <div class="container-comments grid-container ">
+            <div class="container-comments small-12">
                 <?php
                 while ($comment = $comments->fetch()) {
                 ?>
@@ -63,7 +61,6 @@
                 <?php require('template.php'); ?>
 
             </div>
-        </div>
         </div>
     </div>
 </section>
