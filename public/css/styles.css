@@ -297,31 +297,88 @@ span:hover {
 /* line 41, public/scss/blocks/main.scss */
 .post-main-container .post-content {
   padding: 1rem 0;
+  margin-bottom: 0;
   color: #737ebf;
 }
 
-/* line 49, public/scss/blocks/main.scss */
+/* line 50, public/scss/blocks/main.scss */
 .form-comments {
   padding: 0;
 }
 
 /* line 52, public/scss/blocks/main.scss */
+.form-comments .container-form {
+  max-width: 600px;
+  padding: 2rem 1rem 1rem;
+  margin: 0;
+}
+
+/* line 57, public/scss/blocks/main.scss */
+.form-comments .input-form {
+  position: relative;
+}
+
+/* line 59, public/scss/blocks/main.scss */
+.form-comments .input-form .label-form {
+  position: absolute;
+  left: 1rem;
+  top: 0.5rem;
+  color: #999999;
+  transition: left 0.3s, top 0.3s ease;
+}
+
+/* line 67, public/scss/blocks/main.scss */
+.form-comments .input-form .label-up {
+  top: -1.5rem;
+  color: #48549D;
+  font-weight: 500;
+}
+
+/* line 73, public/scss/blocks/main.scss */
+.form-comments .input-form .textarea-form {
+  resize: none;
+  height: 100px;
+  border-radius: 5px;
+}
+
+/* line 80, public/scss/blocks/main.scss */
 .subtitle {
   font-size: 1.5rem;
 }
 
-/* line 56, public/scss/blocks/main.scss */
+/* line 84, public/scss/blocks/main.scss */
 .btn-form {
   width: 100%;
-  background-color: transparent;
+  background-color: #48549D;
+  padding: 0.6rem 0;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-/* line 61, public/scss/blocks/main.scss */
+/* line 93, public/scss/blocks/main.scss */
+.btn-form:hover {
+  background-color: #00D184;
+}
+
+/* line 98, public/scss/blocks/main.scss */
 .container-comments {
-  padding: 5rem 0;
+  padding: 2rem 0;
 }
 
-/* line 63, public/scss/blocks/main.scss */
+/* line 100, public/scss/blocks/main.scss */
+.container-comments p {
+  margin-bottom: 0;
+}
+
+/* line 102, public/scss/blocks/main.scss */
+.container-comments p strong {
+  color: #48549D;
+}
+
+/* line 106, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
@@ -345,31 +402,33 @@ span:hover {
 .post-main-container .post-aside .post-header-blog {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 0 0 1rem;
 }
 
-/* line 16, public/scss/components/post-aside.scss */
+/* line 18, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header-blog .main-header__title {
   text-transform: capitalize;
   font-weight: 500;
 }
 
-/* line 21, public/scss/components/post-aside.scss */
+/* line 23, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header a {
   padding: 0.5rem 0;
   text-transform: inherit;
 }
 
-/* line 24, public/scss/components/post-aside.scss */
+/* line 26, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header a:hover {
   color: #fad917;
 }
 
-/* line 28, public/scss/components/post-aside.scss */
+/* line 30, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header .main-menu__link {
   position: relative;
 }
 
-/* line 30, public/scss/components/post-aside.scss */
+/* line 32, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header .main-menu__link:before {
   content: '';
   position: absolute;
@@ -379,13 +438,13 @@ span:hover {
   background-color: #fad917;
 }
 
-/* line 39, public/scss/components/post-aside.scss */
+/* line 41, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .post-header .main-menu__link:hover:before {
   width: 100%;
   transition: width 0.3s ease-in-out;
 }
 
-/* line 48, public/scss/components/post-aside.scss */
+/* line 50, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .container-titre-livre .auteur {
   position: relative;
   color: #fad917;
@@ -393,7 +452,7 @@ span:hover {
   padding-bottom: 5px;
 }
 
-/* line 53, public/scss/components/post-aside.scss */
+/* line 55, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .container-titre-livre .auteur:before {
   content: '';
   position: absolute;
@@ -403,7 +462,7 @@ span:hover {
   background-color: #fad917;
 }
 
-/* line 62, public/scss/components/post-aside.scss */
+/* line 64, public/scss/components/post-aside.scss */
 .post-main-container .post-aside .container-titre-livre .titre-livre {
   font-weight: 700;
   font-size: 1.5rem;

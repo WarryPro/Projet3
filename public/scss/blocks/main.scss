@@ -40,6 +40,7 @@
         }
         &-content {
             padding: 1rem 0;
+            margin-bottom: 0;
           color: lighten( $postFirstColor, 15%);
         }
     }
@@ -48,6 +49,33 @@
 
 .form-comments {
     padding: 0;
+    .container-form {
+        max-width: 600px;
+        padding: 2rem 1rem 1rem;
+        margin: 0;
+    }
+    .input-form {
+        position: relative;
+        .label-form {
+            position: absolute;
+            left: 1rem;
+            top: 0.5rem;
+            color: $secondColor;
+
+            transition: left 0.3s, top 0.3s ease;
+        }
+        .label-up {
+                top: -1.5rem;
+                color: $postFirstColor;
+                font-weight: 500;
+        }
+
+        .textarea-form {
+            resize: none;
+            height: 100px;
+            border-radius: 5px;
+        }
+    }
 }
 .subtitle {
     font-size: $fsH2;
@@ -55,11 +83,26 @@
 
 .btn-form {
     width: 100%;
-    background-color: transparent;
+    background-color: $postFirstColor;;
+    padding: 0.6rem 0;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: $postSecondColor;
+    }
 }
 
 .container-comments {
-    padding: 5rem 0;
+    padding: 2rem 0;
+    & p {
+        margin-bottom: 0;
+        & strong {
+            color: $postFirstColor;
+        }
+    }
     .comment-date {
         font-size: 0.7rem;
         color: rgba($secondColor, .7);
