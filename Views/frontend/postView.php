@@ -47,12 +47,22 @@
                 <?php
                 while ($comment = $comments->fetch()) {
                 ?>
+                    <div class="comment">
 
-                    <p><strong><?= htmlspecialchars($comment['user']) ?></strong>
+                        <div class="user">
 
-                    <span class="comment-date">le <?= $comment['comment_date_fr'] ?></span> </p>
+                            <a href="#" class="user__photo">
+                                <img src="public/images/dany.JPG" alt="user-photo" class="user__img">
+                            </a>
 
-                    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                            <div class="grid-y">
+                                <a href="#" class="user__nom"><strong><?= htmlspecialchars($comment['user']) ?></strong></a>
+                                <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
+                            </div>
+                        </div>
+
+                        <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                    </div>
                 <?php
                 }
                 ?>
