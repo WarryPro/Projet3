@@ -97,10 +97,24 @@
 
 .container-comments {
     padding: 2rem 0;
-    & p {
-        margin-bottom: 0;
-        & strong {
-            color: $postFirstColor;
+    .user {
+        display: flex;
+        align-items: flex-end;
+        padding: 1rem 0;
+        &__photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 1rem;
+        }
+        &__nom {
+            display: block;
+            margin-bottom: 0;
+            text-transform: capitalize;
+            & strong {
+                color: $postFirstColor;
+            }
         }
     }
     .comment-date {

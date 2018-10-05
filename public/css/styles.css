@@ -369,16 +369,34 @@ span:hover {
 }
 
 /* line 100, public/scss/blocks/main.scss */
-.container-comments p {
-  margin-bottom: 0;
+.container-comments .user {
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem 0;
 }
 
-/* line 102, public/scss/blocks/main.scss */
-.container-comments p strong {
+/* line 104, public/scss/blocks/main.scss */
+.container-comments .user__photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+/* line 111, public/scss/blocks/main.scss */
+.container-comments .user__nom {
+  display: block;
+  margin-bottom: 0;
+  text-transform: capitalize;
+}
+
+/* line 115, public/scss/blocks/main.scss */
+.container-comments .user__nom strong {
   color: #48549D;
 }
 
-/* line 106, public/scss/blocks/main.scss */
+/* line 120, public/scss/blocks/main.scss */
 .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
