@@ -49,11 +49,8 @@
                 $(this).toggleClass('open')
                 $('.main-nav').toggleClass('show-menu')
             })
-
-//            label up commen le textarea est en mode focus
-            $('.textarea-form ').focus(function() {
-                $('.label-form').addClass('label-up');
-            })
         </script>
+
+        <script src="public/js/script.js"></script>
     </body>
 </html>
