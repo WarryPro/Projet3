@@ -32,7 +32,7 @@
     }
     ?>
 
-        <main class="grid-x">
+        <main class="grid-x grid-container">
             <?= $content; ?>
         </main>
 
