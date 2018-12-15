@@ -2,7 +2,7 @@
 
 <?php ob_start(); ?>
 
-<div class="small-10 medium-6 large-4 grid-container container-login">
+<div class="container-login">
 
     <div class="main-container-form card">
         <div class="container-photo-profile">
