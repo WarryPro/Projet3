@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="post post-main-container form-comments grid-x">
+        <div class="post form-comments grid-x">
             <div class="container-form card">
                 <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
 <!--                    <div class="input-form">-->
@@ -58,10 +58,9 @@
                             <div class="grid-y">
                                 <a href="#" class="user__nom"><strong><?= htmlspecialchars($comment['user']) ?></strong></a>
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
+                                <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                             </div>
                         </div>
-
-                        <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                     </div>
                 <?php
                 }
