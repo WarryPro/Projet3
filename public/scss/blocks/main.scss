@@ -15,113 +15,142 @@
 }
 
 
-.post-main-container {
-    .btn-primary {
-        padding: 0.5rem 1rem;
-        color: $firstColor;
-        border: 2px solid $firstColor;
-        border-radius: 5px;
-        &:hover {
-            color: #fff;
-            background-color: $firstColor;
+.body-bg-post {
+    background-color: $postFourColor;
+    .post-main-container {
+        margin: 2rem 0;
+        background-color: $postFirstColor;
+        box-shadow: 0 5px 25px 0 $postFirstColor;
+        border-radius: 10px;
+        .post-container {
+            background-color: $bodyBg;
+            border-radius: 0 10px 10px 0;
         }
-    }
-    .post {
-        padding: 2rem;
-        &-title {
-            font-size: $fsH2;
-            font-weight: 700;
-            margin-bottom: 0;
-            color: $postFirstColor;
-        }
-        &-date {
-            color: rgba($secondColor, 0.6);
-            font-size: $fsPostDate;
-        }
-        &-content {
-            padding: 1rem 0;
-            margin-bottom: 0;
-          color: lighten( $postFirstColor, 15%);
-        }
-    }
-}
-
-
-.form-comments {
-    padding: 0;
-    .container-form {
-        max-width: 600px;
-        padding: 2rem 1rem 1rem;
-        margin: 0;
-        background-color: $bodyBg;
-    }
-    .input-form {
-        position: relative;
-        .label-form {
-            position: absolute;
-            left: 1rem;
-            top: 0.5rem;
-            color: $secondColor;
-
-            transition: left 0.3s, top 0.3s ease;
-        }
-        .label-up {
-                top: -1.5rem;
-                color: $postFirstColor;
-                font-weight: 500;
-        }
-
-        .textarea-form {
-            resize: none;
-            height: 100px;
+        .btn-primary {
+            padding: 0.5rem 1rem;
+            color: $firstColor;
+            border: 2px solid $firstColor;
             border-radius: 5px;
-            border-color: rgba($secondColor, 0.5);
-            color: rgba($firstColor, 0.7);
+            &:hover {
+                color: #fff;
+                background-color: $firstColor;
+            }
         }
-    }
-}
-.subtitle {
-    font-size: $fsH2;
-}
-
-.btn-form {
-    width: 100%;
-    background-color: $postFirstColor;;
-    padding: 0.6rem 0;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    &:hover {
-        background-color: $postSecondColor;
-    }
-}
-
-.container-comments {
-    padding: 2rem 0;
-    .user {
-        display: flex;
-        align-items: flex-end;
-        padding: 1rem 0;
-        &__photo {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 1rem;
-        }
-        &__nom {
-            display: block;
-            margin-bottom: 0;
-            text-transform: capitalize;
-            & strong {
+        .post {
+            padding: 2rem;
+            &-title {
+                font-size: $fsH2;
+                font-weight: 700;
+                margin-bottom: 0;
                 color: $postFirstColor;
+            }
+            &-date {
+                color: rgba($secondColor, 0.6);
+                font-size: $fsPostDate;
+            }
+            &-content {
+                padding: 1rem 0;
+                margin-bottom: 0;
+                color: lighten( $postFirstColor, 15%);
             }
         }
     }
-    .comment-date {
-        font-size: 0.7rem;
-        color: rgba($secondColor, .7);
+
+
+
+    .form-comments {
+        padding: 0;
+        .container-form {
+            max-width: 600px;
+            padding: 2rem 1rem 1rem;
+            margin: 0;
+            background-color: $bodyBg;
+        }
+        .input-form {
+            position: relative;
+            .label-form {
+                position: absolute;
+                left: 1rem;
+                top: 0.5rem;
+                color: $secondColor;
+
+                transition: left 0.3s, top 0.3s ease;
+            }
+            .label-up {
+                top: -1.5rem;
+                color: $postFirstColor;
+                font-weight: 500;
+            }
+
+            .textarea-form {
+                resize: none;
+                height: 100px;
+                border-radius: 5px;
+                border-color: rgba($secondColor, 0.5);
+                color: rgba($firstColor, 0.7);
+            }
+        }
+    }
+    .subtitle {
+        font-size: $fsH2;
+    }
+
+    .btn-form {
+        width: 100%;
+        background-color: $postFirstColor;;
+        padding: 0.6rem 0;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        &:hover {
+            background-color: $postSecondColor;
+        }
+    }
+
+    .container-comments {
+        padding: 2rem 0;
+        .user {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem 0;
+            &__photo {
+                min-width: 60px;
+                max-width: 60px;
+                min-height: 60px;
+                max-height: 60px;
+                border-radius: 50%;
+                overflow: hidden;
+                margin-right: 1rem;
+            }
+            &__nom {
+                display: block;
+                margin-bottom: 0;
+                text-transform: capitalize;
+                & strong {
+                    color: $postFirstColor;
+                }
+            }
+        }
+        .comment-date {
+            font-size: 0.7rem;
+            color: rgba($secondColor, .7);
+        }
+    }
+
+    //styles alts pour la page postview
+    .container-footer {
+        .reseau-link {
+            color: $bodyBg;
+            &:hover {
+                color: $postFirstColor;
+            }
+        }
+        .copyright {
+            color: $bodyBg;
+        }
     }
 }
+
+
