@@ -3,7 +3,7 @@
 <?php ob_start(); ?>
 
 
-<div class="small-10 medium-6 large-4 grid-container container-logout">
+<div class="container-logout">
 
     <div class="main-container-form card">
         <div class="container-photo-profile">
