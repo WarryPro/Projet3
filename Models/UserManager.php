@@ -56,16 +56,17 @@ class UserManager extends Manager {
 
         $db = $this -> dbConnect();
 
-        $passIn = $user -> getPass();
+        $passIn = $user -> getPass(); // mdp donné pour @user
 
-        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1');
+        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
 
-        $requete -> execute(array(':user' => $user -> getUser()));
+        $requete -> execute(array(':user' => $user -> getUser())); // Recuperer les valeurs de la BDD dans un array pour l'utilisateur passé en @param
 
         $userRow = $requete -> fetch(\PDO::FETCH_ASSOC);
 
         if($requete -> rowCount() > 0) {
 
+            // Vérif mdp à hasher donné par @user et le compare avec le mdp récuperé de la BDD
             if(password_verify($passIn, $userRow['pass'])) {
 
                 return true;
@@ -76,13 +77,42 @@ class UserManager extends Manager {
         }
     }
 
+    /*
+     * Si l'utilisateur @user -> getUser() (dans le login) a le role Admin
+     * return true sinon donc false
+     * */
+    public function isAdmin(User $user) {
+
+        $db = $this -> dbConnect();
+
+        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
+
+        $requete -> execute(array(':user' => $user -> getUser())); // Recuperer les valeurs de la BDD dans un array pour l'utilisateur passé en @param
+
+        $userRow = $requete -> fetch(\PDO::FETCH_ASSOC);
+
+        if($requete -> rowCount() > 0) {
+
+            if($userRow['user_role'] === "Admin") {
+
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
 
 
+    /*
+     * Méthode pour inscrire un nouvel utilisateur
+     * @user à inscrire
+     * */
     public function inscrUser(User $user) {
 
         $db = $this -> dbConnect();
 
-        $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
+        $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT); //encriptation du mdp donné par @user
 
         $requete = $db -> prepare("INSERT INTO users(user, email, pass, user_role) VALUES(:user, :email, :pass, 'User')");
 
