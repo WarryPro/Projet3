@@ -18,12 +18,30 @@
                     <li class="main-menu__item">
                         <a href="./index.php?action=contact" class="main-menu__link">Contact</a>
                     </li>
-                    <li class="main-menu__item">
-                        <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
-                    </li>
-                    <li class="main-menu__item">
-                        <a href="./index.php?action=inscription" class="main-menu__link">S'inscrire</a>
-                    </li>
+
+                    <?php
+                    if(!isset($_SESSION['user'])) {
+
+                        print_r('<li class="main-menu__item">
+                                                <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
+                                            </li>
+                                            
+                                            <li class="main-menu__item">
+                                                <a href="./index.php?action=inscription" class="main-menu__link">S\'inscrire</a>
+                                            </li>'
+                        );
+
+                    }
+                    else {
+                        print_r('<li class="main-menu__item">
+                                                <a href="./index.php?action=admin" class="main-menu__link">Profil</a>
+                                            </li>
+                                            <li class="main-menu__item">
+                                                <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                                            </li>'
+                        );
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
