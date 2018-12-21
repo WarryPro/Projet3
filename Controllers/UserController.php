@@ -48,14 +48,11 @@ Class UserController {
         $newpass = $pass -> updatePass($user);
         $id = mt_rand();
 
-        if ($newpass === FALSE)
-        {
-
+        if ($newpass === FALSE) {
 
             throw new \Exception('Veuillez saisir un mot de passe valide');
         }
-        else
-        {
+        else {
 
             header('location: index.php?action=connexion');
             exit();
