@@ -13,32 +13,50 @@ use \Models\UserManager;
 use \entity\User;
 
 
+
     //gere les données pour les envoyer au manager
 class ConnexionController {
 
     /**
-     *Gere les données du formulaire d'inscription () pour l'envoyer au model
+     *Gere les données du formulaire de connexion pour les envoyer au model
+     *
+     * @user à se connecter
      */
     public function connUser($db, User $user) {
 
-        $db = new Manager();
+        $db = new Manager(); //instance de la BDD
         $db->dbConnect();
 
         $UserManager = new UserManager($db);
-        $ConnUser = $UserManager->connUser($user);
+        $ConnUser = $UserManager -> connUser($user); // Connexion de @user return 1 si true 0 si false
+
 
         if ($ConnUser == 1) {
+            $userSession = New SessionController(); //Instance pour une session
 
-            $_SESSION['user'] = $user->getUser();
+            $userSession -> setCurrentUser($user); // créé une session pour @user
 
+            $isAdmin = $UserManager -> isAdmin($user); // return un bool
 
-            header('location: index.php?admin=accueil');
+            // si @user a le role Admin
+            if($isAdmin) {
 
+                header('location: index.php?admin=accueil');
+            }
+            else {
+
+                header('location: index.php');
+
+            }
+
+//          $_SESSION['user'] = $user->getUser();
             exit();
         }
 
+        //si n'a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)
         elseif ($ConnUser == 0 ) {
 
+//            header('location: index.php?action=connexion');
             throw new \Exception('votre mot de passe ou votre utilisateur est incorrect');
         }
     }
@@ -49,9 +67,9 @@ class ConnexionController {
      */
     public function deconnexion() {
 
-        $_SESSION = array();
+        $userSession = New SessionController();
 
-        session_destroy();
+        $userSession -> closeSession();
 
         header('location: index.php');
     }
