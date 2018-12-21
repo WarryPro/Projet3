@@ -588,6 +588,7 @@ span:hover {
 /* line 1, public/scss/components/cards.scss */
 .card {
   box-shadow: 0 5px 25px -10px #999999;
+  border-radius: 5px;
 }
 
 /* line 1, public/scss/components/form-log-in-out.scss */
