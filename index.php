@@ -98,6 +98,16 @@ try {
         }
 
 
+        elseif($_GET['action'] === 'deconnexion') {
+            // Si $_SESSION est active
+            if(isset($_SESSION['user'])) {
+                $deconnexion = new ConnexionController();
+
+                $deconnexion -> deconnexion();
+            }
+        }
+
+
 
         elseif ($_GET['action'] == 'post') {
 
