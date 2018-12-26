@@ -5,6 +5,11 @@
 <div class="container-login">
 
     <div class="main-container-form card">
+        <?php
+            $error = New \Controllers\SessionController();
+            $error -> getFlash();
+            unset($_SESSION['flash']); // Supp la session pour cette var
+        ?>
         <div class="container-photo-profile">
             <div class="photo-profile">
             </div>
