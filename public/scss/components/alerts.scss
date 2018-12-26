@@ -1,0 +1,18 @@
+.alert {
+  margin: 0;
+  padding: .5rem;
+  text-align: center;
+  line-height: 1;
+  font-weight: 300;
+  color: $whiteColor;
+  max-height: 0;
+  opacity: 0;
+  transition: all .5s ease;
+  &.show {
+    max-height: initial;
+    opacity: 1;
+  }
+  &__error {
+    background-color: $errorColor;
+  }
+}
