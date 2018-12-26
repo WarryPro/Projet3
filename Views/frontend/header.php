@@ -16,11 +16,11 @@
                         <a href="./index.php?action=billets" class="main-menu__link">Billets</a>
                     </li>
                     <li class="main-menu__item">
-                        <a href="./index.php?action=contact" class="main-menu__link">Contact</a>
+                        <a href="./index.php?action=apropos" class="main-menu__link">À Propos de moi</a>
                     </li>
 
                     <?php
-                    if(!isset($_SESSION['user'])) {
+                    if(!isset($_SESSION['user']) && !isset($_SESSION['user_role']) ) {
 
                         print_r('<li class="main-menu__item">
                                                 <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
@@ -32,9 +32,21 @@
                         );
 
                     }
+                    elseif (isset($_SESSION['user']) && $_SESSION['user_role'] === 'Admin') {
+                        print_r('<li class="main-menu__item">
+                                                <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
+                                            </li>
+                                            <li class="main-menu__item">
+                                                <a href="./index.php?action=admin" class="main-menu__link">Admin</a>
+                                            </li>
+                                            <li class="main-menu__item">
+                                                <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                                            </li>'
+                        );
+                    }
                     else {
                         print_r('<li class="main-menu__item">
-                                                <a href="./index.php?action=admin" class="main-menu__link">Profil</a>
+                                                <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
                                             </li>
                                             <li class="main-menu__item">
                                                 <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
