@@ -94,10 +94,11 @@ class UserManager extends Manager {
         if($requete -> rowCount() > 0) {
 
             if($userRow['user_role'] === "Admin") {
-
+                $_SESSION['user_role'] = $userRow['user_role'];
                 return true;
             }
             else {
+                $_SESSION['user_role'] = $userRow['user_role'];
                 return false;
             }
         }
