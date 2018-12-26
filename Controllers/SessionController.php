@@ -14,8 +14,8 @@ use \entity\User;
 class SessionController {
 
     public function __construct() {
+//        session_start();
 
-        session_start();
     }
 
     /*
@@ -24,6 +24,7 @@ class SessionController {
     public function setCurrentUser (User $user) {
 
         $_SESSION['user'] = $user -> getUser(); //crée la session pour @user
+        $_SESSION['user_role'] = $user -> getUserRole(); //crée la session pour @user
     }
 
 
@@ -32,6 +33,30 @@ class SessionController {
      **/
     public function getCurrentUser () {
         return $_SESSION['user'];
+    }
+
+
+    /*
+     * Méthode pour configurer une alert quand il y a un erreur
+     * @message message à afficher, @type le type d'erreur
+     * */
+    public function setFlash($message, $type = 'error') {
+
+        $_SESSION['flash'] = array(
+            'message'   => $message,
+            'type'      => $type
+        );
+    }
+
+
+    public function getFlash () {
+
+        if(isset($_SESSION['flash'])) {
+
+            return print_r('<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
+                                . $_SESSION['flash']['message']
+                            .'</p>');
+        }
     }
 
     /*
