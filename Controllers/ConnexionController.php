@@ -29,10 +29,10 @@ class ConnexionController {
 
         $UserManager = new UserManager($db);
         $ConnUser = $UserManager -> connUser($user); // Connexion de @user return 1 si true 0 si false
+        $userSession = New SessionController(); //Instance pour une session
 
 
         if ($ConnUser == 1) {
-            $userSession = New SessionController(); //Instance pour une session
 
             $userSession -> setCurrentUser($user); // créé une session pour @user
 
@@ -53,11 +53,13 @@ class ConnexionController {
             exit();
         }
 
-        //si n'a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)
+        //s'il n'y a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)
         elseif ($ConnUser == 0 ) {
 
-//            header('location: index.php?action=connexion');
-            throw new \Exception('votre mot de passe ou votre utilisateur est incorrect');
+            $userSession -> setFlash('votre mot de passe ou votre utilisateur est incorrect');
+            header('location: index.php?action=connexion');
+            
+//            throw new \Exception('votre mot de passe ou votre utilisateur est incorrect');
         }
     }
 
