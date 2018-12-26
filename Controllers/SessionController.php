@@ -24,7 +24,6 @@ class SessionController {
     public function setCurrentUser (User $user) {
 
         $_SESSION['user'] = $user -> getUser(); //crée la session pour @user
-        $_SESSION['user_role'] = $user -> getUserRole(); //crée la session pour @user
     }
 
 
