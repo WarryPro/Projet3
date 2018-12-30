@@ -21,7 +21,7 @@
                 </div>
                 <div class="post-content-container ">
                     <p class="post-content">
-                        <?= nl2br(htmlspecialchars($post['content'])) ?>
+                        <?= htmlspecialchars($post['content']) ?>
                     </p>
                 </div>
             </div>
