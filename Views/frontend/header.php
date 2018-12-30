@@ -16,7 +16,7 @@
                         <a href="./index.php?action=billets" class="main-menu__link">Billets</a>
                     </li>
                     <li class="main-menu__item">
-                        <a href="./index.php?action=apropos" class="main-menu__link">À Propos de moi</a>
+                        <a href="./index.php?action=apropos" class="main-menu__link">À Propos</a>
                     </li>
 
                     <?php
