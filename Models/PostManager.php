@@ -6,21 +6,24 @@ require_once('Manager.php');
 class PostManager extends Manager {
 
 
-    public function addPost() {
+    public function addPost($id = 0, $title, $content, $image_episode = 'image') {
 
         $db = $this -> dbConnect();
 
-        $req = $db -> prepare( "INSERT INTO episodes (id, title, content, created_date, modif_date) VALUES (:id, :title, :content, NOW(), NOW())");
+        $req = $db -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
 
-//        $req -> bindValue( ':')
+      $affectedLines = $req->execute(array($id, $title, $content, $image_episode));
+
+        return $affectedLines;
     }
+
 
     public function getPosts() {
 
         $db = $this->dbConnect();
 
         // Recupere la liste de posts
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id ASC LIMIT 0, 6');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC LIMIT 0, 6');
 
         return $req;
     }
