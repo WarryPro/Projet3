@@ -123,6 +123,26 @@ try {
         }
 
 
+        elseif ($_GET['action'] === 'admin') {
+
+            adminListPosts();
+
+        }
+
+
+        elseif ($_GET['action'] == 'addPost') {
+
+            if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
+
+                addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_POST['img-post']);
+            }
+            else {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+
+//                var_dump($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_POST['img-post']);
+            }
+        }
+
 
         elseif ($_GET['action'] == 'addComment') {
 
