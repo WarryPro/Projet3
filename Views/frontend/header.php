@@ -3,7 +3,7 @@
         <h1 class="main-header__title">Jean Forteroche Blog!</h1>
 
         <?php
-            require('partials/menuReseauxSociaux.php');
+            require('components/menuReseauxSociaux.php');
         ?>
     </div>
         <div class="container-main-menu grid-x small-12">

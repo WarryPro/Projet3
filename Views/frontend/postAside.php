@@ -5,7 +5,7 @@
 
         <div class="post-header-blog">
             <div class="btn-menu">
-                <?php require('partials/btn-hamburger.php'); ?>
+                <?php require('components/btn-hamburger.php'); ?>
             </div>
             <div class="container-title">
                 <a href="./index.php" class="main-header__title">Jean Forteroche Blog!</a>

@@ -9,7 +9,7 @@
 
     <div class="post-container small-12 medium-8 large-9">
 
-        <?php require('partials/bannerPost.php') ?>
+        <?php require('components/bannerPost.php') ?>
 
         <div class="small-12 medium-8 large-9">
             <div class="post grid-y">
