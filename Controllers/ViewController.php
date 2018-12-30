@@ -11,6 +11,9 @@ namespace Controllers;
 
 class ViewController {
 
+        ################
+        ### FRONTEND ###
+        ################
     /**
      * connexion appelle la view connexion.php
      */
@@ -33,5 +36,16 @@ class ViewController {
     public function forgotPass(){
 
         require('Views/frontend/forgotpassword.php');
+    }
+
+
+
+    ###############
+    ### BACKEND ###
+    ###############
+
+    public function addPost(){
+
+        require('Views/backend/addPostsView.php');
     }
 }
