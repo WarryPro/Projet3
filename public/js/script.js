@@ -20,7 +20,10 @@ const bodyPagePost = document.querySelector("body")
 const postMainContainer = document.querySelector("main > .post-main-container")
 
 // verifier si l'elmt existe
-if(typeof postMainContainer === "object") {bodyPagePost.className = "body-bg-post"}
+if(postMainContainer !== null) {
+        bodyPagePost.className = "body-bg-post"
+
+    }
 
 
 
