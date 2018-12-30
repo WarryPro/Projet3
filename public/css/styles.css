@@ -81,6 +81,15 @@ span:hover {
   color: #555555;
 }
 
+/*
+    PADDING
+*/
+/* line 60, public/scss/blocks/base.scss */
+.pd-top-btm {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
 /* line 1, public/scss/blocks/header.scss */
 .main-header {
   width: 100%;
