@@ -10,6 +10,7 @@ function getPosts()
                             id, 
                             title, 
                             content, 
+                            image_episode,
                             DATE_FORMAT(created_date, \'%d/%m/%Y à %Hh%imin%ss\') 
                             AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 6');
 
@@ -24,6 +25,7 @@ function getPost($postId)
                               id, 
                               title, 
                               content, 
+                              image_episode,
                               DATE_FORMAT(created_date, \'%d/%m/%Y à %Hh%imin%ss\') 
                               AS created_date_fr FROM episodes WHERE id = ?');
 

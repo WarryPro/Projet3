@@ -23,7 +23,7 @@ class PostManager extends Manager {
         $db = $this->dbConnect();
 
         // Recupere la liste de posts
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC LIMIT 0, 6');
+        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC LIMIT 0, 6');
 
         return $req;
     }
@@ -33,7 +33,7 @@ class PostManager extends Manager {
         $db = $this->dbConnect();
 
         // Recupere les 5 derniers posts
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 3');
+        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 3');
 
         return $req;
     }
@@ -43,7 +43,7 @@ class PostManager extends Manager {
 
         $db = $this->dbConnect();
         
-        $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes WHERE id = ?');
+        $req = $db->prepare('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes WHERE id = ?');
 
         $req->execute(array($postId));
 
@@ -56,7 +56,7 @@ class PostManager extends Manager {
 
         $db = $this->dbConnect();
         
-        $req = $db->prepare("UPDATE SET title = :title, content = :content, DATE_FORMAT(modif_date, NOW()) AS modif_date_fr FROM episodes WHERE id = :id");
+        $req = $db->prepare("UPDATE SET title = :title, content = :content, image_episode = :image_episode, DATE_FORMAT(modif_date, NOW()) AS modif_date_fr FROM episodes WHERE id = :id");
 
         $req->execute(array($postId));
 
