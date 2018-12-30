@@ -17,7 +17,7 @@
             print('<header class ="grid-x main-header">');
 
                 if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
-                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription') {
+                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription' || $_GET['action'] == 'admin') {
 
                     require('header.php');
                 }
@@ -53,5 +53,11 @@
 
         <script src="public/js/script.js"></script>
         <script src="public/js/alerts.js"></script>
+    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#post-content'
+        });
+    </script>
     </body>
 </html>
