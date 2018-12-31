@@ -134,7 +134,7 @@ try {
 
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
 
-                addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_POST['img-post']);
+                addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
             }
             else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
