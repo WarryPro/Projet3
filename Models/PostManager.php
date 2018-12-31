@@ -6,13 +6,40 @@ require_once('Manager.php');
 class PostManager extends Manager {
 
 
-    public function addPost($id = 0, $title, $content, $image_episode = 'image') {
+    public function addPost($id, $title, $content, $image_episode) {
+
+
+        $imgPath = 'public/images/';
+
+        if(!isset($image_episode)) {
+
+            echo 'Il faut charger une image...';
+        }
+        else {
+            if (!((strpos($image_episode['type'], "jpg") ||
+                    strpos($image_episode['type'], "jpeg") ||
+                    strpos($image_episode['type'], "png")) &&
+                    ($image_episode['type'] < 2000000 ))){
+
+                        echo 'La taille de l\'image ne doit dépaser 2MB et l\'image doit être png/jpeg/jpg';
+                    }
+                    else {
+                        if (is_uploaded_file($image_episode['tmp_name'])) {
+
+                            copy($image_episode['tmp_name'], $imgPath .$image_episode['name']);
+                        }
+                        else
+                        {
+                            echo "Erreur, l'image n'a pas pu être sauvegardée.";
+                        }
+                    }
+        }
 
         $db = $this -> dbConnect();
 
         $req = $db -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
 
-      $affectedLines = $req->execute(array($id, $title, $content, $image_episode));
+        $affectedLines = $req->execute(array($id, $title, $content, $imgPath . $image_episode['name']));
 
         return $affectedLines;
     }
