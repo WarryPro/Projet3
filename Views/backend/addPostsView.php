@@ -16,7 +16,7 @@
 
         <div class="small-12 add-post__container-form">
 
-            <form action="index.php?action=addPost" method="POST" class="small-12">
+            <form action="index.php?action=addPost" method="POST" enctype="multipart/form-data" class="small-12">
 
                 <div class="form-group">
                     <input type="hidden" name="post-id" id="post-id" value="0">
@@ -27,7 +27,7 @@
                     <label class="label-form" for="post-content">Contenu de votre épisode</label>
                     <textarea name="post-content" id="post-content" class="textarea-form" cols="30" rows="10">
                     </textarea>
-                    <input type="file" name="img-post" id="img-post">
+                    <input type="file" name="img-post" multiple id="img-post">
                 </div>
 
                 <div class="btn-container">
