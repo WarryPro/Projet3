@@ -1,0 +1,21 @@
+// BOUTONS CRUD ADMIN
+.admin-crud__btn {
+  color: $whiteColor;
+  padding: 0.1rem 1rem;
+  border-radius: 0 0 5px 5px;
+  transition: background-color .3s ease;
+  &--editer {
+    background-color: rgba($postFirstColor, .8);
+    &:hover {
+      background-color: rgba($postFirstColor, 1);
+      color: $whiteColor;
+    }
+  }
+  &--supprimer {
+    background-color: rgba($errorColor, .8);
+    &:hover {
+      background-color: rgba($errorColor, 1);
+      color: $whiteColor;
+    }
+  }
+}
