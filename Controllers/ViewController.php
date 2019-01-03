@@ -48,4 +48,17 @@ class ViewController {
 
         require('Views/backend/addPostsView.php');
     }
+
+
+
+    public function adminCrudBtn () {
+
+        if((isset($_SESSION['user']) && isset($_SESSION['user_role'])) && ($_SESSION['user_role'] === 'Admin')) {
+
+            if(isset($_GET['action']) && $_GET['action'] === 'admin') {
+
+                require('Views/frontend/components/crudBtnView.php');
+            }
+        }
+    }
 }
