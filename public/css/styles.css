@@ -596,6 +596,7 @@ span:hover {
 
 /* line 1, public/scss/components/cards.scss */
 .card {
+  position: relative;
   box-shadow: 0 5px 25px -10px #999999;
   border-radius: 5px;
 }
@@ -764,4 +765,50 @@ span:hover {
 /* line 15, public/scss/components/alerts.scss */
 .alert__error {
   background-color: #e35656;
+}
+
+/* line 2, public/scss/components/buttons.scss */
+.admin-crud__btn {
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 0 0 5px 5px;
+  transition: background-color .3s ease;
+}
+
+/* line 7, public/scss/components/buttons.scss */
+.admin-crud__btn--editer {
+  background-color: rgba(72, 84, 157, 0.8);
+}
+
+/* line 9, public/scss/components/buttons.scss */
+.admin-crud__btn--editer:hover {
+  background-color: #48549d;
+  color: #fff;
+}
+
+/* line 14, public/scss/components/buttons.scss */
+.admin-crud__btn--supprimer {
+  background-color: rgba(227, 86, 86, 0.8);
+}
+
+/* line 16, public/scss/components/buttons.scss */
+.admin-crud__btn--supprimer:hover {
+  background-color: #e35656;
+  color: #fff;
+}
+
+/* line 1, public/scss/components/admin-crud-btns.scss */
+.admin-crud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+/* line 8, public/scss/components/admin-crud-btns.scss */
+.admin-crud .admin-crud_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 .5rem;
 }
