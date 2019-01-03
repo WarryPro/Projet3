@@ -131,15 +131,22 @@ try {
 
 
         elseif ($_GET['action'] == 'addPost') {
-
+            // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
+                // Si est une image et sa taille est plus petite de 2MB
+                if ((($_FILES['img-post']['type'] === 'image/jpg') ||
+                    ($_FILES['img-post']['type'] === 'image/jpeg') ||
+                    ($_FILES['img-post']['type'] === 'image/png')) &&
+                    ($_FILES['img-post']['size'] < 2000000) ) {
 
-                addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
+                    addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
+                }
+                else {
+                    echo 'Il faut charger une image PNG, JPEG ou JPG maximum de 2MB ...';
+                }
             }
             else {
-                throw new Exception('Tous les champs ne sont pas remplis !');
-
-//                var_dump($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_POST['img-post']);
+                echo ('Tous les champs ne sont pas remplis !');
             }
         }
 
