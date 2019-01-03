@@ -1,0 +1,13 @@
+.admin-crud {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 1rem;
+
+  .admin-crud_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .5rem;
+  }
+}
