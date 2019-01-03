@@ -1,5 +1,13 @@
+<?php
+use Controllers\ViewController;
+
+$viewController = New ViewController();
+?>
 <div class="card">
     <?php
+
+        $viewController -> adminCrudBtn();
+
         $image = htmlspecialchars($data['image_episode']);
 
         if($image !== '') {
