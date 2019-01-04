@@ -1,9 +1,19 @@
+//Affichage bouttons crud
+.card {
+  &:hover {
+    .admin-crud {
+      top: 0;
+    }
+  }
+}
+
 .admin-crud {
   position: absolute;
-  top: 0;
+  top: -5rem;
   left: 0;
   width: 100%;
   padding: 0 1rem;
+  transition: top .3s ease;
 
   .admin-crud_container {
     display: flex;
