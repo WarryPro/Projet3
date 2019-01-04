@@ -1,12 +1,14 @@
-<?php
-use Controllers\ViewController;
 
-$viewController = New ViewController();
-?>
 <div class="card">
     <?php
 
-        $viewController -> adminCrudBtn();
+    if((isset($_SESSION['user']) && isset($_SESSION['user_role'])) && ($_SESSION['user_role'] === 'Admin')) {
+
+        if(isset($_GET['action']) && $_GET['action'] === 'admin') {
+
+            require('Views/frontend/components/crudBtnView.php');
+        }
+    }
 
         $image = htmlspecialchars($data['image_episode']);
 
