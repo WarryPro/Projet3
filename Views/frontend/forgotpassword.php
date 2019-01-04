@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-valider" value="valider"></input>
+                    <input type="submit" class="btn btn-valider" value="valider">
                 </div>
             </form>
         </div>
