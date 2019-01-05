@@ -4,6 +4,9 @@ const textareaLabel = document.querySelector('.label-form')
 /*
 * Ajouter / Supprimer classe label-up du label de textarea
 * */
+//Vérifier si textareaComment et textareaLabel existent
+if ( textareaComment !== null && textareaLabel !== null) {
+
     textareaComment.addEventListener('focus', () => {
         textareaLabel.classList.add('label-up')
     })
@@ -13,6 +16,7 @@ const textareaLabel = document.querySelector('.label-form')
             textareaLabel.classList.remove('label-up')
         }
     })
+}
 
 
 // Page postView

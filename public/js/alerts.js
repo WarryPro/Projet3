@@ -1,6 +1,6 @@
 const alert = document.getElementById('alert');
 
-if(typeof alert === 'object') {
+if(alert !== null) {
     alert.classList.add('show')
     setTimeout(() => {
         alert.classList.remove('show')
