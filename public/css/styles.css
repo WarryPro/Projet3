@@ -120,24 +120,138 @@ span:hover {
   justify-content: center;
 }
 
-/* line 3, public/scss/components/menu.scss */
-.post-aside .main-nav {
+@media screen and (min-width: 0) and (max-width: 63.9375em) {
+  /* line 25, public/scss/blocks/header.scss */
+  .main-header {
+    background-color: #48549D;
+  }
+  /* line 29, public/scss/blocks/header.scss */
+  .grid-container.header {
+    margin: 0 1rem;
+    padding-bottom: 0;
+    width: 100%;
+  }
+  /* line 33, public/scss/blocks/header.scss */
+  .grid-container.header .container-title {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+  }
+  /* line 37, public/scss/blocks/header.scss */
+  .grid-container.header .container-title .main-header__title, .grid-container.header .container-title .reseau-link {
+    color: #fff;
+  }
+  /* line 40, public/scss/blocks/header.scss */
+  .grid-container.header .container-title .main-header__title {
+    font-size: 1.4rem;
+  }
+  /* line 44, public/scss/blocks/header.scss */
+  .grid-container.header .reseaux-socieux {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  /* line 49, public/scss/blocks/header.scss */
+  .grid-container.header .reseaux-socieux .reseau-link.fa-instagram {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 39.9375em) {
+  /* line 62, public/scss/blocks/header.scss */
+  .grid-container.header .container-title .main-header__title {
+    font-size: 1.1rem;
+  }
+}
+
+/* line 1, public/scss/components/menu.scss */
+.main-nav {
   position: relative;
   width: 100%;
   min-height: 50vh;
   overflow: hidden;
 }
 
-/* line 8, public/scss/components/menu.scss */
-.post-aside .main-nav .menu {
+/* line 6, public/scss/components/menu.scss */
+.main-nav .menu {
   position: absolute;
   left: -100%;
   transition: left 0.5s ease-in-out;
 }
 
-/* line 14, public/scss/components/menu.scss */
-.post-aside .main-nav.show-menu .menu {
+/* line 12, public/scss/components/menu.scss */
+.main-nav.show-menu .menu {
   left: 0;
+}
+
+@media screen and (min-width: 64em) {
+  /* line 21, public/scss/components/menu.scss */
+  .header .nav-toggle {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 63.9375em) {
+  /* line 30, public/scss/components/menu.scss */
+  .header .nav-toggle {
+    display: block;
+  }
+  /* line 34, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav {
+    position: relative;
+    min-height: 0;
+    overflow: visible;
+  }
+  /* line 38, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav .menu {
+    position: absolute;
+    left: -100%;
+    top: 1.2rem;
+    width: 60%;
+    min-height: 100vh;
+    z-index: 300;
+    background-color: #fff;
+    transition: left 0.5s ease-in-out;
+  }
+  /* line 47, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav .menu:before {
+    content: '';
+    position: absolute;
+    top: -1.2rem;
+    left: -100%;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(72, 84, 157, 0.8);
+    transition: left 0.5s ease-in-out;
+  }
+  /* line 59, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav.show-menu .menu {
+    left: 0;
+  }
+  /* line 61, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav.show-menu .menu:before {
+    content: '';
+    position: absolute;
+    top: -1.2rem;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(72, 84, 157, 0.8);
+  }
+}
+
+@media screen and (min-width: 64em) {
+  /* line 81, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav {
+    position: initial;
+    width: auto;
+    min-height: 0;
+  }
+  /* line 85, public/scss/components/menu.scss */
+  .header .container-main-menu .main-nav .menu {
+    position: initial;
+  }
 }
 
 /* line 1, public/scss/components/btn-hamburger.scss */
@@ -797,16 +911,22 @@ span:hover {
   color: #fff;
 }
 
-/* line 1, public/scss/components/admin-crud-btns.scss */
+/* line 4, public/scss/components/admin-crud-btns.scss */
+.card:hover .admin-crud {
+  top: 0;
+}
+
+/* line 10, public/scss/components/admin-crud-btns.scss */
 .admin-crud {
   position: absolute;
-  top: 0;
+  top: -5rem;
   left: 0;
   width: 100%;
   padding: 0 1rem;
+  transition: top .3s ease;
 }
 
-/* line 8, public/scss/components/admin-crud-btns.scss */
+/* line 18, public/scss/components/admin-crud-btns.scss */
 .admin-crud .admin-crud_container {
   display: flex;
   justify-content: space-between;
