@@ -19,4 +19,53 @@
     }
 }
 
+
+//SMALL & MEDIUM
+@media screen and (min-width: 0) and (max-width: 63.9375em) {
+    .main-header {
+        background-color: $postFirstColor;
+    }
+    .grid-container {
+        &.header {
+            margin: 0 1rem;
+            padding-bottom: 0;
+            width: 100%;
+            .container-title {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 0;
+                .main-header__title, .reseau-link {
+                    color: $whiteColor;
+                }
+                .main-header__title {
+                    font-size: 1.4rem;
+                }
+            }
+            .reseaux-socieux {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                .reseau-link.fa-instagram {
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}
+
+//SMALL ONLY
+@media screen and (max-width: 39.9375em) {
+    .grid-container {
+        &.header {
+            .container-title {
+                .main-header__title {
+                    font-size: 1.1rem;
+                }
+            }
+        }
+    }
+}
+
+
 @import "../components/menu";
