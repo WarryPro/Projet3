@@ -16,23 +16,21 @@ class PostManager extends Manager {
 
             echo 'Il faut charger une image...';
         }
-            else {
-                if (is_uploaded_file($image_episode['tmp_name'])) {
+        else {
+            if (is_uploaded_file($image_episode['tmp_name'])) {
 
-                    copy($image_episode['tmp_name'], $imgPath .$image_episode['name']);
+                copy($image_episode['tmp_name'], $imgPath .$image_episode['name']);
 
-                    $req = $db -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
+                $req = $db -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
 
-                    $affectedLines = $req->execute(array($id, $title, $content, $imgPath . $image_episode['name']));
+                $affectedLines = $req->execute(array($id, $title, $content, $imgPath . $image_episode['name']));
 
-                    return $affectedLines;
-                }
-                else {
-                    New \Exception( "Erreur, l'image n'a pas pu être sauvegardée.");
-                }
+                return $affectedLines;
             }
-
-
+            else {
+                New \Exception( "Erreur, l'image n'a pas pu être sauvegardée.");
+            }
+        }
     }
 
 
@@ -86,14 +84,20 @@ class PostManager extends Manager {
     public function deletePost($postId) {
 
         $db = $this -> dbConnect();
+        
+        $req = $db -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
 
-        $req = $db -> prepare("DELETE FROM episodes WHERE id = :id");
+        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
-        $req -> execute( array( $postId ));
+            $req -> bindValue( ':id', $postId);
+            $post = $req -> execute();
 
-        $post = $req -> fetch();
+            return $post;
+        }
+        else {
+            echo "Erreur, l'URL spécifié n'existe pas";
+        }
 
-        return $post;
     }
 
 }
