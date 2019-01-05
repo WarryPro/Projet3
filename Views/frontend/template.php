@@ -58,6 +58,16 @@
         tinymce.init({
             selector: '#post-content'
         });
+
+
+        //vérifier si notifyTrial existe, si oui, alors on le cache
+        let interTiny = setInterval(() => {
+            const notifyTrial = document.getElementById('mceu_31'); // message de notification pour utiliser la version trial de TinyMCE
+            if(notifyTrial !== null) {
+                notifyTrial.style.display = 'none';
+                clearInterval(interTiny);
+            }
+        }, 500)
     </script>
     </body>
 </html>
