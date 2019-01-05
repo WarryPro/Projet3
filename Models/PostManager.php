@@ -39,7 +39,7 @@ class PostManager extends Manager {
         $db = $this->dbConnect();
 
         // Recupere la liste de posts
-        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC LIMIT 0, 6');
+        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC');
 
         return $req;
     }
@@ -85,12 +85,14 @@ class PostManager extends Manager {
 
         $db = $this -> dbConnect();
         
-        $req = $db -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
-
+        $reqEp = $db -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
+        $reqCo = $db -> prepare("DELETE FROM comments WHERE episode_id = :id");
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
-            $req -> bindValue( ':id', $postId);
-            $post = $req -> execute();
+            $reqEp -> bindValue( ':id', $postId);
+            $reqCo -> bindValue( ':id', $postId);
+            $reqCo -> execute();
+            $post = $reqEp -> execute();
 
             return $post;
         }
