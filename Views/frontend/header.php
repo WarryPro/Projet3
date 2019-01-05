@@ -1,14 +1,17 @@
 <div class="grid-container header grid-x">
     <div class="small-12 grid-x container-title">
-        <h1 class="main-header__title">Jean Forteroche Blog!</h1>
+
+        <?php require ('components/btn-hamburger.php'); ?>
+
+        <h1 class="main-header__title">Jean Forteroche Blog</h1>
 
         <?php
             require('components/menuReseauxSociaux.php');
         ?>
     </div>
         <div class="container-main-menu grid-x small-12">
-            <nav class="main-nav">
-                <ul class="main-menu menu align-right">
+            <nav id="exemple-menu" class="main-nav">
+                <ul class="vertical large-horizontal main-menu menu">
                     <li class="main-menu__item">
                         <a href="./index.php" class="main-menu__link">Accueil</a>
                     </li>
