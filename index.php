@@ -139,7 +139,7 @@ try {
                     ($_FILES['img-post']['type'] === 'image/png')) &&
                     ($_FILES['img-post']['size'] < 2000000) ) {
 
-                    addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
+                    \Controllers\PostController::addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
                 }
                 else {
                     echo 'Il faut charger une image PNG, JPEG ou JPG maximum de 2MB ...';
@@ -147,6 +147,20 @@ try {
             }
             else {
                 echo ('Tous les champs ne sont pas remplis !');
+            }
+        }
+
+
+        elseif ($_GET['action'] == 'supprimer') {
+
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                deletePosts($_GET['id']);
+            }
+
+            else {
+
+                throw new Exception('Aucun identifiant de billet supprimé...');
             }
         }
 
