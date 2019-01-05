@@ -20,9 +20,9 @@
                     <span class="post-date"><em><?= $post['created_date_fr'] ?></em></span>
                 </div>
                 <div class="post-content-container ">
-                    <p class="post-content">
-                        <?= htmlspecialchars($post['content']) ?>
-                    </p>
+<!--                    <p class="post-content">-->
+                        <?= $post['content'] ?>
+<!--                    </p>-->
                 </div>
             </div>
         </div>
