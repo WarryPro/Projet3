@@ -17,7 +17,8 @@
             print('<header class ="grid-x main-header">');
 
                 if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
-                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription' || $_GET['action'] == 'admin') {
+                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription'
+                    || $_GET['action'] == 'admin' || $_GET['action'] == 'editer') {
 
                     require('header.php');
                 }
@@ -32,7 +33,7 @@
     }
     ?>
 
-        <main class="grid-x grid-container">
+        <main class="grid-x cell align-center grid-container">
             <?= $content; ?>
         </main>
 
