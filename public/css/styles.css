@@ -932,3 +932,10 @@ span:hover {
   justify-content: space-between;
   padding: 0 .5rem;
 }
+
+/* line 1, public/scss/components/add-post-form.scss */
+.add-post__container-form {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2rem;
+}
