@@ -44,7 +44,7 @@
         <?php
         while ($data = $posts->fetch()) {
             ?>
-            <div class="news small-12 large-6">
+            <div class="news small-12 medium-6">
                 <div class="cell">
                     <?php require('./Views/frontend/components/cards.php') ?>
                 </div>
