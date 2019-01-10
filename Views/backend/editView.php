@@ -17,14 +17,14 @@
         <form action="index.php?action=updatePost" method="POST" enctype="multipart/form-data" class="small-12">
 
             <div class="form-group">
-                <input type="hidden" name="post-id" id="post-id" value="0">
-                <input type="text" name="titre" id="titre" placeholder="Titre de l'épisode" value="titre" required>
+                <input type="hidden" name="post-id" id="post-id" value="<?php print_r($post['id'])?>">
+                <input type="text" name="titre" id="titre" placeholder="Titre de l'épisode" value="<?php print_r($post['title']) ?>" required>
             </div>
 
             <div class="form-group">
                 <label class="label-form" for="post-content">Contenu de votre épisode</label>
                 <textarea name="post-content" id="post-content" class="textarea-form" cols="30" rows="10">
-                    tereerddsdsds
+                    <?php print_r($post['content']) ?>
                 </textarea>
                 <input type="file" name="img-post" multiple id="img-post">
             </div>
