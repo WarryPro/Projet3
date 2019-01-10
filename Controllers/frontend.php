@@ -2,6 +2,7 @@
 
 use \Models\PostManager;
 use \Models\CommentManager;
+use \Controllers\SessionController;
 
 require_once('Models/PostManager.php');
 require_once('Models/CommentManager.php');
@@ -59,25 +60,71 @@ function post() {
 }
 
 
-function addPosts($id = '0', $title, $content, $image = '') {
 
-    $postManager = new PostManager(); // Création de l'objet postManager
 
-    $affectedLines = $postManager->addPost($id, $title, $content, $image);
+
+
+function deletePosts($postId) {
+
+    $postManager = new PostManager();
+
+    $post = $postManager -> deletePost($postId);
+
 
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
-    if ($affectedLines === false) {
+    if ($post === false && $_SESSION['user_role'] !== 'Admin') {
 
-        die('Impossible d\'ajouter le post !');
+        die('Impossible de supprimer le post !');
     }
 
-    //Les données ont été insérées, on redirige donc le visiteur vers la page du billet pour qu'il puisse voir son commentaire
+    //Les données ont été supprimés, on redirige donc le visiteur vers la page admin
     else {
 
         header('Location: index.php?action=admin');
     }
+
+
 }
 
+
+function editerPosts ($postId) {
+
+    $postManager = New PostManager();
+
+    //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
+    if ($postId === false && $_SESSION['user_role'] !== 'Admin') {
+
+        die("Impossible d'éditer le post !");
+    }
+
+    //Les données ont été édités, on redirige donc le visiteur vers la page admin
+    else {
+        $post = $postManager -> getPostEditer($postId);
+        require ('./Views/backend/editView.php');
+
+        return $post;
+    }
+}
+
+
+function updatePosts ($post) {
+
+    $postManager = New PostManager();
+    $userSession = New SessionController(); //Instance pour une session
+    $affectedLines = $postManager -> updatePost($post);
+
+    if ($affectedLines === false) {
+
+        $userSession -> setFlash("Vous ne pouvez pas éditer cet épisode!");
+        header('Location: ./index.php?action=admin');
+    }
+    else {
+
+        $userSession -> setFlash("L'épisode a été mise à jour!", 'success');
+
+        header('Location: ./index.php?action=admin');
+    }
+}
 
 function addComment($post_id, $user, $comment) {
 
@@ -88,7 +135,7 @@ function addComment($post_id, $user, $comment) {
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($affectedLines === false) {
         
-        die('Impossible d\'ajouter le commentaire !');
+        die("Impossible d'ajouter le commentaire !");
     }
 
     //Les données ont été insérées, on redirige donc le visiteur vers la page du billet pour qu'il puisse voir son commentaire 
