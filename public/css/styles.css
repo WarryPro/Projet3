@@ -872,13 +872,24 @@ span:hover {
 
 /* line 11, public/scss/components/alerts.scss */
 .alert.show {
-  max-height: initial;
+  max-height: 2rem;
   opacity: 1;
 }
 
 /* line 15, public/scss/components/alerts.scss */
 .alert__error {
   background-color: #e35656;
+}
+
+/* line 18, public/scss/components/alerts.scss */
+.alert__success {
+  background-color: #00D184;
+}
+
+/* line 22, public/scss/components/alerts.scss */
+.alert-container .alert {
+  border-radius: 5px;
+  margin: 0 1rem 1rem;
 }
 
 /* line 2, public/scss/components/buttons.scss */
