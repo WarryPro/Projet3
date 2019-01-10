@@ -131,7 +131,7 @@ try {
         }
 
 
-        elseif ($_GET['action'] == 'addPost') {
+        elseif ($_GET['action'] === 'addPost') {
             // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
                 // Si est une image et sa taille est plus petite de 2MB
@@ -206,9 +206,9 @@ try {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
-                if (!empty($_POST['user']) && !empty($_POST['comment'])) {
+                if (!empty($_SESSION['user']) && !empty($_POST['comment'])) {
 
-                    addComment($_GET['id'], $_POST['user'], $_POST['comment']);
+                    addComment($_GET['id'], $_SESSION['user'], $_POST['comment']);
                 }
                 else {
 
