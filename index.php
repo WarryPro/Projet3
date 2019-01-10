@@ -12,6 +12,7 @@ use \Controllers\ConnexionController;
 use \Controllers\InscriptionController;
 use \Controllers\ViewController;
 use \entity\User;
+use \entity\Post;
 
 \Controllers\Autoloader::register();
 \Models\Autoloader::register();
@@ -163,6 +164,42 @@ try {
                 throw new Exception('Aucun identifiant de billet supprimé...');
             }
         }
+
+
+
+        elseif ($_GET['action'] == 'editer') {
+
+//            require('Views/backend/editView.php');
+
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+
+                editerPosts($_GET['id']);
+            }
+
+            else {
+
+                throw new Exception('Aucun identifiant de billet édité...');
+            }
+        }
+
+        elseif ($_GET['action'] === 'updatePost') {
+
+            if(!empty($_POST['titre']) && !empty($_POST['post-content'])) {
+                $post = New Post(['id' => $_POST['post-id'] ,'title' => $_POST['titre'], 'content' => $_POST['post-content']]);
+
+
+                updatePosts($post); // MàJ l'épisode
+
+
+            }
+            else {
+                throw new \Exception('Il faut remplir tous les champs !');
+            }
+
+        }
+
+
+
 
 
         elseif ($_GET['action'] == 'addComment') {
