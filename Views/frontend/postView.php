@@ -27,22 +27,33 @@
             </div>
         </div>
 
+
         <div class="post form-comments grid-x">
-            <div class="container-form card">
-                <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-<!--                    <div class="input-form">-->
-<!--                        <label for="user">Utilisateur</label><br />-->
-<!--                        <input type="text" id="user" name="user" />-->
-<!--                    </div>-->
-                    <div class="input-form">
-                        <label class="label-form" for="comment">Laissez un commentaire</label>
-                        <textarea class="textarea-form" id="comment" name="comment"></textarea>
-                    </div>
-                    <div class="btn-container">
-                        <input class="btn-form"type="submit" />
-                    </div>
-                </form>
-            </div>
+            <?php
+            if(isset($_SESSION['user'])) { ?>
+                <div class="container-form card">
+                    <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+                        <div class="input-form">
+                            <label class="label-form" for="comment">Laissez un commentaire</label>
+                            <textarea class="textarea-form" id="comment" name="comment"></textarea>
+                        </div>
+                        <div class="btn-container">
+                            <input class="btn-form"type="submit" />
+                        </div>
+                    </form>
+                </div>
+            <?php
+            } // Fermeture du if
+            else {
+                print_r("<div class='container-form card'>
+                            <p>Pour commenter vous devez <a href='./index.php?action=inscription'>s'inscrire</a> ou 
+                                <a href='./index.php?action=connexion'>se connecter</a>
+                            </p>
+                    </div>");
+            }
+            ?>
+
+            <!--  Affichage des commentaires -->
             <div class="container-comments small-12">
                 <?php
                 while ($comment = $comments->fetch()) {
