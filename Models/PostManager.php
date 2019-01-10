@@ -1,6 +1,8 @@
 <?php 
 namespace Models;
 
+use \entity\Post;
+
 require_once('Manager.php');
 
 class PostManager extends Manager {
@@ -68,18 +70,49 @@ class PostManager extends Manager {
         return $post;
     }
 
-    public function updatePost($postId) {
+
+
+    public function getPostEditer($postId) {
 
         $db = $this->dbConnect();
-        
-        $req = $db->prepare("UPDATE SET title = :title, content = :content, image_episode = :image_episode, DATE_FORMAT(modif_date, NOW()) AS modif_date_fr FROM episodes WHERE id = :id");
 
-        $req->execute(array($postId));
+        if(isset($postId)) {
 
-        $post = $req->fetch();
-    
-        return $post;
+            $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(modif_date, \'%d/%m/%Y\') AS modif_date_fr FROM episodes WHERE id = ?');
+
+            $req->execute(array($postId));
+
+            $post = $req->fetch();
+
+            return $post;
+        }
+        else {
+            echo "Aucun épisode à éditer...";
+        }
     }
+
+
+    public function updatePost(Post $post) {
+
+        $db = $this -> dbConnect();
+
+        $req = $db -> prepare("UPDATE `episodes` SET `title`= :title, `content`= :content, `modif_date` = NOW() WHERE `id` = :id LIMIT 1");
+
+        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+
+            $req -> bindValue( ':id', $post -> getId());
+            $req -> bindValue( ':title', $post -> getTitle());
+            $req -> bindValue( ':content', $post -> getContent());
+
+            $postUpdate = $req -> execute();
+
+            return $postUpdate;
+        }
+        else {
+            echo "Erreur au momment de mettre à jour l'épisode";
+        }
+    }
+
 
     public function deletePost($postId) {
 
