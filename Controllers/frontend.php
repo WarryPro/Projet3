@@ -144,6 +144,3 @@ function addComment($post_id, $user, $comment) {
         header('Location: index.php?action=post&id=' . $post_id);
     }
 }
-
-
-
