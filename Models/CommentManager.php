@@ -18,18 +18,6 @@ class CommentManager extends Manager {
         return $comments;
     }
 
-//    Obtenir le nombre de commentaires d'un post
-    public function getNbreComments($postId) {
-
-        $db = $this->dbConnect();
-
-        $nbreComments = $db->prepare('SELECT COUNT(*) FROM comments WHERE episode_id = ?');
-
-        $nbreComments -> execute(array($postId));
-
-        return $nbreComments;
-    }
-
     // Créér un commentaire
     public function postComment($postId, $user, $comment) {
         
