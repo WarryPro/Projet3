@@ -2,3 +2,8 @@
   position: sticky;
   top: 2rem;
 }
+
+.post-container {
+  max-height: 600px;
+  overflow-y: scroll;
+}
