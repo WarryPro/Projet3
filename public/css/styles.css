@@ -950,3 +950,9 @@ span:hover {
   position: sticky;
   top: 2rem;
 }
+
+/* line 6, public/scss/components/add-post-form.scss */
+.post-container {
+  max-height: 600px;
+  overflow-y: scroll;
+}
