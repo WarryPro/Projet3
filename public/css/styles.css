@@ -952,7 +952,62 @@ span:hover {
 }
 
 /* line 6, public/scss/components/add-post-form.scss */
-.post-container {
+.admin-post-container {
   max-height: 600px;
   overflow-y: scroll;
+}
+
+/* line 1, public/scss/components/users.scss */
+.user-manager-container {
+  justify-content: space-between;
+}
+
+/* line 3, public/scss/components/users.scss */
+.user-manager-container .user {
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* line 6, public/scss/components/users.scss */
+.user-manager-container .user__photo {
+  max-width: 70px;
+  max-height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+/* line 13, public/scss/components/users.scss */
+.user-manager-container .user__controls {
+  display: flex;
+  padding: .5rem 0;
+}
+
+/* line 16, public/scss/components/users.scss */
+.user-manager-container .user__controls .admin-crud__btn {
+  padding: .4rem 1rem;
+  border-radius: 5px;
+  margin: .2rem .4rem .2rem 0;
+}
+
+@media screen and (min-width: 64em) {
+  /* line 40, public/scss/components/users.scss */
+  .user-manager-container .user {
+    padding: 2rem;
+  }
+  /* line 43, public/scss/components/users.scss */
+  .user-manager-container .user__photo {
+    max-width: 6rem;
+    max-height: 6rem;
+  }
+  /* line 47, public/scss/components/users.scss */
+  .user-manager-container .user__controls {
+    display: flex;
+    flex-direction: column;
+    width: initial;
+  }
+  /* line 51, public/scss/components/users.scss */
+  .user-manager-container .user__controls .admin-crud__btn {
+    margin: .2rem 0;
+  }
 }
