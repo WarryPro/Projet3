@@ -42,7 +42,7 @@
     </div>
 
 
-    <div class="small-12 large-7 grid-x post-container">
+    <div class="small-12 large-7 grid-x admin-post-container">
         <?php
         if(isset($_SESSION['flash'])) {
             print_r('<div id="alert-container" class="alert-container small-12">');
@@ -70,6 +70,9 @@
     <div class="small-12 text-center">
         <h2>Gestion d'utilisateurs</h2>
     </div>
+    <?php
+        require('components/usersManagerView.php');
+    ?>
 </div>
 
 
