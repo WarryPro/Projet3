@@ -1,0 +1,57 @@
+.user-manager-container {
+  justify-content: space-between;
+  .user {
+    justify-content: space-between;
+    padding: 1rem;
+    &__photo {
+      max-width: 70px;
+      max-height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 1rem;
+    }
+    &__controls {
+      display: flex;
+      padding: .5rem 0;
+      .admin-crud__btn{
+        padding: .4rem 1rem;
+        border-radius: 5px;
+        margin: .2rem .4rem .2rem 0;
+      }
+    }
+  }
+
+
+  //queries taille ecrans Medium
+  @media screen and (min-width: 40em) and (max-width: 63.9375em){
+    .user {
+      &__controls {
+
+        .admin-crud__btn{
+
+        }
+      }
+    }
+  }
+
+
+  //queries taille ecrans Medium
+  @media screen and (min-width: 64em){
+    .user {
+      padding: 2rem;
+
+      &__photo {
+          max-width: 6rem;
+          max-height: 6rem;
+      }
+      &__controls {
+        display: flex;
+        flex-direction: column;
+        width: initial;
+        .admin-crud__btn{
+            margin: .2rem 0;
+          }
+      }
+    }
+  }
+}
