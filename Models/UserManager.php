@@ -30,6 +30,16 @@ class UserManager extends Manager {
         return $user;
     }
 
+    public function getUsers() {
+
+        $db = $this->dbConnect();
+
+        // Recupere la liste d'utilisateurs
+        $req = $db->query('SELECT `id`, `user`, `email`, `user_role` FROM users ORDER BY id DESC');
+
+        return $req;
+    }
+
     public function setInfos(User $user) {
 
         $db = $this -> dbConnect();
