@@ -2,6 +2,7 @@
 
 use \Models\PostManager;
 use \Models\CommentManager;
+use \Models\UserManager;
 use \Controllers\SessionController;
 
 require_once('Models/PostManager.php');
@@ -33,6 +34,24 @@ function adminListPosts() {
         header('location: ./index.php');
     }
 
+}
+
+
+function listUsers() {
+    $db = new \Models\Manager(); //instance de la BDD
+    $db -> dbConnect();
+    $userManager = New UserManager($db);
+
+    if($_SESSION['user_role'] === 'Admin') {
+
+        $users = $userManager -> getUsers(); // Appel de la methode getInfos() de cet objet
+
+        return $users;
+
+    }
+    else {
+        header('location: ./index.php');
+    }
 }
 
 
