@@ -1,8 +1,13 @@
 .user-manager-container {
   justify-content: space-between;
+  padding: 2rem;
   .user {
     justify-content: space-between;
     padding: 1rem;
+    .user__info-container {
+      justify-content: space-between;
+      padding: 1rem;
+    }
     &__photo {
       max-width: 70px;
       max-height: 70px;
@@ -11,8 +16,7 @@
       margin-right: 1rem;
     }
     &__controls {
-      display: flex;
-      padding: .5rem 0;
+      padding: 0;
       .admin-crud__btn{
         padding: .4rem 1rem;
         border-radius: 5px;
@@ -38,7 +42,7 @@
   //queries taille ecrans Medium
   @media screen and (min-width: 64em){
     .user {
-      padding: 2rem;
+      //padding: 0;
 
       &__photo {
           max-width: 6rem;
@@ -49,7 +53,7 @@
         flex-direction: column;
         width: initial;
         .admin-crud__btn{
-            margin: .2rem 0;
+            margin: 0 0 .2rem;
           }
       }
     }
