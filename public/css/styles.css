@@ -715,6 +715,13 @@ span:hover {
   border-radius: 5px;
 }
 
+/* line 7, public/scss/components/cards.scss */
+.user-card {
+  padding: 1rem;
+  box-shadow: 0 4px 25px -6px #999999;
+  border-radius: 5px;
+}
+
 /* line 1, public/scss/components/form-log-in-out.scss */
 .container-login, .container-logout {
   display: flex;
@@ -960,15 +967,22 @@ span:hover {
 /* line 1, public/scss/components/users.scss */
 .user-manager-container {
   justify-content: space-between;
+  padding: 2rem;
 }
 
-/* line 3, public/scss/components/users.scss */
+/* line 4, public/scss/components/users.scss */
 .user-manager-container .user {
   justify-content: space-between;
   padding: 1rem;
 }
 
-/* line 6, public/scss/components/users.scss */
+/* line 7, public/scss/components/users.scss */
+.user-manager-container .user .user__info-container {
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+/* line 11, public/scss/components/users.scss */
 .user-manager-container .user__photo {
   max-width: 70px;
   max-height: 70px;
@@ -977,13 +991,12 @@ span:hover {
   margin-right: 1rem;
 }
 
-/* line 13, public/scss/components/users.scss */
+/* line 18, public/scss/components/users.scss */
 .user-manager-container .user__controls {
-  display: flex;
-  padding: .5rem 0;
+  padding: 0;
 }
 
-/* line 16, public/scss/components/users.scss */
+/* line 20, public/scss/components/users.scss */
 .user-manager-container .user__controls .admin-crud__btn {
   padding: .4rem 1rem;
   border-radius: 5px;
@@ -991,23 +1004,19 @@ span:hover {
 }
 
 @media screen and (min-width: 64em) {
-  /* line 40, public/scss/components/users.scss */
-  .user-manager-container .user {
-    padding: 2rem;
-  }
-  /* line 43, public/scss/components/users.scss */
+  /* line 47, public/scss/components/users.scss */
   .user-manager-container .user__photo {
     max-width: 6rem;
     max-height: 6rem;
   }
-  /* line 47, public/scss/components/users.scss */
+  /* line 51, public/scss/components/users.scss */
   .user-manager-container .user__controls {
     display: flex;
     flex-direction: column;
     width: initial;
   }
-  /* line 51, public/scss/components/users.scss */
+  /* line 55, public/scss/components/users.scss */
   .user-manager-container .user__controls .admin-crud__btn {
-    margin: .2rem 0;
+    margin: 0 0 .2rem;
   }
 }
