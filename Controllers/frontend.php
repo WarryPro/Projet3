@@ -119,7 +119,7 @@ function editerPosts ($postId) {
     //Les données ont été édités, on redirige donc le visiteur vers la page admin
     else {
         $post = $postManager -> getPostEditer($postId);
-        require ('./Views/backend/editView.php');
+        require ('./Views/backend/postEditView.php');
 
         return $post;
     }
