@@ -36,3 +36,7 @@ $data = listUsers();
     ?>
     </div>
 </div>
+
+<?php
+    require ('Views/backend/components/userEditView.php');
+?>
