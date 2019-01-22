@@ -169,7 +169,7 @@ try {
 
         elseif ($_GET['action'] == 'editer') {
 
-//            require('Views/backend/editView.php');
+//            require('Views/backend/postEditView.php');
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
