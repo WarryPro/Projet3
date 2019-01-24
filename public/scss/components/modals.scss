@@ -7,8 +7,65 @@
   justify-content: center;
   align-items: center;
   background-color: rgba($postFirstColor, .8);
-
+  .main-container-form {
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      top: -.5rem;
+      right: .5rem;
+    }
+    &:after {
+      content: "+";
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transform: rotate(45deg);
+      font-weight: 300;
+      font-size: 2rem;
+      color: $whiteColor;
+    }
+  }
   .photo-profile {
     background-size: cover;
+  }
+
+  .form-group {
+    .label-form {
+      display: flex;
+      align-items:center;
+      position: relative;
+      cursor: pointer;
+      padding: 5px 15px 5px 51px;
+      border-radius: 3px;
+      transition: all .3s ease;
+      &:hover {
+        background: rgba($secondColor , .6);
+        color: $whiteColor;
+      }
+      &:before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 15px;
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: none;
+        border: 2px solid $postFirstColor;
+      }
+    }
+    .radio-form {
+      display: none;
+    }
+    .radio-form:checked + .label-form:before {
+      display: none;
+    }
+    .radio-form:checked + .label-form {
+      padding: 5px 15px;
+      background: $postFirstColor;
+      border-radius: 3px;
+      color: $whiteColor;
+    }
   }
 }
