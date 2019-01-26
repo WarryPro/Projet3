@@ -41,7 +41,7 @@ class ConnexionController {
             // si @user a le role Admin
             if($isAdmin) {
 
-                header('location: index.php?admin=accueil');
+                header('location: index.php?admin');
             }
             else {
 
