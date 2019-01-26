@@ -54,6 +54,7 @@
 
         <script src="public/js/script.js"></script>
         <script src="public/js/alerts.js"></script>
+        <script src="public/js/modals.js"></script>
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     <script>
         tinymce.init({
