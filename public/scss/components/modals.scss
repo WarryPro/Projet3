@@ -8,13 +8,17 @@
   align-items: center;
   background-color: rgba($postFirstColor, .8);
   .main-container-form {
-    &:before, &:after {
-      content: "";
+    .btn-close {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       position: absolute;
-      top: -.5rem;
+      top: .4rem;
       right: .5rem;
+      z-index: 10;
+      line-height: .7;
     }
-    &:after {
+    .btn-close:after {
       content: "+";
       display: flex;
       justify-content: center;
