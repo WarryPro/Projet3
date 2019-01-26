@@ -27,8 +27,8 @@ $data = listUsers();
                     </div>
                     
                     <div class="user__controls small-12">
-                        <a href="index.php?action=editeruser&id='. $user['id'].'" class="btn admin-crud__btn admin-crud__btn--editer"><i class="fas fa-user-edit"></i></a>
-                        <a href="index.php?action=supprimeruser&id='. $user['id'].'" class="btn admin-crud__btn admin-crud__btn--supprimer"><i class="fas fa-user-times"></i></a>
+                        <a href="#modal-user-edit" class="btn btn__user--edit admin-crud__btn admin-crud__btn--editer"><i class="fas fa-user-edit"></i></a>
+                        <a href="index.php?action=supprimeruser&id='. $user['id'].'" class="btn btn__user--supprimer admin-crud__btn admin-crud__btn--supprimer"><i class="fas fa-user-times"></i></a>
                     </div>
                 </div>
           </div>');
