@@ -1,12 +1,13 @@
 <?php $title = 'Editer utilisateur'; ?>
 
 
-<div class="container-login container-user-edit">
+<div id="modal" class="container-login container-user-edit hide">
     <?php
     $data = listUsers();
     foreach ($data as $user) {
         print_r('
             <div class="main-container-form card">
+                <div id="btn-close" class="btn-close"></div>
                 <div class="container-photo-profile">
                     <div class="photo-profile" style="background-image: url('. './public/images/' . $user['user'] . '.jpg'.');">
                     </div>
@@ -38,11 +39,11 @@
                               <label class="label-form" for="user-admin">Admin</label>');
                             }
                             else {
-                                print_r('<input class="radio-form" id="user-user" type="radio" name="user_role" value="User">
-                              <label class="label-form" for="user-user">User</label>
+                                print_r('<input class="radio-form user-radio" id="user-user" type="radio" name="user_role" value="User">
+                              <label class="label-form " for="user-radio">User</label>
                                 
-                              <input class="radio-form" id="user-admin" type="radio" name="user_role" value="Admin" checked>
-                              <label class="label-form" for="user-admin">Admin</label>');
+                              <input class="radio-form admin-radio" id="user-admin" type="radio" name="user_role" value="Admin" checked>
+                              <label class="label-form" for="admin-radio">Admin</label>');
                             }
 
                     print_r('</div>
