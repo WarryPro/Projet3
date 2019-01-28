@@ -26,8 +26,4 @@ const postMainContainer = document.querySelector("main > .post-main-container")
 // verifier si l'elmt existe
 if(postMainContainer !== null) {
         bodyPagePost.className = "body-bg-post"
-
-    }
-
-
-
+}
