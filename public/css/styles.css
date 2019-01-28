@@ -1089,7 +1089,7 @@ span:hover {
 
 /* line 20, public/scss/components/users.scss */
 .user-manager-container .user__controls .admin-crud__btn {
-  padding: .4rem 1rem;
+  padding: .4rem .5rem;
   border-radius: 5px;
   margin: .2rem .4rem .2rem 0;
 }
