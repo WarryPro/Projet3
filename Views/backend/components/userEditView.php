@@ -10,26 +10,26 @@
             <p class="text-connexion">Editer utilisateur</p>
         </div>
         <div class="container-form grid-x">
-            <form action="index.php?action=editeruser" method="POST" class="small-10">
+            <form action="index.php?action=updateuser" method="POST" class="small-10">
+                <input type="hidden" name="user-id" id="user-id" value="">
                 <div class="form-group">
                     <span class="fas fa-user icon-user"></span>
-                    <input type="text" name="user" id="user-id" placeholder="Utilisater" value="" required>
+                    <input type="text" name="user" id="user-name" placeholder="Utilisater" value="" required>
                 </div>
 
                 <div class="form-group">
                     <span class="fas fa-envelope icon-email"></span>
-                    <input type="text" name="email" id="email" placeholder="Email" value="" required>
+                    <input type="text" name="email" id="email" placeholder="Email" value="">
                 </div>
 
                 <div class="form-group">
                     <span class="fas fa-lock icon-password"></span>
-                    <input type="password" name="current-pass" id="current-pass" required
-                           placeholder="Actuel mot de passe">
+                    <input type="password" name="current-pass" id="current-pass" required placeholder="Actuel mot de passe">
                 </div>
 
                 <div class="form-group">
                     <span class="fas fa-lock icon-password"></span>
-                    <input type="password" name="new-pass" id="new-pass" required placeholder="Nouveau mot de passe">
+                    <input type="password" name="new-pass" id="new-pass" placeholder="Nouveau mot de passe">
                 </div>
 
                 <div class="form-group radio">
