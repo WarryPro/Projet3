@@ -131,6 +131,45 @@ try {
         }
 
 
+
+        elseif ($_GET['action'] === 'updateuser') {
+
+            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['user_role']) && (!empty($_POST['current-pass']) OR !empty($_POST['new-pass']))) {
+
+
+                if(!empty($_POST['new-pass']) && ($_POST['new-pass'] !== $_POST['current-pass'])) {
+
+                    $user = New User([  'id' => intval($_POST['user-id']),
+                                        'user' => $_POST['user'],
+                                        'email' => $_POST['email'],
+                                        'pass' => $_POST['new-pass'],
+                                        'role' => $_POST['user_role']]);
+                    updateUser($user); // MàJ l'utilisateur avec nouveau mdp
+
+
+                }
+                elseif(!empty($_POST['new-pass']) && ($_POST['new-pass'] === $_POST['current-pass'])) {
+
+                    $user = New User([ 'id' => $_POST['user-id'],
+                                        'user' => $_POST['user'],
+                                        'email' => $_POST['email'],
+                                        'pass' => $_POST['current-pass'],
+                                        'role' => $_POST['user_role']]);
+
+                    updateUser($user); // MàJ l'utilisateur avec le current mdp
+
+                }
+
+            }
+            else {
+
+                throw new \Exception('Il faut remplir tous les champs !');
+            }
+
+        }
+
+
+
         elseif ($_GET['action'] === 'addPost') {
             // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
