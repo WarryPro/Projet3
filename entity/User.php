@@ -57,7 +57,7 @@ class User {
     }
 
 
-    public function getUserRole() {
+    public function getRole() {
 
         return $this -> role;
     }
@@ -89,7 +89,7 @@ class User {
 	}
 
 
-	public function setUserRole($role) {
+	public function setRole($role) {
 
 		$this -> role = $role;
 	}
