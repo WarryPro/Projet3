@@ -1,8 +1,10 @@
 <?php
 
+use \Models\Manager;
 use \Models\PostManager;
 use \Models\CommentManager;
 use \Models\UserManager;
+use \entity\User;
 use \Controllers\SessionController;
 
 require_once('Models/PostManager.php');
@@ -53,6 +55,31 @@ function listUsers() {
         header('location: ./index.php');
     }
 }
+
+
+    function updateUser (User $user) {
+
+        $db = new Manager(); //instance de la BDD
+        $db -> dbConnect();
+
+        $userManager = New UserManager($db);
+
+        $userSession = New SessionController(); //Instance pour une session
+        $affectedLines = $userManager -> updateUser($user);
+
+
+        if ($affectedLines === false) {
+            $userSession -> setFlash("Vous ne pouvez pas éditer cet utilisateur!");
+            header('Location: ./index.php?action=admin');
+        }
+        else {
+
+            $userSession -> setFlash("L'utilisateur a été mise à jour!", 'success');
+
+            header('Location: ./index.php?action=admin');
+        }
+    }
+
 
 
 function derniersPosts() {
@@ -144,6 +171,7 @@ function updatePosts ($post) {
         header('Location: ./index.php?action=admin');
     }
 }
+
 
 function addComment($post_id, $user, $comment) {
 
