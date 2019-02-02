@@ -24,7 +24,7 @@
 
                 <div class="form-group">
                     <span class="fas fa-lock icon-password"></span>
-                    <input type="password" name="current-pass" id="current-pass" required placeholder="Actuel mot de passe">
+                    <input type="password" name="current-pass" id="current-pass" placeholder="Actuel mot de passe">
                 </div>
 
                 <div class="form-group">
