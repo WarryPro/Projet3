@@ -136,33 +136,47 @@ try {
 
             if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['user_role'])) {
 
-                //todo vérifier le mdp de la bdd avec le current-pass rentré par l'utilisateur
                 $user = New User( ['id' => $_POST['user-id']] );
                 $userManager = New \Models\UserManager($db);
-                $passDb = $userManager -> getUser($user->getId());
+                $userDb = $userManager -> getUser($user->getId());
+                $passDb = $userDb['pass'];
 
+//                verification que les champs des mdp ne soient pas vides
+                if(!empty($_POST['current-pass']) && !empty($_POST['new-pass']) && !empty($passDb)) {
 
-                if((!empty($_POST['current-pass'] && !empty($_POST['new-pass']))) && ($_POST['new-pass'] !== $_POST['current-pass'])) {
+//                    verification si le courrent pass et le mdp de la BDD sont egaux
+                    if(password_verify($_POST['current-pass'], $passDb)) {
 
-                    $user = New User([  'id' => intval($_POST['user-id']),
-                                        'user' => $_POST['user'],
-                                        'email' => $_POST['email'],
-                                        'pass' => $_POST['new-pass'],
-                                        'role' => $_POST['user_role']]);
-                    updateUser($user); // MàJ l'utilisateur avec nouveau mdp
+                        if($_POST['new-pass'] !== $_POST['current-pass']) {
 
+                            $user = New User([  'id' => intval($_POST['user-id']),
+                                'user' => $_POST['user'],
+                                'email' => $_POST['email'],
+                                'pass' => $_POST['new-pass'],
+                                'role' => $_POST['user_role']]);
+
+                            updateUser($user); // MàJ l'utilisateur avec nouveau mdp
+                        }
+
+                        elseif ($_POST['new-pass'] === $_POST['current-pass']) {
+
+                            $user = New User([  'id' => $_POST['user-id'],
+                                'user' => $_POST['user'],
+                                'email' => $_POST['email'],
+                                'pass' => $_POST['current-pass'],
+                                'role' => $_POST['user_role']]);
+
+                            updateUser($user); // MàJ l'utilisateur avec le current mdp
+                        }
+                    }
+//                    si le current pass et le mdp de la BDD ne sont pas egaux
+                    else {
+
+                        echo "<p>Mot de passe invalide, il faut mettre votre mot de passe actuel!</p>";
+                    }
                 }
-                elseif((!empty($_POST['current-pass'] && !empty($_POST['new-pass']))) && ($_POST['new-pass'] === $_POST['current-pass'])) {
 
-                    $user = New User([ 'id' => $_POST['user-id'],
-                                        'user' => $_POST['user'],
-                                        'email' => $_POST['email'],
-                                        'pass' => $_POST['current-pass'],
-                                        'role' => $_POST['user_role']]);
-
-                    updateUser($user); // MàJ l'utilisateur avec le current mdp
-
-                }
+//               si les champs de des mot passes sont vides on màj que le nom, email et role
                 else {
                     $user = New User([  'id' => $_POST['user-id'],
                                         'user' => $_POST['user'],
@@ -173,9 +187,11 @@ try {
                 }
 
             }
+//            si les champs obligatoires (nom, email et role) sont vides
             else {
 
-                throw new \Exception('Il faut remplir tous les champs !');
+                return "<p>Les champs user, email et role sont obligatoires!</p>";
+//                throw new \Exception('Il faut remplir tous les champs !');
             }
 
         }
