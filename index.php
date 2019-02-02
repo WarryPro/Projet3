@@ -134,10 +134,15 @@ try {
 
         elseif ($_GET['action'] === 'updateuser') {
 
-            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['user_role']) && (!empty($_POST['current-pass']) OR !empty($_POST['new-pass']))) {
+            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['user_role'])) {
+
+                //todo vérifier le mdp de la bdd avec le current-pass rentré par l'utilisateur
+                $user = New User( ['id' => $_POST['user-id']] );
+                $userManager = New \Models\UserManager($db);
+                $passDb = $userManager -> getUser($user->getId());
 
 
-                if(!empty($_POST['new-pass']) && ($_POST['new-pass'] !== $_POST['current-pass'])) {
+                if((!empty($_POST['current-pass'] && !empty($_POST['new-pass']))) && ($_POST['new-pass'] !== $_POST['current-pass'])) {
 
                     $user = New User([  'id' => intval($_POST['user-id']),
                                         'user' => $_POST['user'],
@@ -146,9 +151,8 @@ try {
                                         'role' => $_POST['user_role']]);
                     updateUser($user); // MàJ l'utilisateur avec nouveau mdp
 
-
                 }
-                elseif(!empty($_POST['new-pass']) && ($_POST['new-pass'] === $_POST['current-pass'])) {
+                elseif((!empty($_POST['current-pass'] && !empty($_POST['new-pass']))) && ($_POST['new-pass'] === $_POST['current-pass'])) {
 
                     $user = New User([ 'id' => $_POST['user-id'],
                                         'user' => $_POST['user'],
@@ -158,6 +162,14 @@ try {
 
                     updateUser($user); // MàJ l'utilisateur avec le current mdp
 
+                }
+                else {
+                    $user = New User([  'id' => $_POST['user-id'],
+                                        'user' => $_POST['user'],
+                                        'email' => $_POST['email'],
+                                        'role' => $_POST['user_role']]);
+
+                    updateUser($user); // MàJ l'utilisateur avec le current mdp
                 }
 
             }
