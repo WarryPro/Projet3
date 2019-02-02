@@ -43,10 +43,11 @@ class UserManager extends Manager {
     public function getUser($userId) {
 
         $db = $this->dbConnect();
-        $req = $db->query('SELECT `user`, `email`, `user_role` FROM users WHERE id = ?');
-        $req -> execute(array($userId));
+        $req = $db->query("SELECT `id`, `user`, `email`, `pass`, `user_role` FROM users WHERE id = $userId");
 
-        return $req;
+        $user = $req -> fetch();
+
+        return $user;
 
     }
 
@@ -72,8 +73,6 @@ class UserManager extends Manager {
 
         $db = $this -> dbConnect();
 
-        $passIn = password_hash($user -> getPass(), PASSWORD_DEFAULT); //encriptation du mdp donné par @user
-
         $userId = $user->getId();
 
         $reqPass = $db -> query("SELECT pass FROM users WHERE id = $userId ");
@@ -98,7 +97,9 @@ class UserManager extends Manager {
 
             $req -> fetch(\PDO::FETCH_ASSOC);
 
-            // Vérif mdp à hasher donné par @user et le compare avec le mdp récuperé de la BDD
+            $passIn = (!empty($user -> getPass())) ? password_hash($user -> getPass(), PASSWORD_DEFAULT) : $userPassDb; //encriptation du mdp donné par @user si != a null sinon on donne le mdp de la BDD
+
+            // Vérif mdp hashé donné par @user et le compare avec le mdp récuperé de la BDD
             if(password_verify($passIn, $userPassDb)) {
                 $req -> bindValue( ':id', $userId);
                 $req -> bindValue( ':user', $user -> getUser());
