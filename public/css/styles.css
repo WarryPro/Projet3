@@ -1043,14 +1043,94 @@ span:hover {
   padding: 0 .5rem;
 }
 
-/* line 1, public/scss/components/add-post-form.scss */
-.add-post__container-form {
+/* line 2, public/scss/components/add-post-form.scss */
+.add-post .add-post__container-form {
   position: -webkit-sticky;
   position: sticky;
   top: 2rem;
 }
 
 /* line 6, public/scss/components/add-post-form.scss */
+.add-post__titre, .add-post #mceu_11 {
+  border: 1px solid rgba(72, 84, 157, 0.8);
+}
+
+/* line 8, public/scss/components/add-post-form.scss */
+.add-post__titre:focus, .add-post #mceu_11:focus {
+  border: 1px solid #48549d;
+}
+
+/* line 12, public/scss/components/add-post-form.scss */
+.add-post__label-content {
+  text-align: center;
+  padding: .5rem 0;
+  background-color: rgba(72, 84, 157, 0.8);
+  color: #fff;
+}
+
+/* line 18, public/scss/components/add-post-form.scss */
+.add-post #mceu_11 {
+  width: auto !important;
+}
+
+/* line 21, public/scss/components/add-post-form.scss */
+.add-post__file {
+  display: none;
+}
+
+/* line 24, public/scss/components/add-post-form.scss */
+.add-post__label-file {
+  position: absolute;
+  left: .5rem;
+  bottom: 5.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: rgba(72, 84, 157, 0.5);
+  color: #fff;
+  padding: .5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .3s ease;
+}
+
+/* line 38, public/scss/components/add-post-form.scss */
+.add-post__label-file .fas {
+  font-size: 1.5rem;
+  margin-right: .5rem;
+}
+
+/* line 42, public/scss/components/add-post-form.scss */
+.add-post__label-file:hover {
+  background-color: #48549d;
+}
+
+/* line 46, public/scss/components/add-post-form.scss */
+.add-post .btn-container {
+  margin-top: .5rem;
+}
+
+/* line 48, public/scss/components/add-post-form.scss */
+.add-post .btn-container .btn-form {
+  width: 100%;
+  background-color: rgba(0, 209, 132, 0.8);
+  color: #fff;
+  border: none;
+  padding: .6rem 2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: all .3s ease;
+}
+
+/* line 57, public/scss/components/add-post-form.scss */
+.add-post .btn-container .btn-form:hover {
+  background-color: #00d184;
+}
+
+/* line 64, public/scss/components/add-post-form.scss */
 .admin-post-container {
   max-height: 600px;
   overflow-y: scroll;
