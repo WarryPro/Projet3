@@ -47,7 +47,7 @@
     margin-top: .5rem;
     .btn-form {
       width: 100%;
-      background-color: rgba($postSecondColor, 0.8);
+      background-color: rgba($postFirstColor, 0.8);
       color: $whiteColor;
       border: none;
       padding: .6rem 2rem;
@@ -55,13 +55,22 @@
       border-radius: 5px;
       transition: all .3s ease;
       &:hover {
-        background-color: rgba($postSecondColor, 1);
+        background-color: rgba($postFirstColor, 1);
       }
     }
   }
 }
 
+//block où s'affichent les cards
 .admin-post-container {
   max-height: 600px;
   overflow-y: scroll;
+  //taille et couleur du scrollbar
+  &::-webkit-scrollbar{
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba($postFirstColor, .8);
+    border-radius: 5px;
+  }
 }

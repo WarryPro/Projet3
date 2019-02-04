@@ -1116,7 +1116,7 @@ span:hover {
 /* line 48, public/scss/components/add-post-form.scss */
 .add-post .btn-container .btn-form {
   width: 100%;
-  background-color: rgba(0, 209, 132, 0.8);
+  background-color: rgba(72, 84, 157, 0.8);
   color: #fff;
   border: none;
   padding: .6rem 2rem;
@@ -1127,13 +1127,24 @@ span:hover {
 
 /* line 57, public/scss/components/add-post-form.scss */
 .add-post .btn-container .btn-form:hover {
-  background-color: #00d184;
+  background-color: #48549d;
 }
 
-/* line 64, public/scss/components/add-post-form.scss */
+/* line 65, public/scss/components/add-post-form.scss */
 .admin-post-container {
   max-height: 600px;
   overflow-y: scroll;
+}
+
+/* line 69, public/scss/components/add-post-form.scss */
+.admin-post-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* line 72, public/scss/components/add-post-form.scss */
+.admin-post-container::-webkit-scrollbar-thumb {
+  background-color: rgba(72, 84, 157, 0.8);
+  border-radius: 5px;
 }
 
 /* line 1, public/scss/components/users.scss */
