@@ -18,18 +18,19 @@
     <div class="small-12 large-5 add-post">
         <div class="small-12 add-post__container-form">
 
-            <form action="index.php?action=addPost" method="POST" enctype="multipart/form-data" class="small-12">
+            <form action="index.php?action=addPost" method="POST" enctype="multipart/form-data" class="add-post__form small-12">
 
                 <div class="form-group">
                     <input type="hidden" name="post-id" id="post-id" value="0">
-                    <input type="text" name="titre" id="titre" placeholder="Titre de l'épisode" required>
+                    <input type="text" name="titre" id="titre" class="add-post__titre" placeholder="Titre de l'épisode" required>
                 </div>
 
                 <div class="form-group">
-                    <label class="label-form" for="post-content">Contenu de votre épisode</label>
+                    <label class="label-form add-post__label-content" for="post-content">Contenu de votre épisode</label>
                     <textarea name="post-content" id="post-content" class="textarea-form" cols="30" rows="10">
                     </textarea>
-                    <input type="file" name="img-post" multiple id="img-post">
+                    <input type="file" class="add-post__file" name="img-post" multiple id="img-post">
+                    <label for="img-post" class="label-form add-post__label-file"><i class="fas fa-image"></i> Ch. image</label>
                 </div>
 
                 <div class="btn-container">
