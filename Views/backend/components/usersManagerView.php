@@ -17,7 +17,7 @@ $data = listUsers();
                 <div class="user__info-container user-card grid-x small-12">
                     <div class="user__info grid-x">
                         <div class="user__photo">
-                            <img id="user-photo" src="./public/images/'.$user['user'].'.jpg" alt="Photo Dany">
+                            <img id="user-photo" src="./public/images/'.$user['user'].'.jpg" alt="Photo '.$user['user'].'">
                         </div>
                         
                         <div class="grid-y">
