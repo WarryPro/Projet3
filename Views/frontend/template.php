@@ -71,5 +71,6 @@
             }
         }, 500)
     </script>
+    <script src="public/js/FetchForms.js"></script>
     </body>
 </html>
