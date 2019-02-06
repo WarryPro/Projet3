@@ -1044,24 +1044,24 @@ span:hover {
 }
 
 /* line 2, public/scss/components/add-post-form.scss */
-.add-post .add-post__container-form {
+.add-post .add-post__container-form, .add-post .editer-post__container-form, .editer-post .add-post__container-form, .editer-post .editer-post__container-form {
   position: -webkit-sticky;
   position: sticky;
   top: 2rem;
 }
 
 /* line 6, public/scss/components/add-post-form.scss */
-.add-post__titre, .add-post #mceu_11 {
+.add-post__titre, .add-post #mceu_11, .editer-post__titre, .editer-post #mceu_11 {
   border: 1px solid rgba(72, 84, 157, 0.8);
 }
 
 /* line 8, public/scss/components/add-post-form.scss */
-.add-post__titre:focus, .add-post #mceu_11:focus {
+.add-post__titre:focus, .add-post #mceu_11:focus, .editer-post__titre:focus, .editer-post #mceu_11:focus {
   border: 1px solid #48549d;
 }
 
 /* line 12, public/scss/components/add-post-form.scss */
-.add-post__label-content {
+.add-post__label-content, .editer-post__label-content {
   text-align: center;
   padding: .5rem 0;
   background-color: rgba(72, 84, 157, 0.8);
@@ -1069,17 +1069,17 @@ span:hover {
 }
 
 /* line 18, public/scss/components/add-post-form.scss */
-.add-post #mceu_11 {
+.add-post #mceu_11, .editer-post #mceu_11 {
   width: auto !important;
 }
 
 /* line 21, public/scss/components/add-post-form.scss */
-.add-post__file {
+.add-post__file, .editer-post__file {
   display: none;
 }
 
 /* line 24, public/scss/components/add-post-form.scss */
-.add-post__label-file {
+.add-post__label-file, .editer-post__label-file {
   position: absolute;
   left: .5rem;
   bottom: 5.5rem;
@@ -1098,23 +1098,23 @@ span:hover {
 }
 
 /* line 38, public/scss/components/add-post-form.scss */
-.add-post__label-file .fas {
+.add-post__label-file .fas, .editer-post__label-file .fas {
   font-size: 1.5rem;
   margin-right: .5rem;
 }
 
 /* line 42, public/scss/components/add-post-form.scss */
-.add-post__label-file:hover {
+.add-post__label-file:hover, .editer-post__label-file:hover {
   background-color: #48549d;
 }
 
 /* line 46, public/scss/components/add-post-form.scss */
-.add-post .btn-container {
+.add-post .btn-container, .editer-post .btn-container {
   margin-top: .5rem;
 }
 
 /* line 48, public/scss/components/add-post-form.scss */
-.add-post .btn-container .btn-form {
+.add-post .btn-container .btn-form, .editer-post .btn-container .btn-form {
   width: 100%;
   background-color: rgba(72, 84, 157, 0.8);
   color: #fff;
@@ -1126,7 +1126,7 @@ span:hover {
 }
 
 /* line 57, public/scss/components/add-post-form.scss */
-.add-post .btn-container .btn-form:hover {
+.add-post .btn-container .btn-form:hover, .editer-post .btn-container .btn-form:hover {
   background-color: #48549d;
 }
 
