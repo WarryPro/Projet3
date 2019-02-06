@@ -11,22 +11,23 @@
 
 
 <div class="small-12 large-8 editer-post pd-top-btm">
-
+    <h2 class="text-center">Éditer l'épisode</h2>
     <div class="small-12 editer-post__container-form">
 
         <form action="index.php?action=updatePost" method="POST" enctype="multipart/form-data" class="small-12">
 
             <div class="form-group">
                 <input type="hidden" name="post-id" id="post-id" value="<?php print_r($post['id'])?>">
-                <input type="text" name="titre" id="titre" placeholder="Titre de l'épisode" value="<?php print_r($post['title']) ?>" required>
+                <input type="text" name="titre" id="titre" class="editer-post__titre" placeholder="Titre de l'épisode" value="<?php print_r($post['title']) ?>" required>
             </div>
 
             <div class="form-group">
-                <label class="label-form" for="post-content">Contenu de votre épisode</label>
+                <label class="label-form editer-post__label-content" for="post-content">Contenu de votre épisode</label>
                 <textarea name="post-content" id="post-content" class="textarea-form" cols="30" rows="10">
                     <?php print_r($post['content']) ?>
                 </textarea>
-                <input type="file" name="img-post" multiple id="img-post">
+                <input type="file" class="editer-post__file" name="img-post" multiple id="img-post">
+                <label for="img-post" class="label-form editer-post__label-file"><i class="fas fa-image"></i> Ch. image</label>
             </div>
 
             <div class="btn-container">
