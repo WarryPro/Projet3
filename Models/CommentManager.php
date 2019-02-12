@@ -1,6 +1,6 @@
 <?php 
 namespace Models;
-
+use entity\ReportComment;
 require_once('Models/Manager.php');
 
 
@@ -28,6 +28,19 @@ class CommentManager extends Manager {
         $affectedLines = $comments->execute(array($postId, $user, $comment));
 
         return $affectedLines;
+    }
+
+//    TODO: signaler un commentaire
+    public function reportComment (ReportComment $report) {
+
+        $db = $this->dbConnect();
+        $id = $report->getCommentId();
+
+        $req = $db->prepare("INSERT INTO comments(com_reported) VALUES (:com_reported) WHERE id = $id");
+//        $req->bindValue(':com_reported', ); // TODO: A reflechir
+        $req->execute();
+        $reportComment = $req->execute();
+        return $reportComment;
     }
 
 }
