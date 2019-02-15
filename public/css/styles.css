@@ -723,7 +723,7 @@ span:hover {
 }
 
 /* line 1, public/scss/components/modals.scss */
-.container-user-edit {
+.container-user-edit, .container-signaler {
   position: fixed;
   top: 0;
   left: 0;
@@ -736,7 +736,7 @@ span:hover {
 }
 
 /* line 12, public/scss/components/modals.scss */
-.container-user-edit .main-container-form .btn-close {
+.container-user-edit .main-container-form .btn-close, .container-signaler .main-container-form .btn-close {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -748,7 +748,7 @@ span:hover {
 }
 
 /* line 22, public/scss/components/modals.scss */
-.container-user-edit .main-container-form .btn-close:after {
+.container-user-edit .main-container-form .btn-close:after, .container-signaler .main-container-form .btn-close:after {
   content: "+";
   display: flex;
   justify-content: center;
@@ -762,12 +762,12 @@ span:hover {
 }
 
 /* line 34, public/scss/components/modals.scss */
-.container-user-edit .photo-profile {
+.container-user-edit .photo-profile, .container-signaler .photo-profile {
   background-size: cover;
 }
 
 /* line 39, public/scss/components/modals.scss */
-.container-user-edit .form-group .label-form {
+.container-user-edit .form-group .label-form, .container-signaler .form-group .label-form {
   display: flex;
   align-items: center;
   position: relative;
@@ -778,13 +778,13 @@ span:hover {
 }
 
 /* line 47, public/scss/components/modals.scss */
-.container-user-edit .form-group .label-form:hover {
+.container-user-edit .form-group .label-form:hover, .container-signaler .form-group .label-form:hover {
   background: rgba(153, 153, 153, 0.6);
   color: #fff;
 }
 
 /* line 51, public/scss/components/modals.scss */
-.container-user-edit .form-group .label-form:before {
+.container-user-edit .form-group .label-form:before, .container-signaler .form-group .label-form:before {
   content: '';
   display: inline-block;
   position: absolute;
@@ -797,21 +797,26 @@ span:hover {
 }
 
 /* line 63, public/scss/components/modals.scss */
-.container-user-edit .form-group .radio-form {
+.container-user-edit .form-group .radio-form, .container-signaler .form-group .radio-form {
   display: none;
 }
 
 /* line 66, public/scss/components/modals.scss */
-.container-user-edit .form-group .radio-form:checked + .label-form:before {
+.container-user-edit .form-group .radio-form:checked + .label-form:before, .container-signaler .form-group .radio-form:checked + .label-form:before {
   display: none;
 }
 
 /* line 69, public/scss/components/modals.scss */
-.container-user-edit .form-group .radio-form:checked + .label-form {
+.container-user-edit .form-group .radio-form:checked + .label-form, .container-signaler .form-group .radio-form:checked + .label-form {
   padding: 5px 15px;
   background: #48549D;
   border-radius: 3px;
   color: #fff;
+}
+
+/* line 79, public/scss/components/modals.scss */
+#modal.container-signaler .container-form {
+  padding: 1rem;
 }
 
 /* line 1, public/scss/components/form-log-in-out.scss */
@@ -956,6 +961,12 @@ span:hover {
   color: #48549D;
 }
 
+/* line 2, public/scss/components/form-signaler.scss */
+.container-form .group-signaler {
+  justify-content: space-between;
+  flex-direction: row;
+}
+
 /* line 1, public/scss/components/alerts.scss */
 .alert {
   margin: 0;
@@ -992,6 +1003,52 @@ span:hover {
 }
 
 /* line 2, public/scss/components/buttons.scss */
+.btn {
+  padding: 0.8rem 1rem;
+  margin: 0;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px -3px black;
+  cursor: pointer;
+}
+
+/* line 11, public/scss/components/buttons.scss */
+.valider {
+  background-color: #48549D;
+}
+
+/* line 13, public/scss/components/buttons.scss */
+.valider:hover {
+  background-color: #404b8c;
+}
+
+/* line 18, public/scss/components/buttons.scss */
+.error {
+  background-color: #e35656;
+}
+
+/* line 20, public/scss/components/buttons.scss */
+.error:hover {
+  background-color: #df4040;
+}
+
+/* line 25, public/scss/components/buttons.scss */
+.signaler {
+  background-color: #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90px;
+  padding: .3rem;
+}
+
+/* line 32, public/scss/components/buttons.scss */
+.signaler:hover {
+  background-color: #b8b8b8;
+  color: #fff;
+}
+
+/* line 39, public/scss/components/buttons.scss */
 .admin-crud__btn {
   color: #fff;
   padding: 0.1rem 1rem;
@@ -999,23 +1056,23 @@ span:hover {
   transition: background-color .3s ease;
 }
 
-/* line 7, public/scss/components/buttons.scss */
+/* line 44, public/scss/components/buttons.scss */
 .admin-crud__btn--editer {
   background-color: rgba(72, 84, 157, 0.8);
 }
 
-/* line 9, public/scss/components/buttons.scss */
+/* line 46, public/scss/components/buttons.scss */
 .admin-crud__btn--editer:hover {
   background-color: #48549d;
   color: #fff;
 }
 
-/* line 14, public/scss/components/buttons.scss */
+/* line 51, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer {
   background-color: rgba(227, 86, 86, 0.8);
 }
 
-/* line 16, public/scss/components/buttons.scss */
+/* line 53, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer:hover {
   background-color: #e35656;
   color: #fff;
