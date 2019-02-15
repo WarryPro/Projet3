@@ -1,6 +1,7 @@
 const modal = document.getElementById("modal")
 const btnUserEdit = document.getElementsByClassName("btn__user--edit")
 
+const signaler = document.getElementsByClassName('signaler')
 
 for(let i = 0; i < btnUserEdit.length; i++) {
     btnUserEdit[i].addEventListener('click', () => {
@@ -52,5 +53,13 @@ setInterval(() =>{
 }, 500)
 
 
+// MODAL SIGNALER
+for (const elmt of signaler) {
+    elmt.addEventListener('click', () => {
+        const inputCommId = document.getElementById('commid')
+        modal.classList.remove('hide')
+        inputCommId.value = elmt.getAttribute('id') // insert l'id du commentaire dans l'input hidden
+    })
+}
 
 
