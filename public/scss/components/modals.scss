@@ -1,4 +1,4 @@
-.container-user-edit {
+.container-user-edit, .container-signaler {
   position: fixed;
   top: 0;
   left: 0;
@@ -72,5 +72,11 @@
       border-radius: 3px;
       color: $whiteColor;
     }
+  }
+}
+
+#modal.container-signaler {
+  .container-form {
+    padding: 1rem;
   }
 }
