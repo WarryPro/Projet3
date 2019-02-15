@@ -1,3 +1,40 @@
+//Generals
+.btn {
+  padding: 0.8rem 1rem;
+  margin: 0;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px -3px black;
+  cursor: pointer;
+}
+
+.valider {
+  background-color: $postFirstColor;
+  &:hover {
+    background-color: darken($postFirstColor, 5);
+  }
+}
+
+.error {
+  background-color: $errorColor;
+  &:hover {
+    background-color: darken($errorColor, 5);
+  }
+}
+
+.signaler {
+  background-color: $reportColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90px;
+  padding: .3rem;
+  &:hover {
+    background-color: darken($reportColor, 5);
+    color: $whiteColor;
+  }
+}
+
 // BOUTONS CRUD ADMIN
 .admin-crud__btn {
   color: $whiteColor;
