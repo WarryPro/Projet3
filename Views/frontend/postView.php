@@ -9,7 +9,11 @@
 
     <div class="post-container small-12 medium-8 large-9">
 
-        <?php require('components/bannerPost.php') ?>
+        <?php require('components/bannerPost.php');
+        $sessionController = New \Controllers\SessionController();
+        $sessionController ->getFlash();
+        unset($_SESSION['flash']);
+        ?>
 
         <div class="small-12 medium-8 large-9">
             <div class="post grid-y">
@@ -66,16 +70,19 @@
                                 <img src="public/images/dany.JPG" alt="user-photo" class="user__img">
                             </a>
 
-                            <div class="grid-y">
+                            <div data-id="<?= htmlspecialchars($comment['id'])?>" class="grid-y user-info">
                                 <a href="#" class="user__nom"><strong><?= htmlspecialchars($comment['user']) ?></strong></a>
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
                                 <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+                                <a id="<?= htmlspecialchars($comment['id']) ?>" class="btn signaler" href="#modal">Signaler</a>
                             </div>
                         </div>
                     </div>
                 <?php
                 }
-                ?>
+
+                require ('components/modalSignaler.php');?>
+
                 <?php $content = ob_get_clean(); ?>
 
                 <?php require('template.php'); ?>
