@@ -18,6 +18,12 @@
   &__success {
     background-color: $postSecondColor;
   }
+
+  //message envoyé par la méthode FETCH
+  .message-reponse {
+    color: $whiteColor;
+  }
+
   &-container {
     .alert {
       border-radius: 5px;
