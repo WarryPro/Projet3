@@ -6,7 +6,7 @@
             <p class="text-connexion text-center">Vous voulez vraiment signaler ce commantaire ?</p>
         </div>
         <div class="container-form grid-x">
-            <form id="signaler-com" method="POST" class="small-10">
+            <form id="signaler-com" action="./routes/routerSignalerComm.php" method="POST" class="small-10">
                 <input type="hidden" id="commid" name="commid" value="">
                 <div class="form-group group-signaler">
                     <button id="annuler" type="button" class="btn error">Annuler</button>
