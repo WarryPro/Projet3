@@ -1,7 +1,7 @@
 <?php 
 namespace Models;
 use entity\ReportComment;
-require_once('Models/Manager.php');
+require_once('Manager.php');
 
 
 class CommentManager extends Manager {
@@ -30,17 +30,42 @@ class CommentManager extends Manager {
         return $affectedLines;
     }
 
-//    TODO: signaler un commentaire
-    public function reportComment (ReportComment $report) {
+
+//    Métho pour signaler un commentaire
+    public function reportComment (ReportComment $reporter) {
 
         $db = $this->dbConnect();
-        $id = $report->getCommentId();
 
-        $req = $db->prepare("INSERT INTO comments(com_reported) VALUES (:com_reported) WHERE id = $id");
-//        $req->bindValue(':com_reported', ); // TODO: A reflechir
+        $commentId = $reporter->getCommentId();
+        $user_accuser = strval( $reporter->getUserAccuser());
+
+        $selReportedComment = $db->prepare("SELECT episode_id FROM comments WHERE id = :comm_id");
+
+        $selReportedComment -> bindParam(':comm_id', $commentId);
+        $selReportedComment -> execute();
+        $result = $selReportedComment->fetch();
+
+
+        $req = $db->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`) 
+                                VALUES (:comm_id, 
+                                        (SELECT `comment` FROM `comments` WHERE `id` = :id_rep_comm),  
+                                        (SELECT `episode_id` FROM `comments` WHERE `id` = :com_episode_id),
+                                        (SELECT `id` FROM `users` WHERE `user` = :user_accuser),
+                                        :user)");
+
+        $req -> bindParam(':comm_id', $commentId);
+        $req -> bindParam(':id_rep_comm', $commentId);
+        $req -> bindParam(':com_episode_id', $commentId);
+        $req -> bindParam(':user_accuser', $user_accuser);
+        $req -> bindParam(':user', $user_accuser);
+
+        $req -> setFetchMode(\PDO::FETCH_PROPS_LATE | \PDO::FETCH_CLASS, '\entity\ReportComment');
+
+        $req -> fetch(\PDO::FETCH_ASSOC);
         $req->execute();
-        $reportComment = $req->execute();
-        return $reportComment;
+
+        $uri = $result['episode_id'];
+        $_SESSION['uri'] = $uri;
     }
 
 }
