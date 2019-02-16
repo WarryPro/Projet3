@@ -996,7 +996,12 @@ span:hover {
   background-color: #00D184;
 }
 
-/* line 22, public/scss/components/alerts.scss */
+/* line 23, public/scss/components/alerts.scss */
+.alert .message-reponse {
+  color: #fff;
+}
+
+/* line 28, public/scss/components/alerts.scss */
 .alert-container .alert {
   border-radius: 5px;
   margin: 0 1rem 1rem;
