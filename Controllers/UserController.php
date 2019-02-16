@@ -20,8 +20,24 @@ Class UserController {
         }
         else {
             
-            header('location: index.php?admin=updateprofil');
+            header('location: index.php?action=admin');
             
+            exit();
+        }
+    }
+
+    public function editerUser($db, $userId) {
+        $UserManager = new UserManager($db);
+        $updateInfos = $UserManager -> updateUser($userId);
+
+        if ($updateInfos === FALSE) {
+
+            throw new \Exception('Veuillez vérifier vos informations');
+        }
+        else {
+                var_dump($updateInfos);
+//            header('location: index.php?action=admin');
+
             exit();
         }
     }
