@@ -11,7 +11,8 @@ namespace entity;
 
 class ReportComment {
     protected   $id,
-                $commentId;
+                $commentId,
+                $userAccuser;
 
 
     function __construct($donnee =[]) {
@@ -52,6 +53,14 @@ class ReportComment {
         return $this->commentId;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUserAccuser() {
+
+        return $this -> userAccuser;
+    }
+
 
 //    SETTERS
 
@@ -69,5 +78,13 @@ class ReportComment {
     public function setCommentId($commentId) {
 
         $this->commentId = $commentId;
+    }
+
+    /**
+     * @param mixed $userAccuser
+     */
+    public function setUserAccuser($userAccuser) {
+
+        $this -> userAccuser = $userAccuser;
     }
 }
