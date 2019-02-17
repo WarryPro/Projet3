@@ -1,6 +1,11 @@
 <?php $title = htmlspecialchars($post['title']); ?>
 
-<?php ob_start(); ?>
+<?php ob_start();
+
+use \Controllers\CommentController;
+$commentController = New CommentController()
+
+?>
 
 
 <section class="post-main-container grid-x">
@@ -74,7 +79,16 @@
                                 <a href="#" class="user__nom"><strong><?= htmlspecialchars($comment['user']) ?></strong></a>
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
                                 <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-                                <a id="<?= htmlspecialchars($comment['id']) ?>" class="btn signaler" href="#modal">Signaler</a>
+                                <?php
+//                                    si l'utilisateur a déjà signalé le commentaire ou pas
+                                    if(!$commentController ->userHasReported($comment['id'])) {
+
+                                        print_r("<a id=". $comment['id'] . " class='btn signaler' href='#modal'>Signaler</a>");
+                                    }
+                                    else {
+                                        print_r("<p class='label warning'>Vous avez signalé ce commentaire</p>");
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
