@@ -68,4 +68,22 @@ class CommentManager extends Manager {
         $_SESSION['uri'] = $uri;
     }
 
+    /*
+     * @param $commentId reçu depuis le controller
+     * cette métho returne un utilisateur qui a signalé un commentaire par rapport à l'id du commentaire
+     * */
+    public function userHasReported($commentId) {
+
+        $db = $this->dbConnect();
+
+        $reqSelUser = $db->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id");
+
+        $reqSelUser -> bindParam(':comm_id', $commentId);
+
+        $reqSelUser -> execute();
+        $result = $reqSelUser -> fetch(\PDO::FETCH_ASSOC);
+
+        return $result["user_accuser"];
+    }
+
 }
