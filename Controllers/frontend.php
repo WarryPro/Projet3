@@ -173,6 +173,23 @@ function updatePosts ($post) {
 }
 
 
+function listReportedComments() {
+
+    $commentManager = new CommentManager(); // Création de l'objet CommentManager
+
+    if($_SESSION['user_role'] === 'Admin') {
+
+        $reportedComments = $commentManager -> getReportedComments(); // Appel de la methode getReportedComments() de cet objet
+
+        return $reportedComments;
+    }
+    else {
+        header('location: ./index.php');
+    }
+}
+
+
+
 function addComment($post_id, $user, $comment) {
 
     $commentManager = new commentManager();
