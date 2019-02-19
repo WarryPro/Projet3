@@ -67,6 +67,18 @@
     </div>
 </div>
 
+
+<!--Bloque gestion de commentaires -->
+<div class="grid-x small-12 pd-top-btm">
+    <div class="small-12 text-center">
+        <h2>Gestion de commentaires signalés </h2>
+    </div>
+    <?php
+        require('components/commentsManagerView.php');
+    ?>
+</div>
+
+<!--Bloque gestion d'utilisateurs-->
 <div class="grid-x small-12 pd-top-btm">
     <div class="small-12 text-center">
         <h2>Gestion d'utilisateurs</h2>
