@@ -38,6 +38,7 @@ $data = listUsers();
                 </div>
           </div>');
     }
+    $data -> closeCursor();
     ?>
     </div>
 </div>
