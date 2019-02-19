@@ -31,6 +31,18 @@ class CommentManager extends Manager {
     }
 
 
+    // Recupere la liste de commentaires signalés
+    public function getReportedComments() {
+
+        $db = $this->dbConnect();
+
+        $req = $db->query('SELECT * FROM reported_comms ORDER BY id DESC');
+
+        return $req;
+    }
+
+
+
 //    Métho pour signaler un commentaire
     public function reportComment (ReportComment $reporter) {
 
