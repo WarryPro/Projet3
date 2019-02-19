@@ -1249,18 +1249,13 @@ span:hover {
 }
 
 @media screen and (min-width: 64em) {
-  /* line 47, public/scss/components/users.scss */
-  .user-manager-container .user__photo {
-    max-width: 6rem;
-    max-height: 6rem;
-  }
-  /* line 51, public/scss/components/users.scss */
+  /* line 46, public/scss/components/users.scss */
   .user-manager-container .user__controls {
     display: flex;
     flex-direction: column;
     width: initial;
   }
-  /* line 55, public/scss/components/users.scss */
+  /* line 50, public/scss/components/users.scss */
   .user-manager-container .user__controls .admin-crud__btn {
     margin: 0 0 .2rem;
   }

@@ -42,12 +42,7 @@
   //queries taille ecrans Medium
   @media screen and (min-width: 64em){
     .user {
-      //padding: 0;
 
-      &__photo {
-          max-width: 6rem;
-          max-height: 6rem;
-      }
       &__controls {
         display: flex;
         flex-direction: column;
