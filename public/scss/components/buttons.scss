@@ -1,4 +1,9 @@
 //Generals
+.btn, .btn--alt {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 .btn {
   padding: 0.8rem 1rem;
   margin: 0;
@@ -6,6 +11,9 @@
   border-radius: 5px;
   box-shadow: 0 3px 6px -3px black;
   cursor: pointer;
+  &:hover {
+    color: $whiteColor;
+  }
 }
 
 .valider {
@@ -34,6 +42,36 @@
     color: $whiteColor;
   }
 }
+
+//BOUTONS ALTERNATIVES
+.btn--alt {
+
+  padding: 0.7rem;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 6px -3px black;
+  cursor: pointer;
+  transition: all .3s ease;
+  background-color: transparent;
+  color: $btnAltColor ;
+  &:hover {
+    color: $whiteColor;
+  }
+}
+.valider--alt {
+  color: $postFirstColor;
+  &:hover {
+    background-color: $postFirstColor;
+  }
+}
+
+.error--alt {
+  &:hover {
+    background-color: $errorColor;
+  }
+}
+
+
 
 // BOUTONS CRUD ADMIN
 .admin-crud__btn {
