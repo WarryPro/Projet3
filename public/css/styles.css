@@ -1008,6 +1008,13 @@ span:hover {
 }
 
 /* line 2, public/scss/components/buttons.scss */
+.btn, .btn--alt {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 7, public/scss/components/buttons.scss */
 .btn {
   padding: 0.8rem 1rem;
   margin: 0;
@@ -1017,27 +1024,32 @@ span:hover {
   cursor: pointer;
 }
 
-/* line 11, public/scss/components/buttons.scss */
+/* line 14, public/scss/components/buttons.scss */
+.btn:hover {
+  color: #fff;
+}
+
+/* line 19, public/scss/components/buttons.scss */
 .valider {
   background-color: #48549D;
 }
 
-/* line 13, public/scss/components/buttons.scss */
+/* line 21, public/scss/components/buttons.scss */
 .valider:hover {
   background-color: #404b8c;
 }
 
-/* line 18, public/scss/components/buttons.scss */
+/* line 26, public/scss/components/buttons.scss */
 .error {
   background-color: #e35656;
 }
 
-/* line 20, public/scss/components/buttons.scss */
+/* line 28, public/scss/components/buttons.scss */
 .error:hover {
   background-color: #df4040;
 }
 
-/* line 25, public/scss/components/buttons.scss */
+/* line 33, public/scss/components/buttons.scss */
 .signaler {
   background-color: #c5c5c5;
   display: flex;
@@ -1047,13 +1059,45 @@ span:hover {
   padding: .3rem;
 }
 
-/* line 32, public/scss/components/buttons.scss */
+/* line 40, public/scss/components/buttons.scss */
 .signaler:hover {
   background-color: #b8b8b8;
   color: #fff;
 }
 
-/* line 39, public/scss/components/buttons.scss */
+/* line 47, public/scss/components/buttons.scss */
+.btn--alt {
+  padding: 0.7rem;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: 0 0 6px -3px black;
+  cursor: pointer;
+  transition: all .3s ease;
+  background-color: transparent;
+  color: #00000033;
+}
+
+/* line 57, public/scss/components/buttons.scss */
+.btn--alt:hover {
+  color: #fff;
+}
+
+/* line 61, public/scss/components/buttons.scss */
+.valider--alt {
+  color: #48549D;
+}
+
+/* line 63, public/scss/components/buttons.scss */
+.valider--alt:hover {
+  background-color: #48549D;
+}
+
+/* line 69, public/scss/components/buttons.scss */
+.error--alt:hover {
+  background-color: #e35656;
+}
+
+/* line 77, public/scss/components/buttons.scss */
 .admin-crud__btn {
   color: #fff;
   padding: 0.1rem 1rem;
@@ -1061,26 +1105,42 @@ span:hover {
   transition: background-color .3s ease;
 }
 
-/* line 44, public/scss/components/buttons.scss */
+/* line 82, public/scss/components/buttons.scss */
 .admin-crud__btn--editer {
   background-color: rgba(72, 84, 157, 0.8);
 }
 
-/* line 46, public/scss/components/buttons.scss */
+/* line 84, public/scss/components/buttons.scss */
 .admin-crud__btn--editer:hover {
   background-color: #48549d;
   color: #fff;
 }
 
-/* line 51, public/scss/components/buttons.scss */
+/* line 89, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer {
   background-color: rgba(227, 86, 86, 0.8);
 }
 
-/* line 53, public/scss/components/buttons.scss */
+/* line 91, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer:hover {
   background-color: #e35656;
   color: #fff;
+}
+
+/* line 1, public/scss/components/tables.scss */
+thead {
+  background-color: #48549D;
+  color: #fff;
+}
+
+/* line 6, public/scss/components/tables.scss */
+tbody td {
+  padding: 1rem;
+}
+
+/* line 11, public/scss/components/tables.scss */
+.action-bouttons .btn--alt {
+  margin-right: 1rem;
 }
 
 /* line 4, public/scss/components/admin-crud-btns.scss */
@@ -1225,9 +1285,10 @@ span:hover {
 .user-manager-container .user .user__info-container {
   justify-content: space-between;
   padding: 1rem;
+  background-color: #fff;
 }
 
-/* line 11, public/scss/components/users.scss */
+/* line 12, public/scss/components/users.scss */
 .user-manager-container .user__photo {
   max-width: 70px;
   max-height: 70px;
@@ -1236,12 +1297,12 @@ span:hover {
   margin-right: 1rem;
 }
 
-/* line 18, public/scss/components/users.scss */
+/* line 19, public/scss/components/users.scss */
 .user-manager-container .user__controls {
   padding: 0;
 }
 
-/* line 20, public/scss/components/users.scss */
+/* line 21, public/scss/components/users.scss */
 .user-manager-container .user__controls .admin-crud__btn {
   padding: .4rem .5rem;
   border-radius: 5px;
@@ -1249,13 +1310,13 @@ span:hover {
 }
 
 @media screen and (min-width: 64em) {
-  /* line 46, public/scss/components/users.scss */
+  /* line 47, public/scss/components/users.scss */
   .user-manager-container .user__controls {
     display: flex;
     flex-direction: column;
     width: initial;
   }
-  /* line 50, public/scss/components/users.scss */
+  /* line 51, public/scss/components/users.scss */
   .user-manager-container .user__controls .admin-crud__btn {
     margin: 0 0 .2rem;
   }
