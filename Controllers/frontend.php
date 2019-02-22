@@ -208,3 +208,24 @@ function addComment($post_id, $user, $comment) {
         header('Location: index.php?action=post&id=' . $post_id);
     }
 }
+
+
+function delComment($commentId) {
+    $commentManager = new commentManager();
+    $userSession = New SessionController(); //Instance pour une session
+    $affectedLines = $commentManager->delComment($commentId);
+
+    //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
+    if ($affectedLines === false) {
+
+        die("Impossible de supprimer le commentaire !");
+    }
+
+    //Les données ont été supprimés, on redirige donc le admin
+    else {
+
+        $userSession -> setFlash("Le commentaire a été supprimé!", 'success');
+
+        header('Location: ./index.php?action=admin');
+    }
+}
