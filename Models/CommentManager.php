@@ -30,6 +30,27 @@ class CommentManager extends Manager {
         return $affectedLines;
     }
 
+    public function delComment($commentId) {
+        $db = $this -> dbConnect();
+
+        $req = $db -> prepare("DELETE comments, reported_comms FROM `comments` 
+                                          INNER JOIN reported_comms 
+                                          WHERE comments.id = reported_comms.comment_id 
+                                          AND comments.id = :id");
+
+        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+
+            $req -> bindValue( ':id', $commentId);
+            $req -> execute();
+            $comment = $req -> execute();
+
+            return $comment;
+        }
+        else {
+            echo "Erreur, l'URL spécifié n'existe pas";
+        }
+    }
+
 
     // Recupere la liste de commentaires signalés
     public function getReportedComments() {
