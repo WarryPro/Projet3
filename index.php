@@ -268,7 +268,7 @@ try {
 
 
 
-
+//        ajouter un commentaire
         elseif ($_GET['action'] == 'addComment') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -288,6 +288,20 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+
+
+//        supprimer un commentaire
+        elseif ($_GET['action'] == 'supreportedcom') {
+
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                delComment($_GET['id']);
+            }
+            else {
+
+                throw new Exception('Une erreur est survenue, aucun commentaire à supprimer !');
+            }
+        }
+
     }
     else {
 
