@@ -19,9 +19,9 @@ class CommentController {
  */
     public function reportComment(ReportComment $report) {
 
-        $sessionControler = New SessionController();
+        $sessionController = New SessionController();
 
-        $userAccuser = $this-> userHasReported($report->getCommentId());
+        $userAccuser = $this-> userHasReported($report->getCommentId()); // Bool
 
 //        si l'utilisateur n'a pas encore signalé le commentaire
         if(!$userAccuser) {
@@ -35,7 +35,7 @@ class CommentController {
                 echo "Une erreur est survenu";
             }
             else {
-                $sessionControler->setFlash('Le commentaire a été signalé', 'success');
+                $sessionController->setFlash('Le commentaire a été signalé', 'success');
                 header('location: ../index.php?action=post&id='. $_SESSION['uri']);
                 unset($_SESSION['uri']); // Supp la session pour cette var
             }
@@ -44,7 +44,7 @@ class CommentController {
 //        si il a déjà signalé avant alors en envoie une alerte
         else {
 
-            $sessionControler->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
+            $sessionController->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
             header('location: ../index.php?action=post&id='. $_SESSION['uri']);
             unset($_SESSION['uri']); // Supp la session pour cette var
         }
@@ -61,6 +61,7 @@ class CommentController {
         $userAcusser = $_SESSION['user'];
 
         $userDB = $commentManager -> userHasReported($commentId);
+
         if($userDB === $userAcusser) {
             return true;
         }

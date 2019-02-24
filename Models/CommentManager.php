@@ -57,7 +57,12 @@ class CommentManager extends Manager {
 
         $db = $this->dbConnect();
 
-        $req = $db->query('SELECT * FROM reported_comms ORDER BY id DESC');
+
+        $req = $db->query('SELECT id, comment_id, episode_id, 
+                                            reported_comment, user_id, GROUP_CONCAT(DISTINCT user_accuser SEPARATOR ", ") AS users_accusers, 
+                                            DATE_FORMAT(reported_date, \'%d/%m/%Y à %Hh%i\') AS date_fr, SUM(num_reports) AS `total_reports` 
+                                      FROM reported_comms GROUP BY comment_id
+                                      ORDER BY date_fr DESC');
 
         return $req;
     }
@@ -78,13 +83,12 @@ class CommentManager extends Manager {
         $selReportedComment -> execute();
         $result = $selReportedComment->fetch();
 
-
-        $req = $db->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`) 
+        $req = $db->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`, `reported_date`, `num_reports`) 
                                 VALUES (:comm_id, 
                                         (SELECT `comment` FROM `comments` WHERE `id` = :id_rep_comm),  
                                         (SELECT `episode_id` FROM `comments` WHERE `id` = :com_episode_id),
                                         (SELECT `id` FROM `users` WHERE `user` = :user_accuser),
-                                        :user)");
+                                        :user, NOW(),  `num_reports`+1) ");
 
         $req -> bindParam(':comm_id', $commentId);
         $req -> bindParam(':id_rep_comm', $commentId);
@@ -96,7 +100,7 @@ class CommentManager extends Manager {
 
         $req -> fetch(\PDO::FETCH_ASSOC);
         $req->execute();
-
+        //on stocke l'id de l'épisode dans une session pour rediriger après l'utilisateur vers l'épisode correspondant
         $uri = $result['episode_id'];
         $_SESSION['uri'] = $uri;
     }
@@ -109,9 +113,10 @@ class CommentManager extends Manager {
 
         $db = $this->dbConnect();
 
-        $reqSelUser = $db->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id");
+        $reqSelUser = $db->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id AND user_accuser = :user_accuser");
 
         $reqSelUser -> bindParam(':comm_id', $commentId);
+        $reqSelUser -> bindParam(':user_accuser', $_SESSION['user']);
 
         $reqSelUser -> execute();
         $result = $reqSelUser -> fetch(\PDO::FETCH_ASSOC);
