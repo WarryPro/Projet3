@@ -72,7 +72,7 @@ $commentController = New CommentController()
                         <div class="user">
 
                             <a href="#" class="user__photo">
-                                <img src="public/images/dany.JPG" alt="user-photo" class="user__img">
+                                <img src="public/images/user.svg" alt="user-photo" class="user__img">
                             </a>
 
                             <div data-id="<?= htmlspecialchars($comment['id'])?>" class="grid-y user-info">
@@ -80,13 +80,18 @@ $commentController = New CommentController()
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
                                 <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                                 <?php
-//                                    si l'utilisateur a déjà signalé le commentaire ou pas
-                                    if(!$commentController ->userHasReported($comment['id'])) {
 
-                                        print_r("<a id=". $comment['id'] . " class='btn signaler' href='#modal'>Signaler</a>");
+                                    if (!isset($_SESSION['user'])) {
+                                        NULL; // s'il n'y a pas session on ne fait rien
                                     }
+
+                                    // si l'utilisateur a déjà signalé le commentaire ou pas
+                                    elseif(!$commentController -> userHasReported($comment['id'])) {
+                                        echo("<a id=". $comment['id'] . " class='btn signaler' href='#modal'>Signaler</a>");
+                                    }
+
                                     else {
-                                        print_r("<p class='label warning'>Vous avez signalé ce commentaire</p>");
+                                        echo("<p class='label warning'>Vous avez signalé ce commentaire</p>");
                                     }
                                 ?>
                             </div>
