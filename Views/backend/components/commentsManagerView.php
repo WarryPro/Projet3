@@ -13,22 +13,27 @@
         <thead>
             <tr>
                 <th>Épisode</th>
+                <th>Date</th>
                 <th>ID épisode</th>
                 <th>Commentaire</th>
-                <th>Utilisateur signaleur</th>
+                <th>signaleurs</th>
+                <th>Total fois signalé</th>
                 <th>Action</th>
             </tr>
         </thead>
         <tbody>
         <?php
             $reportedComments = listReportedComments();
+
             foreach($reportedComments as $comment) {
                 print_r('
                         <tr>
                             <td><a class="btn--alt valider--alt" href="./index.php?action=post&id='. $comment["episode_id"] .'">Voir l\'épisode</a></td>
+                            <td>' . $comment["date_fr"] . '</td>
                             <td>' . $comment["episode_id"] . '</td>
                             <td>' . $comment["reported_comment"] . '</td>
-                            <td>' . $comment["user_accuser"] . '</td>
+                            <td>' . $comment["users_accusers"] . '</td>
+                            <td>' . $comment["total_reports"] . '</td>
                             <td class="action-bouttons">
                                 <a class="btn--alt error--alt" href="index.php?action=supreportedcom&id='. $comment['comment_id'].'">
                                     <i class="fas fa-trash-alt"></i>
