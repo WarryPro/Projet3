@@ -522,6 +522,9 @@ span:hover {
 
 /* line 118, public/scss/blocks/main.scss */
 .body-bg-post .container-comments .user__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-width: 60px;
   max-width: 60px;
   min-height: 60px;
@@ -531,35 +534,35 @@ span:hover {
   margin-right: 1rem;
 }
 
-/* line 127, public/scss/blocks/main.scss */
+/* line 130, public/scss/blocks/main.scss */
 .body-bg-post .container-comments .user__nom {
   display: block;
   margin-bottom: 0;
   text-transform: capitalize;
 }
 
-/* line 131, public/scss/blocks/main.scss */
+/* line 134, public/scss/blocks/main.scss */
 .body-bg-post .container-comments .user__nom strong {
   color: #48549D;
 }
 
-/* line 136, public/scss/blocks/main.scss */
+/* line 139, public/scss/blocks/main.scss */
 .body-bg-post .container-comments .comment-date {
   font-size: 0.7rem;
   color: rgba(153, 153, 153, 0.7);
 }
 
-/* line 144, public/scss/blocks/main.scss */
+/* line 147, public/scss/blocks/main.scss */
 .body-bg-post .container-footer .reseau-link {
   color: #f6f5ff;
 }
 
-/* line 146, public/scss/blocks/main.scss */
+/* line 149, public/scss/blocks/main.scss */
 .body-bg-post .container-footer .reseau-link:hover {
   color: #48549D;
 }
 
-/* line 150, public/scss/blocks/main.scss */
+/* line 153, public/scss/blocks/main.scss */
 .body-bg-post .container-footer .copyright {
   color: #f6f5ff;
 }
@@ -860,77 +863,79 @@ span:hover {
   height: 5rem;
   border-radius: 50%;
   background-color: #999999;
+  background-image: url("../images/user.svg");
+  background-size: cover;
 }
 
-/* line 34, public/scss/components/form-log-in-out.scss */
+/* line 36, public/scss/components/form-log-in-out.scss */
 .container-photo-profile .photo-profile, .container-photo-profile .text-connexion {
   z-index: 10;
 }
 
-/* line 37, public/scss/components/form-log-in-out.scss */
+/* line 39, public/scss/components/form-log-in-out.scss */
 .container-photo-profile .text-connexion {
   color: white;
   font-size: 1.1rem;
 }
 
-/* line 43, public/scss/components/form-log-in-out.scss */
+/* line 45, public/scss/components/form-log-in-out.scss */
 .container-form {
   justify-content: center;
 }
 
-/* line 45, public/scss/components/form-log-in-out.scss */
+/* line 47, public/scss/components/form-log-in-out.scss */
 .container-form .form-group {
   display: flex;
   align-items: center;
   margin: 1rem 0;
 }
 
-/* line 49, public/scss/components/form-log-in-out.scss */
+/* line 51, public/scss/components/form-log-in-out.scss */
 .container-form .form-group .fas {
   color: #48549D;
   font-size: 1.05rem;
 }
 
-/* line 53, public/scss/components/form-log-in-out.scss */
+/* line 55, public/scss/components/form-log-in-out.scss */
 .container-form .form-group input {
   margin-bottom: 0;
   border: none;
   outline: none;
 }
 
-/* line 57, public/scss/components/form-log-in-out.scss */
+/* line 59, public/scss/components/form-log-in-out.scss */
 .container-form .form-group input:focus {
   border: none;
 }
 
-/* line 63, public/scss/components/form-log-in-out.scss */
+/* line 65, public/scss/components/form-log-in-out.scss */
 .container-form .group-mdp-oublie {
   justify-content: flex-end;
 }
 
-/* line 65, public/scss/components/form-log-in-out.scss */
+/* line 67, public/scss/components/form-log-in-out.scss */
 .container-form .group-mdp-oublie .mdp-oublie {
   margin-bottom: 0;
 }
 
-/* line 67, public/scss/components/form-log-in-out.scss */
+/* line 69, public/scss/components/form-log-in-out.scss */
 .container-form .group-mdp-oublie .mdp-oublie__link {
   color: #999999;
   font-size: 0.7rem;
 }
 
-/* line 70, public/scss/components/form-log-in-out.scss */
+/* line 72, public/scss/components/form-log-in-out.scss */
 .container-form .group-mdp-oublie .mdp-oublie__link:hover {
   color: #48549D;
 }
 
-/* line 77, public/scss/components/form-log-in-out.scss */
+/* line 79, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider {
   justify-content: center;
   flex-direction: column;
 }
 
-/* line 80, public/scss/components/form-log-in-out.scss */
+/* line 82, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider .btn-valider {
   padding: 0.8rem 1rem;
   margin: 1rem 0;
@@ -941,22 +946,22 @@ span:hover {
   cursor: pointer;
 }
 
-/* line 88, public/scss/components/form-log-in-out.scss */
+/* line 90, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider .btn-valider:hover {
   background-color: #404b8c;
 }
 
-/* line 92, public/scss/components/form-log-in-out.scss */
+/* line 94, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider p, .container-form .group-valider .creer-compte__link {
   font-size: 0.8rem;
 }
 
-/* line 95, public/scss/components/form-log-in-out.scss */
+/* line 97, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider .creer-compte__link {
   text-transform: lowercase;
 }
 
-/* line 97, public/scss/components/form-log-in-out.scss */
+/* line 99, public/scss/components/form-log-in-out.scss */
 .container-form .group-valider .creer-compte__link:hover {
   color: #48549D;
 }

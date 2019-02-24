@@ -30,6 +30,8 @@
     height: 5rem;
     border-radius: 50%;
     background-color: $secondColor;
+    background-image: url('../images/user.svg');
+    background-size: cover;
   }
   .photo-profile, .text-connexion {
     z-index: 10;
