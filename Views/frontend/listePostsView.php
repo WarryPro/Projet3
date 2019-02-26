@@ -19,6 +19,13 @@
     }
     $posts->closeCursor();
     ?>
+
+<!--pagination component-->
+    <div class="container align-center rid-x small-12">
+        <?= require('components/pagination.php');?>
+    </div>
+
+
 </div>
 
 
