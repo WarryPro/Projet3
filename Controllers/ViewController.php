@@ -30,6 +30,16 @@ class ViewController {
         require('Views/frontend/inscription.php');
     }
 
+    /*
+     * appel le compossant pagination
+     * */
+    public function pagination (){
+
+        require('Views/frontend/pagination.php');
+    }
+
+
+
     /**
      * connexion appelle la view forgotpassword.php
      */
