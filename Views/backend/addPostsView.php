@@ -52,8 +52,8 @@
                 unset($_SESSION['flash']); // Supp la session pour cette var
             print_r('</div>');
         }
-
-        while ($data = $posts->fetch()) {
+        //Recuperer les infos de chaque épisode
+        foreach ($result[1] as $data) {
             ?>
             <div class="news small-12 medium-6">
                 <div class="cell">
@@ -62,8 +62,12 @@
             </div>
             <?php
         }
-        $posts->closeCursor();
+//        $posts->closeCursor();
         ?>
+        <!--pagination component-->
+        <div class="container align-center rid-x small-12">
+            <?php  require('./Views/frontend/components/pagination.php');?>
+        </div>
     </div>
 </div>
 
