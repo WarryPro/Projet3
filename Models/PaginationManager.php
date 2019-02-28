@@ -2,43 +2,50 @@
 /**
  * Created by PhpStorm.
  * User: danny
- * Date: 12/02/2019
- * Time: 23:07
+ * Date: 26/02/2019
+ * Time: 21:46
  */
 
 namespace Models;
 
 
+use entity\Pagination;
+
 class PaginationManager extends Manager {
-    private $db,
-            $table,
-            $totalRecords,
-            $limit = 5,
-            $col;
+
+    public function paginationTotalElms (Pagination $pagination) {
+
+        $db = self::dbConnect();
+
+        $table = $pagination -> getTable();
 
 
-    function __construct($donnee =[]) {
+        $req = $db -> query("SELECT COUNT(id) AS total FROM $table");
 
-        $this -> hydrate($donnee);
+        $result = $req -> fetch()['total']; // total elements dans le tableau
+
+        return intval($result);
     }
 
+    public function pagination (Pagination $pagination) {
 
-    public function hydrate($donnee = []) {
+        $db = self::dbConnect();
 
-        foreach ($donnee as $key => $value) {
+        $table  = $pagination -> getTable();
+        $page   = intval($pagination -> getPage());
+        $postsParPage = $pagination -> getPostsParPage();
+        $start = ($page > 0) ? $page * $postsParPage - $postsParPage : 0;
 
-            $method = 'set'.ucfirst($key);
+        if($table = 'episodes') {
 
-            if (method_exists($this, $method)) {
-
-                $this -> $method($value);
-            }
+            $req = $db -> query("SELECT SQL_CALC_FOUND_ROWS id, title, content, image_episode, DATE_FORMAT(created_date, '%d/%m/%Y') AS created_date_fr FROM $table ORDER BY id DESC LIMIT $start,$postsParPage");
         }
-    }
+        else {
+            $req = $db -> query("SELECT SQL_CALC_FOUND_ROWS * FROM $table ORDER BY id DESC LIMIT $start,$postsParPage");
+        }
 
-//    TODO:  à voir
-    public function setTotalRecords() {
+        $result = $req -> fetchAll();
 
-        $query = "SELECT id FROM $this -> table";
+        return $result;
     }
 }
