@@ -30,6 +30,17 @@ class ViewController {
         require('Views/frontend/inscription.php');
     }
 
+
+    public function listEpisodes($result) {
+
+        require('Views/frontend/listePostsView.php');
+
+    }
+
+    public function listEpisodesAdmin($result) {
+        require('Views/backend/addPostsView.php');
+    }
+
     /*
      * appel le compossant pagination
      * */
