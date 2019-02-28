@@ -8,7 +8,8 @@
 
 <div class="billets-container grid-x small-12">
     <?php
-    while ($data = $posts->fetch()) {
+
+    foreach ($result[1] as $data) {
         ?>
         <div class="news small-12 medium-6 large-4">
             <div class="cell">
@@ -17,12 +18,12 @@
         </div>
         <?php
     }
-    $posts->closeCursor();
+//    $result[1]->closeCursor();
     ?>
 
 <!--pagination component-->
     <div class="container align-center rid-x small-12">
-        <?= require('components/pagination.php');?>
+        <?php  require('components/pagination.php');?>
     </div>
 
 
