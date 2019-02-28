@@ -10,23 +10,67 @@
 
 <nav class="nav-pagination" aria-label="Pagination">
     <ul class="pagination text-center">
-        <li class="pagination__item pagination-previous disabled">Start</li>
-        <li class="pagination__item current">
-            <span class="show-for-sr">You're on page</span> 1</li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">2</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">3</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">4</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link">5</a>
-        </li>
-        <li class="pagination__item">
-            <a href="#" class="pagination__link" aria-label="Next page">Next</a>
-        </li>
+        <?php
+            $page = intval($result[2]);
+            $totalPages = intval($result[0]);
+//                $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+            if($page === 1) {
+                echo '<li class="pagination__item pagination-previous disabled"></li>';
+            }
+            else {
+                if(isset($_GET['action'])) {
+                    if($_GET['action'] === 'billets') {?>
+                        <li class="pagination__item pagination-previous">
+                            <a href="./index.php?action=billets&page=<?=$page - 1?>" class="pagination__link"></a>
+                        </li>
+                    <?php
+                    }
+                    elseif ($_GET['action'] === 'admin') {?>
+                        <li class="pagination__item pagination-previous">
+                            <a href="./index.php?action=admin&page=<?=$page - 1?>" class="pagination__link"></a>
+                        </li>
+                    <?php
+                    }
+                }
+            }
+
+            for($i = 1; $i <= $totalPages; $i++) {
+                if($page === $i) { ?>
+
+                    <li class="pagination__item">
+                            <a href="./index.php?action=<?php echo $_GET['action']?>&page=<?=$i?>" class="pagination__link current"><?=$i?></a>
+                    </li>
+                <?php
+                }
+                else { ?>
+                    <li class="pagination__item">
+                        <a href="./index.php?action=<?php echo $_GET['action']?>&page=<?=$i?>" class="pagination__link"><?=$i?></a>
+                    </li>
+                   <?php
+                }
+            }
+
+        if($page === $totalPages) {
+            echo '<li class="pagination__item pagination-next disabled"></li>';
+        }
+        else {
+            if(isset($_GET['action'])) {
+                if($_GET['action'] === 'billets') {?>
+                    <li class="pagination__item pagination-next">
+                        <a href="./index.php?action=billets&page=<?=$page + 1?>" class="pagination__link"></a>
+                    </li>
+                    <?php
+                }
+                elseif ($_GET['action'] === 'admin') {?>
+                    <li class="pagination__item pagination-next">
+                        <a href="./index.php?action=admin&page=<?=$page + 1?>" class="pagination__link"></a>
+                    </li>
+                    <?php
+                }
+            }
+        }
+            ?>
+
     </ul>
 </nav>
