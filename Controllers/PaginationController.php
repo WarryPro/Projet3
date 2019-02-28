@@ -8,7 +8,43 @@
 
 namespace Controllers;
 
+use entity\Pagination;
+use Models\PaginationManager;
 
 class PaginationController {
 
+
+    /**
+     * @param Pagination $pagination prend les valeurs passées par les variables GET
+     * dans le routeur/page implémentée
+     */
+    public function pagination (Pagination $pagination) {
+
+        $paginationManager = New PaginationManager();
+
+        $viewController = New ViewController();
+        $totalElmts = $paginationManager -> paginationTotalElms($pagination);
+
+        $totalPages = ceil($totalElmts / $pagination -> getPostsParPage());
+
+        $posts = $paginationManager -> pagination ($pagination);
+
+
+        $table = $pagination -> getTable();
+        $page= $pagination -> getPage();
+
+        if($_GET['action'] !== 'admin') {
+
+            $method = 'list'.ucfirst($table);
+        }
+        else {
+            $method = 'listEpisodesAdmin';
+        }
+
+        $data = [$totalPages, $posts, $page];
+
+        $result = $viewController -> $method($data);
+
+//        return $result;
+    }
 }
