@@ -25,7 +25,22 @@ try {
 
         if ($_GET['action'] == 'billets') {
 
-            listPosts();
+//            listPosts();
+
+            $paginationController = New \Controllers\PaginationController();
+
+            if(isset($_GET['page'])) {
+
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $_GET['page'], 'postsParPage' => 6]);
+            }else {
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 6]);
+            }
+
+            $paginationController -> pagination($pagination);
+
+//            $viewController = New ViewController();
+//            $viewController -> listEpisodes($result);
+
         }
 
 
@@ -126,7 +141,18 @@ try {
 
         elseif ($_GET['action'] === 'admin') {
 
-            adminListPosts();
+//            adminListPosts();
+
+            $paginationController = New \Controllers\PaginationController();
+
+            if(isset($_GET['page'])) {
+
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $_GET['page'], 'postsParPage' => 2]);
+            }else {
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 2]);
+            }
+
+            $paginationController -> pagination($pagination);
 
         }
 
