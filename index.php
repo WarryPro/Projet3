@@ -187,37 +187,40 @@ try {
 
             if(!empty($postUser) && !empty($postEmail) && !empty($postUserRole)) {
 
-                $postId = (isset($_POST['user-id'])) ? filter_var( $_POST['user-id'], FILTER_SANITIZE_STRIPPED) : NULL;
+                $userId = (isset($_POST['user-id'])) ? filter_var( $_POST['user-id'], FILTER_SANITIZE_STRIPPED) : NULL;
 
-                $user = New User( ['id' => $postId] );
+                $user = New User( ['id' => $userId] );
                 $userManager = New \Models\UserManager($db);
                 $userDb = $userManager -> getUser($user->getId());
                 $passDb = $userDb['pass'];
 
+
+                $currentPass = (isset($_POST['current-pass'])) ? filter_var( $_POST['current-pass'], FILTER_SANITIZE_STRIPPED) : NULL;
+                $newPass = (isset($_POST['new-pass'])) ? filter_var( $_POST['new-pass'], FILTER_SANITIZE_STRIPPED) : NULL;
 //                verification que les champs des mdp ne soient pas vides
-                if(!empty($_POST['current-pass']) && !empty($_POST['new-pass']) && !empty($passDb)) {
+                if(!empty($currentPass) && !empty($newPass) && !empty($passDb)) {
 
 //                    verification si le courrent pass et le mdp de la BDD sont egaux
-                    if(password_verify($_POST['current-pass'], $passDb)) {
+                    if(password_verify($currentPass, $passDb)) {
 
-                        if($_POST['new-pass'] !== $_POST['current-pass']) {
+                        if($newPass !== $currentPass) {
 
-                            $user = New User([  'id' => intval($_POST['user-id']),
-                                'user' => $_POST['user'],
-                                'email' => $_POST['email'],
-                                'pass' => $_POST['new-pass'],
-                                'role' => $_POST['user_role']]);
+                            $user = New User([  'id' => intval($userId['user-id']),
+                                'user' => $postUser,
+                                'email' => $postEmail,
+                                'pass' => $newPass,
+                                'role' => $postUserRole]);
 
                             updateUser($user); // MàJ l'utilisateur avec nouveau mdp
                         }
 
-                        elseif ($_POST['new-pass'] === $_POST['current-pass']) {
+                        elseif ($newPass === $currentPass) {
 
-                            $user = New User([  'id' => $_POST['user-id'],
-                                'user' => $_POST['user'],
-                                'email' => $_POST['email'],
-                                'pass' => $_POST['current-pass'],
-                                'role' => $_POST['user_role']]);
+                            $user = New User([  'id' => $userId,
+                                'user' => $postUser,
+                                'email' => $postEmail,
+                                'pass' => $currentPass,
+                                'role' => $postUserRole]);
 
                             updateUser($user); // MàJ l'utilisateur avec le current mdp
                         }
@@ -231,10 +234,10 @@ try {
 
 //               si les champs de des mot passes sont vides on màj que le nom, email et role
                 else {
-                    $user = New User([  'id' => $_POST['user-id'],
-                                        'user' => $_POST['user'],
-                                        'email' => $_POST['email'],
-                                        'role' => $_POST['user_role']]);
+                    $user = New User([  'id' => $userId,
+                                        'user' => $postUser,
+                                        'email' => $postEmail,
+                                        'role' => $postUserRole]);
 
                     updateUser($user); // MàJ l'utilisateur avec le current mdp
                 }
@@ -251,7 +254,7 @@ try {
 
 
 
-        elseif ($_GET['action'] === 'addPost') {
+        elseif ($action === 'addPost') {
             // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
                 // Si est une image et sa taille est plus petite de 2MB
@@ -272,7 +275,7 @@ try {
         }
 
 
-        elseif ($_GET['action'] == 'supprimer') {
+        elseif ($action == 'supprimer') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -287,7 +290,7 @@ try {
 
 
 
-        elseif ($_GET['action'] == 'editer') {
+        elseif ($action == 'editer') {
 
 //            require('Views/backend/postEditView.php');
 
@@ -302,7 +305,7 @@ try {
             }
         }
 
-        elseif ($_GET['action'] === 'updatePost') {
+        elseif ($action === 'updatePost') {
 
             if(!empty($_POST['titre']) && !empty($_POST['post-content'])) {
                 $post = New Post(['id' => $_POST['post-id'] ,'title' => $_POST['titre'], 'content' => $_POST['post-content']]);
@@ -322,7 +325,7 @@ try {
 
 
 //        ajouter un commentaire
-        elseif ($_GET['action'] == 'addComment') {
+        elseif ($action == 'addComment') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -344,7 +347,7 @@ try {
 
 
 //        supprimer un commentaire
-        elseif ($_GET['action'] == 'supreportedcom') {
+        elseif ($action == 'supreportedcom') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 delComment($_GET['id']);
