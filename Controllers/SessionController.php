@@ -51,9 +51,9 @@ class SessionController {
     public function getFlash () {
 
         if(isset($_SESSION['flash'])) {
-            $flash = filter_var( $_SESSION['flash'], FILTER_SANITIZE_STRIPPED);
-            echo ('<p id="alert" class="alert alert__' . $flash['flash']['type'] .'">'
-                                . $flash['flash']['message']
+
+            echo ('<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
+                                . $_SESSION['flash']['message']
                             .'</p>');
         }
     }
