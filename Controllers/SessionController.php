@@ -8,7 +8,7 @@
 
 namespace Controllers;
 
-use \entity\User;
+use entity\User;
 
 
 class SessionController {
@@ -52,7 +52,7 @@ class SessionController {
 
         if(isset($_SESSION['flash'])) {
 
-            return print_r('<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
+            echo ('<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
                                 . $_SESSION['flash']['message']
                             .'</p>');
         }

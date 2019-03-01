@@ -2,8 +2,8 @@
 
 namespace Controllers;
 
-use \entity\User;
-use \Models\UserManager;
+use entity\User;
+use Models\UserManager;
 
 require_once ('Models/Manager.php');
 
@@ -71,7 +71,6 @@ Class UserController {
         else {
 
             header('location: index.php?action=connexion');
-            exit();
 
         }
     }

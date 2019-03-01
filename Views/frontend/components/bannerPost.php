@@ -4,10 +4,10 @@
 
         if($image !== '') {
 
-            print_r('<img src="'.$image.'" alt="Banner" class="banner__img">');
+            echo('<img src="'.$image.'" alt="Banner" class="banner__img">');
         }
         else {
-            print_r('<img src="https://images.pexels.com/photos/35637/alaska-glacier-ice-mountains.jpg?auto=compress" alt="Banner" class="banner__img">');
+            echo('<img src="https://images.pexels.com/photos/35637/alaska-glacier-ice-mountains.jpg?auto=compress" alt="Banner" class="banner__img">');
         }
     ?>
 </div>
