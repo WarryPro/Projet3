@@ -32,8 +32,9 @@ class PaginationController {
 
         $table = $pagination -> getTable();
         $page= $pagination -> getPage();
+        $action = $_GET['action'];
 
-        if($_GET['action'] !== 'admin') {
+        if($action !== 'admin') {
 
             $method = 'list'.ucfirst($table);
         }
@@ -43,8 +44,7 @@ class PaginationController {
 
         $data = [$totalPages, $posts, $page];
 
-        $result = $viewController -> $method($data);
+        $viewController -> $method($data);
 
-//        return $result;
     }
 }

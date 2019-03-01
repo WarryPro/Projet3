@@ -8,11 +8,8 @@
 
 namespace Controllers;
 
-use \Models\Manager;
-use \entity\User;
-use \Models\UserManager;
-use \entity\Post;
-use \Models\PostManager;
+use Models\Manager;
+use Models\PostManager;
 
 
 class PostController {
@@ -26,8 +23,9 @@ class PostController {
 
         $affectedLines = $postManager->addPost($id, $title, $content, $image);
 
+        $sessionRole = $_SESSION['user_role'];
         //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
-        if ($affectedLines === false && $_SESSION('user_role') !== 'Admin') {
+        if ($affectedLines === false && $sessionRole !== 'Admin') {
 
             die("Impossible d'ajouter le post !");
         }
