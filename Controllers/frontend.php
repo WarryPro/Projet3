@@ -1,11 +1,11 @@
 <?php
 
-use \Models\Manager;
-use \Models\PostManager;
-use \Models\CommentManager;
-use \Models\UserManager;
-use \entity\User;
-use \Controllers\SessionController;
+use Controllers\SessionController;
+use entity\User;
+use Models\CommentManager;
+use Models\Manager;
+use Models\PostManager;
+use Models\UserManager;
 
 require_once('Models/PostManager.php');
 require_once('Models/CommentManager.php');
@@ -120,7 +120,7 @@ function deletePosts($postId) {
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($post === false && $_SESSION['user_role'] !== 'Admin') {
 
-        die('Impossible de supprimer le post !');
+        echo 'Impossible de supprimer le post !';
     }
 
     //Les données ont été supprimés, on redirige donc le visiteur vers la page admin
@@ -140,7 +140,7 @@ function editerPosts ($postId) {
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($postId === false && $_SESSION['user_role'] !== 'Admin') {
 
-        die("Impossible d'éditer le post !");
+        echo "Impossible d'éditer le post !";
     }
 
     //Les données ont été édités, on redirige donc le visiteur vers la page admin
@@ -199,7 +199,7 @@ function addComment($post_id, $user, $comment) {
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($affectedLines === false) {
         
-        die("Impossible d'ajouter le commentaire !");
+        echo "Impossible d'ajouter le commentaire !";
     }
 
     //Les données ont été insérées, on redirige donc le visiteur vers la page du billet pour qu'il puisse voir son commentaire 
@@ -218,7 +218,7 @@ function delComment($commentId) {
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($affectedLines === false) {
 
-        die("Impossible de supprimer le commentaire !");
+        echo "Impossible de supprimer le commentaire !";
     }
 
     //Les données ont été supprimés, on redirige donc le admin

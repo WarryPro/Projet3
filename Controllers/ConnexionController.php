@@ -8,13 +8,12 @@
 
 namespace Controllers;
 
-use \Models\Manager;
-use \Models\UserManager;
-use \entity\User;
+use entity\User;
+use Models\Manager;
+use Models\UserManager;
 
 
-
-    //gere les données pour les envoyer au manager
+//gere les données pour les envoyer au manager
 class ConnexionController {
 
     /**
@@ -48,9 +47,6 @@ class ConnexionController {
                 header('location: index.php');
 
             }
-
-//          $_SESSION['user'] = $user->getUser();
-            exit();
         }
 
         //s'il n'y a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)
@@ -58,8 +54,7 @@ class ConnexionController {
 
             $userSession -> setFlash('votre mot de passe ou votre utilisateur est incorrect');
             header('location: index.php?action=connexion');
-            
-//            throw new \Exception('votre mot de passe ou votre utilisateur est incorrect');
+
         }
     }
 

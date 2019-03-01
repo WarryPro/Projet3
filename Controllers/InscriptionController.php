@@ -7,9 +7,10 @@
  */
 
 namespace Controllers;
-use Models\UserManager;
 use entity\User;
-    //gere les données pour les envoyer au manager
+use Models\UserManager;
+
+//gere les données pour les envoyer au manager
 class InscriptionController {
 
     /**
@@ -25,10 +26,8 @@ class InscriptionController {
             throw new \Exception("Erreur d'inscription d'un nouveau utilisateur");
         }
         else {
-            //todo  Creer le message de bienvenue et rediriger ver l'accueil
-            header('location: index.php');
 
-            exit();
+            header('location: index.php');
         }
     }
 }
