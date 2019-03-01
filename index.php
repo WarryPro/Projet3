@@ -7,12 +7,12 @@ require ('Models/Autoloader.php');
 require ('entity/Autoloader.php');
 require ('Controllers/frontend.php');
 
-use \Controllers\UserController;
-use \Controllers\ConnexionController;
-use \Controllers\InscriptionController;
-use \Controllers\ViewController;
-use \entity\User;
-use \entity\Post;
+use Controllers\ConnexionController;
+use Controllers\InscriptionController;
+use Controllers\UserController;
+use Controllers\ViewController;
+use entity\Post;
+use entity\User;
 
 \Controllers\Autoloader::register();
 \Models\Autoloader::register();
@@ -21,9 +21,11 @@ use \entity\Post;
 
 $db = \Models\Manager::dbConnect();
 try {
-    if (isset($_GET['action'])) {
+    $action = (isset($_GET['action'])) ? $_GET['action'] : NULL;
 
-        if ($_GET['action'] == 'billets') {
+    if ($action) {
+
+        if ($action == 'billets') {
 
 //            listPosts();
 

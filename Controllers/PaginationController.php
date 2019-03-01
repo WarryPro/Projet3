@@ -32,8 +32,8 @@ class PaginationController {
 
         $table = $pagination -> getTable();
         $page= $pagination -> getPage();
-        $action = $_GET['action'];
-
+        $action = (isset($_GET['action'])) ? $_GET['action'] : NULL;
+        var_dump($action);
         if($action !== 'admin') {
 
             $method = 'list'.ucfirst($table);
