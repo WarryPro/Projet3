@@ -31,9 +31,12 @@ try {
 
             $paginationController = New \Controllers\PaginationController();
 
-            if(isset($_GET['page'])) {
+            //sanitize vars GET // s'il exite le nombre de la page sinon on donne page 1 par defaut
+            $page = (isset($_GET['page'])) ? filter_var( $_GET['page'], FILTER_SANITIZE_STRIPPED) : 1;
 
-                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $_GET['page'], 'postsParPage' => 6]);
+            if($page) {
+
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $page, 'postsParPage' => 6]);
             }else {
                 $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 6]);
             }
@@ -47,7 +50,7 @@ try {
 
 
 //        Redirige vers la page de connection
-        elseif ($_GET['action'] === 'connexion') {
+        elseif ($action === 'connexion') {
 
             $view = new ViewController();
 
@@ -55,11 +58,14 @@ try {
         }
 
         // VERIFIER la conn de l'utilisateur
-        elseif ($_GET['action'] === 'connectuser') {
+        elseif ($action === 'connectuser') {
 
-            if(!empty( $_POST['user']) && !empty( $_POST['pass']) ) {
+            $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+            $postPass = (isset($_POST['pass'])) ? filter_var( $_POST['pass'], FILTER_SANITIZE_STRIPPED) : NULL;
 
-                $user = new User(['user' => $_POST['user'], 'pass' => $_POST['pass']]);
+            if(!empty( $postUser) && !empty( $postPass) ) {
+
+                $user = new User(['user' => $postUser, 'pass' => $postPass]);
 
                 $connexion = new ConnexionController();
 
@@ -67,7 +73,7 @@ try {
 
             }
 
-            elseif( empty( $_GET['user']) OR empty( $_GET['pass']) ) {
+            elseif( empty( $postUser) OR empty( $postPass) ) {
 
                 throw new \Exception('Il faut remplir tous les champs !');
             }
@@ -75,24 +81,29 @@ try {
 
 
 //        Redirige vers la page d'inscription
-        elseif ($_GET['action'] === 'inscription') {
+        elseif ($action === 'inscription') {
 
             $view = new ViewController();
 
             $view -> inscription();
         }
 
-        elseif($_GET['action'] === 'inscripuser') {
 
-            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
+        elseif($action === 'inscripuser') {
 
-                $user = new User(['user' => $_POST['user'], 'email' => $_POST['email'], 'pass' => $_POST['pass']]);
+            $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+            $postPass = (isset($_POST['pass'])) ? filter_var( $_POST['pass'], FILTER_SANITIZE_STRIPPED) : NULL;
+            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
+
+            if(!empty($postUser) && !empty($postEmail) && !empty($postPass)) {
+
+                $user = new User(['user' => $postUser, 'email' => $postEmail, 'pass' => $postPass]);
 
                 $inscription = new InscriptionController();
 
                 $inscription -> inscrUser($db, $user);
             }
-            elseif( empty( $_GET['user']) OR empty( $_GET['email']) OR empty( $_GET['pass'])) {
+            elseif( empty( $postUser) OR empty( $postEmail) OR empty( $postPass)) {
 
                 throw new \Exception('Il faut remplir tous les champs !');
             }
@@ -101,11 +112,13 @@ try {
 
 
         //    redirige vers la page de recuperation de mdp (forgotpassword)
-        elseif($_GET['action'] === 'forgotpassword') {
+        elseif($action === 'forgotpassword') {
 
-            if(!empty($_POST['email'])) {
+            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
 
-                $user = new User(['email' => $_POST['email']]);
+            if(!empty($postEmail)) {
+
+                $user = new User(['email' => $postEmail]);
                 $update = new UserController();
                 $update -> emailExist($db, $user);
             }
@@ -116,9 +129,11 @@ try {
         }
 
 
-        elseif($_GET['action'] === 'deconnexion') {
+        elseif($action === 'deconnexion') {
             // Si $_SESSION est active
-            if(isset($_SESSION['user'])) {
+            $session = (isset($_SESSION['user'])) ? filter_var( $_SESSION['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+            if($session) {
                 $deconnexion = new ConnexionController();
 
                 $deconnexion -> deconnexion();
@@ -127,9 +142,11 @@ try {
 
 
 
-        elseif ($_GET['action'] == 'post') {
+        elseif ($action == 'post') {
 
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $getId = (isset($_GET['id'])) ? filter_var( $_GET['id'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+            if ($getId > 0) {
 
                 post();
             }
@@ -141,15 +158,17 @@ try {
         }
 
 
-        elseif ($_GET['action'] === 'admin') {
+        elseif ($action === 'admin') {
 
 //            adminListPosts();
 
             $paginationController = New \Controllers\PaginationController();
 
-            if(isset($_GET['page'])) {
+            $page = (isset($_GET['page'])) ? filter_var( $_GET['page'], FILTER_SANITIZE_STRIPPED) : NULL;
 
-                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $_GET['page'], 'postsParPage' => 2]);
+            if($page) {
+
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $page, 'postsParPage' => 2]);
             }else {
                 $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 2]);
             }
@@ -160,11 +179,17 @@ try {
 
 
 
-        elseif ($_GET['action'] === 'updateuser') {
+        elseif ($action === 'updateuser') {
+            //Sanitize vars POST
+            $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
+            $postUserRole = (isset($_POST['user_role'])) ? filter_var( $_POST['user_role'], FILTER_SANITIZE_STRIPPED) : NULL;
 
-            if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['user_role'])) {
+            if(!empty($postUser) && !empty($postEmail) && !empty($postUserRole)) {
 
-                $user = New User( ['id' => $_POST['user-id']] );
+                $postId = (isset($_POST['user-id'])) ? filter_var( $_POST['user-id'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+                $user = New User( ['id' => $postId] );
                 $userManager = New \Models\UserManager($db);
                 $userDb = $userManager -> getUser($user->getId());
                 $passDb = $userDb['pass'];
