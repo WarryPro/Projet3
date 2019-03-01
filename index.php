@@ -21,7 +21,7 @@ use entity\User;
 
 $db = \Models\Manager::dbConnect();
 try {
-    $action = (isset($_GET['action'])) ? $_GET['action'] : NULL;
+    $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRIPPED) : NULL;
 
     if ($action) {
 
