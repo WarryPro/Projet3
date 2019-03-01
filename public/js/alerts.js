@@ -6,5 +6,5 @@ if(alert !== null) {
         alert.classList.remove("show");
         alert.parentNode.removeChild(alert);
         alertContainer.parentNode.removeChild(alertContainer);
-    }, 5000)
+    }, 5000);
 }
