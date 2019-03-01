@@ -24,7 +24,7 @@ class PaginationManager extends Manager {
 
         $result = $req -> fetch()['total']; // total elements dans le tableau
 
-        return intval($result);
+        return (int)$result;
     }
 
     public function pagination (Pagination $pagination) {
@@ -32,7 +32,7 @@ class PaginationManager extends Manager {
         $db = self::dbConnect();
 
         $table  = $pagination -> getTable();
-        $page   = intval($pagination -> getPage());
+        $page   = (int)$pagination -> getPage();
         $postsParPage = $pagination -> getPostsParPage();
         $start = ($page > 0) ? $page * $postsParPage - $postsParPage : 0;
 

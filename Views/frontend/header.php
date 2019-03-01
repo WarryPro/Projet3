@@ -1,12 +1,12 @@
 <div class="grid-container header grid-x">
     <div class="small-12 grid-x container-title">
 
-        <?php require ('components/btn-hamburger.php'); ?>
+        <?php require 'components/btn-hamburger.php'; ?>
 
         <h1 class="main-header__title">Jean Forteroche Blog</h1>
 
         <?php
-            require('components/menuReseauxSociaux.php');
+            require 'components/menuReseauxSociaux.php';
         ?>
     </div>
         <div class="container-main-menu grid-x small-12">

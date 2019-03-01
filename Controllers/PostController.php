@@ -23,11 +23,11 @@ class PostController {
 
         $affectedLines = $postManager->addPost($id, $title, $content, $image);
 
-        $sessionRole = $_SESSION['user_role'];
+        $sessionRole = (isset($_SESSION['user_role'])) ? $_SESSION['user_role'] : NULL;
         //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
         if ($affectedLines === false && $sessionRole !== 'Admin') {
 
-            die("Impossible d'ajouter le post !");
+            echo "Impossible d'ajouter le post !";
         }
 
         //Les données ont été insérées, on redirige donc le visiteur vers la page admin

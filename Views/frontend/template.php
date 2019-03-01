@@ -10,15 +10,20 @@
     </head>
         
     <body>
-    <?php if (isset($_GET['action'])) {
 
-        if ($_GET['action'] !== 'post') {
+    <?php
+
+    if (isset($_GET['action'])) {
+
+        $action = $_GET['action'];
+
+        if ($action !== 'post') {
 
             print('<header class ="grid-x main-header">');
 
-                if($_GET['action'] == 'billets' || $_GET['action'] == 'contact'
-                    || $_GET['action'] == 'connexion' || $_GET['action'] == 'inscription'
-                    || $_GET['action'] == 'admin' || $_GET['action'] == 'editer') {
+                if($action == 'billets' || $action == 'contact'
+                    || $action == 'connexion' || $action == 'inscription'
+                    || $action == 'admin' || $action == 'editer') {
 
                     require('header.php');
                 }
@@ -27,9 +32,11 @@
         }
     }
     else {
-        print('<header class ="grid-x main-header">');
-        require('header.php');
-        print('</header>');
+        echo '<header class ="grid-x main-header">';
+
+            require 'header.php';
+
+        echo '</header>';
     }
     ?>
 
@@ -38,7 +45,7 @@
         </main>
 
         <footer class="grid-x">
-            <?php require('footer.php'); ?>
+            <?php require 'footer.php'; ?>
         </footer>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation-essential/6.2.2/js/vendor/jquery.js"></script>
@@ -46,10 +53,10 @@
         <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.0-rc.2/dist/js/foundation.min.js"></script>
         <script>
             //Activer le menu responsive
-            $('#menu-toggle').click(function(){
-                $(this).toggleClass('open')
-                $('.main-nav').toggleClass('show-menu')
-            })
+            $("#menu-toggle").click(function(){
+                $(this).toggleClass("open");
+                $(".main-nav").toggleClass("show-menu");
+            });
         </script>
 
         <script src="public/js/script.js"></script>
@@ -58,18 +65,18 @@
     <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
     <script>
         tinymce.init({
-            selector: '#post-content'
+            selector: "#post-content"
         });
 
 
         //vérifier si notifyTrial existe, si oui, alors on le cache
         let interTiny = setInterval(() => {
-            const notifyTrial = document.getElementById('mceu_31'); // message de notification pour utiliser la version trial de TinyMCE
+            const notifyTrial = document.getElementById("mceu_31"); // message de notification pour utiliser la version trial de TinyMCE
             if(notifyTrial !== null) {
-                notifyTrial.style.display = 'none';
+                notifyTrial.style.display = "none";
                 clearInterval(interTiny);
             }
-        }, 500)
+        }, 500);
     </script>
     <script src="public/js/FetchForms.js"></script>
     </body>

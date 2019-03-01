@@ -21,8 +21,6 @@ Class UserController {
         else {
             
             header('location: index.php?action=admin');
-            
-            exit();
         }
     }
 
@@ -37,8 +35,6 @@ Class UserController {
         else {
                 var_dump($updateInfos);
 //            header('location: index.php?action=admin');
-
-            exit();
         }
     }
 
