@@ -16,8 +16,8 @@ class PostController {
 
 
     static function addPosts($id = '0', $title, $content, $image = '') {
-        $db = New Manager();
-        $db -> dbConnect();
+        $bdd = New Manager();
+        $bdd -> dbConnect();
 
         $postManager = new PostManager(); // Création de l'objet postManager
 
@@ -31,9 +31,6 @@ class PostController {
         }
 
         //Les données ont été insérées, on redirige donc le visiteur vers la page admin
-        else {
-
-            header('Location: index.php?action=admin');
-        }
+        header('Location: index.php?action=admin');
     }
 }

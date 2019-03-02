@@ -64,10 +64,7 @@ Class UserController {
 
             throw new \Exception('Veuillez saisir un mot de passe valide');
         }
-        else {
 
-            header('location: index.php?action=connexion');
-
-        }
+        header('location: index.php?action=connexion');
     }
 }

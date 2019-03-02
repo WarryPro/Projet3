@@ -25,9 +25,7 @@ class InscriptionController {
         if ($InscrUser == FALSE) {
             throw new \Exception("Erreur d'inscription d'un nouveau utilisateur");
         }
-        else {
 
-            header('location: index.php');
-        }
+        header('location: index.php');
     }
 }

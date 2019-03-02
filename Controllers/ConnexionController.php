@@ -42,11 +42,8 @@ class ConnexionController {
 
                 header('location: index.php?admin');
             }
-            else {
 
-                header('location: index.php');
-
-            }
+            header('location: index.php');
         }
 
         //s'il n'y a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)

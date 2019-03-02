@@ -34,12 +34,11 @@ class PaginationController {
         $page= $pagination -> getPage();
         $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRIPPED) : NULL;
 
+        $method = 'listEpisodesAdmin';
+
         if($action !== 'admin') {
 
             $method = 'list'.ucfirst($table);
-        }
-        else {
-            $method = 'listEpisodesAdmin';
         }
 
         $data = [$totalPages, $posts, $page];

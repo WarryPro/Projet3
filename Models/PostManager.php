@@ -129,9 +129,8 @@ class PostManager extends Manager {
 
             return $post;
         }
-        else {
-            echo "Erreur, l'URL spécifié n'existe pas";
-        }
+
+        echo "Erreur, l'URL spécifié n'existe pas";
 
     }
 

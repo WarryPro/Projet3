@@ -36,12 +36,11 @@ class PaginationManager extends Manager {
         $postsParPage = $pagination -> getPostsParPage();
         $start = ($page > 0) ? $page * $postsParPage - $postsParPage : 0;
 
+        $req = $bdd -> query("SELECT SQL_CALC_FOUND_ROWS * FROM $table ORDER BY id DESC LIMIT $start,$postsParPage");
+
         if($table = 'episodes') {
 
             $req = $bdd -> query("SELECT SQL_CALC_FOUND_ROWS id, title, content, image_episode, DATE_FORMAT(created_date, '%d/%m/%Y') AS created_date_fr FROM $table ORDER BY id DESC LIMIT $start,$postsParPage");
-        }
-        else {
-            $req = $bdd -> query("SELECT SQL_CALC_FOUND_ROWS * FROM $table ORDER BY id DESC LIMIT $start,$postsParPage");
         }
 
         $result = $req -> fetchAll();

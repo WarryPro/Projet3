@@ -7,8 +7,8 @@
  */
 
 namespace Controllers;
-use \Models\CommentManager;
-use \entity\ReportComment;
+use entity\ReportComment;
+use Models\CommentManager;
 
 class CommentController {
 
@@ -65,8 +65,7 @@ class CommentController {
         if($userDB === $userAcusser) {
             return true;
         }
-        else {
-           return false;
-        }
+
+        return false;
     }
 }

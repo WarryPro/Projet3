@@ -47,9 +47,7 @@ class CommentManager extends Manager {
 
             return $comment;
         }
-        else {
-            echo "Erreur, l'URL spécifié n'existe pas";
-        }
+        echo "Erreur, l'URL spécifié n'existe pas";
     }
 
 

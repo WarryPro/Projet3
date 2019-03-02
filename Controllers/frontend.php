@@ -40,9 +40,9 @@ function adminListPosts() {
 
 
 function listUsers() {
-    $db = new \Models\Manager(); //instance de la BDD
-    $db -> dbConnect();
-    $userManager = New UserManager($db);
+    $bdd = new \Models\Manager(); //instance de la BDD
+    $bdd -> dbConnect();
+    $userManager = New UserManager($bdd);
 
     if($_SESSION['user_role'] === 'Admin') {
 
@@ -51,9 +51,8 @@ function listUsers() {
         return $users;
 
     }
-    else {
-        header('location: ./index.php');
-    }
+
+    header('location: ./index.php');
 }
 
 
@@ -222,10 +221,7 @@ function delComment($commentId) {
     }
 
     //Les données ont été supprimés, on redirige donc le admin
-    else {
+    $userSession -> setFlash("Le commentaire a été supprimé!", 'success');
 
-        $userSession -> setFlash("Le commentaire a été supprimé!", 'success');
-
-        header('Location: ./index.php?action=admin');
-    }
+    header('Location: ./index.php?action=admin');
 }

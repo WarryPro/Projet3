@@ -179,10 +179,9 @@ class UserManager extends Manager {
                 $_SESSION['user_role'] = $userRow['user_role'];
                 return true;
             }
-            else {
-                $_SESSION['user_role'] = $userRow['user_role'];
-                return false;
-            }
+
+            $_SESSION['user_role'] = $userRow['user_role'];
+            return false;
         }
     }
 
