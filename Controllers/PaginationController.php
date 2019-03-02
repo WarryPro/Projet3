@@ -31,7 +31,9 @@ class PaginationController {
 
 
         $table = $pagination -> getTable();
+
         $page= $pagination -> getPage();
+
         $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRIPPED) : NULL;
 
         $method = 'listEpisodesAdmin';

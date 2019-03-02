@@ -10,7 +10,7 @@ namespace entity;
 
 
 class Post {
-    protected $id;
+    protected $idPost;
     protected $title;
     protected $content;
     protected $image;
@@ -38,9 +38,9 @@ class Post {
     /*
      * GETTERS
      **/
-    public function getId() {
+    public function getIdPost() {
 
-        return $this -> id;
+        return $this -> idPost;
     }
 
     public function getTitle() {
@@ -64,9 +64,9 @@ class Post {
     /*
      * SETTERS
      **/
-    public function setId($id) {
+    public function setIdPost($idPost) {
 
-        $this -> id = $id;
+        $this -> idPost = $idPost;
     }
 
     public function setTitle($title) {

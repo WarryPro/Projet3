@@ -153,9 +153,7 @@ class UserManager extends Manager {
 
                 return true;
             }
-            else {
-                return false;
-            }
+            return false;
         }
     }
 

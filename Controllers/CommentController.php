@@ -34,11 +34,9 @@ class CommentController {
 
                 echo "Une erreur est survenu";
             }
-            else {
-                $sessionController->setFlash('Le commentaire a été signalé', 'success');
-                header('location: ../index.php?action=post&id='. $_SESSION['uri']);
-                unset($_SESSION['uri']); // Supp la session pour cette var
-            }
+            $sessionController->setFlash('Le commentaire a été signalé', 'success');
+            header('location: ../index.php?action=post&id='. $_SESSION['uri']);
+            unset($_SESSION['uri']); // Supp la session pour cette var
         }
 
 //      si il a déjà signalé avant alors en envoie une alerte

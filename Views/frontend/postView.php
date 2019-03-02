@@ -2,7 +2,8 @@
 
 <?php ob_start();
 
-use \Controllers\CommentController;
+use Controllers\CommentController;
+
 $commentController = New CommentController()
 
 ?>
@@ -39,7 +40,8 @@ $commentController = New CommentController()
 
         <div class="post form-comments grid-x">
             <?php
-            if(isset($_SESSION['user'])) { ?>
+            $sessionUser = $_SESSION['user'];
+            if(isset($sessionUser)) { ?>
                 <div class="container-form card">
                     <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
                         <div class="input-form">
@@ -54,7 +56,7 @@ $commentController = New CommentController()
             <?php
             } // Fermeture du if
             else {
-                print_r("<div class='container-form card'>
+                echo ("<div class='container-form card'>
                             <p>Pour commenter vous devez <a href='./index.php?action=inscription'>s'inscrire</a> ou 
                                 <a href='./index.php?action=connexion'>se connecter</a>
                             </p>
@@ -80,8 +82,8 @@ $commentController = New CommentController()
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
                                 <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                                 <?php
-
-                                    if (!isset($_SESSION['user'])) {
+                                    $sessionUser = $_SESSION['user'];
+                                    if (!isset($sessionUser)) {
                                         NULL; // s'il n'y a pas session on ne fait rien
                                     }
 

@@ -100,7 +100,7 @@ class PostManager extends Manager {
 
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
-            $req -> bindValue( ':id', $post -> getId());
+            $req -> bindValue( ':id', $post -> getIdPost());
             $req -> bindValue( ':title', $post -> getTitle());
             $req -> bindValue( ':content', $post -> getContent());
 
