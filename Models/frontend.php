@@ -4,9 +4,9 @@ require_once('Manager.php');
 
 function getPosts()
 {
-    $db = dbConnect();
+    $bdd = dbConnect();
 
-    $req = $db->query('SELECT 
+    $req = $bdd->query('SELECT 
                             id, 
                             title, 
                             content, 
@@ -19,9 +19,9 @@ function getPosts()
 
 function getPost($postId)
 {
-    $db = dbConnect();
+    $bdd = dbConnect();
 
-    $req = $db->prepare('SELECT 
+    $req = $bdd->prepare('SELECT 
                               id, 
                               title, 
                               content, 
@@ -38,8 +38,8 @@ function getPost($postId)
 
 function getComments($postId)
 {
-    $db = dbConnect();
-    $comments = $db->prepare('SELECT 
+    $bdd = dbConnect();
+    $comments = $bdd->prepare('SELECT 
                                   id, 
                                   user, 
                                   comment, 

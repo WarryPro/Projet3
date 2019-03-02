@@ -5,7 +5,7 @@ namespace Models;
 require_once('Manager.php');
 
 
-use \entity\User;
+use entity\User;
 
 class UserManager extends Manager {
     
@@ -22,8 +22,8 @@ class UserManager extends Manager {
 
     public function getInfos() {
 
-        $db = $this -> dbConnect();
-        $requete = $db -> query('SELECT * FROM users');
+        $bdd = $this -> dbConnect();
+        $requete = $bdd -> query('SELECT * FROM users');
         $requete -> setFetchMode(\PDO::FETCH_PROPS_LATE | \PDO::FETCH_CLASS, '\entity\User');
         $user = $requete -> fetchAll();
 
@@ -32,18 +32,18 @@ class UserManager extends Manager {
 
     public function getUsers() {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
         // Recupere la liste d'utilisateurs
-        $req = $db->query('SELECT `id`, `user`, `email`, `user_role` FROM users ORDER BY id DESC');
+        $req = $bdd->query('SELECT `id`, `user`, `email`, `user_role` FROM users ORDER BY id DESC');
 
         return $req;
     }
 
     public function getUser($userId) {
 
-        $db = $this->dbConnect();
-        $req = $db->query("SELECT `id`, `user`, `email`, `pass`, `user_role` FROM users WHERE id = $userId");
+        $bdd = $this->dbConnect();
+        $req = $bdd->query("SELECT `id`, `user`, `email`, `pass`, `user_role` FROM users WHERE id = $userId");
 
         $user = $req -> fetch();
 
@@ -53,8 +53,8 @@ class UserManager extends Manager {
 
     public function setInfos(User $user) {
 
-        $db = $this -> dbConnect();
-        $requete = $db -> prepare('UPDATE users SET user = :user, email = :email, user_role = :user_role WHERE id = :id');
+        $bdd = $this -> dbConnect();
+        $requete = $bdd -> prepare('UPDATE users SET user = :user, email = :email, user_role = :user_role WHERE id = :id');
 
         $requete -> bindValue(':user', $user -> getUser());
         $requete -> bindValue(':email', $user -> getEmail());
@@ -71,11 +71,11 @@ class UserManager extends Manager {
 
     public function updateUser(User $user) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
         $userId = $user->getId();
 
-        $reqPass = $db -> query("SELECT pass FROM users WHERE id = $userId ");
+        $reqPass = $bdd -> query("SELECT pass FROM users WHERE id = $userId ");
 
         $reqPass->setFetchMode(\PDO::FETCH_PROPS_LATE | \PDO::FETCH_CLASS, '\entity\User');
 
@@ -87,7 +87,7 @@ class UserManager extends Manager {
             $userPassDb = $userPass['pass'];
         }
 
-        $req = $db -> prepare("UPDATE `users` SET `user` = :user,  `email` = :email, `pass` = :pass, `user_role` = :user_role WHERE `id` = :id ");
+        $req = $bdd -> prepare("UPDATE `users` SET `user` = :user,  `email` = :email, `pass` = :pass, `user_role` = :user_role WHERE `id` = :id ");
 
 
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
@@ -136,11 +136,11 @@ class UserManager extends Manager {
      * */
     public function connUser(User $user) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
         $passIn = $user -> getPass(); // mdp donné pour @user
 
-        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
+        $requete = $bdd -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
 
         $requete -> execute(array(':user' => $user -> getUser())); // Recuperer les valeurs de la BDD dans un array pour l'utilisateur passé en @param
 
@@ -165,9 +165,9 @@ class UserManager extends Manager {
      * */
     public function isAdmin(User $user) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
-        $requete = $db -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
+        $requete = $bdd -> prepare('SELECT * FROM users WHERE user = :user LIMIT 1'); // selectionne l'user passé en @param
 
         $requete -> execute(array(':user' => $user -> getUser())); // Recuperer les valeurs de la BDD dans un array pour l'utilisateur passé en @param
 
@@ -193,11 +193,11 @@ class UserManager extends Manager {
      * */
     public function inscrUser(User $user) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
         $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT); //encriptation du mdp donné par @user
 
-        $requete = $db -> prepare("INSERT INTO users(user, email, pass, user_role) VALUES(:user, :email, :pass, 'User')");
+        $requete = $bdd -> prepare("INSERT INTO users(user, email, pass, user_role) VALUES(:user, :email, :pass, 'User')");
 
         $requete -> bindValue(':user', $user -> getUser());
 
@@ -214,10 +214,10 @@ class UserManager extends Manager {
 
     public function updatePass(User $user) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
         $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
 
-        $req = $db -> prepare('UPDATE users SET pass = :pass');
+        $req = $bdd -> prepare('UPDATE users SET pass = :pass');
 
         $req -> bindValue(':pass',$hash);
 

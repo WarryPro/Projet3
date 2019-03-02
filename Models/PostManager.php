@@ -1,7 +1,7 @@
 <?php 
 namespace Models;
 
-use \entity\Post;
+use entity\Post;
 
 require_once('Manager.php');
 
@@ -10,7 +10,7 @@ class PostManager extends Manager {
 
     public function addPost($id, $title, $content, $image_episode) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
         $imgPath = 'public/images/';
 
@@ -23,7 +23,7 @@ class PostManager extends Manager {
 
                 copy($image_episode['tmp_name'], $imgPath .$image_episode['name']);
 
-                $req = $db -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
+                $req = $bdd -> prepare ( "INSERT INTO episodes (id, title, content, image_episode, created_date, modif_date) VALUES (?, ?, ?, ?, NOW(), NOW())");
 
                 $affectedLines = $req->execute(array($id, $title, $content, $imgPath . $image_episode['name']));
 
@@ -38,20 +38,20 @@ class PostManager extends Manager {
 
     public function getPosts() {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
         // Recupere la liste de posts
-        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC');
+        $req = $bdd->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY id DESC');
 
         return $req;
     }
 
     public function getDerniersPosts() {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
         // Recupere les 5 derniers posts
-        $req = $db->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 3');
+        $req = $bdd->query('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes ORDER BY created_date DESC LIMIT 0, 3');
 
         return $req;
     }
@@ -59,9 +59,9 @@ class PostManager extends Manager {
 
     public function getPost($postId) {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
         
-        $req = $db->prepare('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes WHERE id = ?');
+        $req = $bdd->prepare('SELECT id, title, content, image_episode, DATE_FORMAT(created_date, \'%d/%m/%Y\') AS created_date_fr FROM episodes WHERE id = ?');
 
         $req->execute(array($postId));
 
@@ -74,11 +74,11 @@ class PostManager extends Manager {
 
     public function getPostEditer($postId) {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
         if(isset($postId)) {
 
-            $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(modif_date, \'%d/%m/%Y\') AS modif_date_fr FROM episodes WHERE id = ?');
+            $req = $bdd->prepare('SELECT id, title, content, DATE_FORMAT(modif_date, \'%d/%m/%Y\') AS modif_date_fr FROM episodes WHERE id = ?');
 
             $req->execute(array($postId));
 
@@ -94,9 +94,9 @@ class PostManager extends Manager {
 
     public function updatePost(Post $post) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
-        $req = $db -> prepare("UPDATE `episodes` SET `title`= :title, `content`= :content, `modif_date` = NOW() WHERE `id` = :id LIMIT 1");
+        $req = $bdd -> prepare("UPDATE `episodes` SET `title`= :title, `content`= :content, `modif_date` = NOW() WHERE `id` = :id LIMIT 1");
 
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
@@ -116,10 +116,10 @@ class PostManager extends Manager {
 
     public function deletePost($postId) {
 
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
         
-        $reqEp = $db -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
-        $reqCo = $db -> prepare("DELETE FROM comments WHERE episode_id = :id");
+        $reqEp = $bdd -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
+        $reqCo = $bdd -> prepare("DELETE FROM comments WHERE episode_id = :id");
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
             $reqEp -> bindValue( ':id', $postId);

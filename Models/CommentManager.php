@@ -1,7 +1,8 @@
 <?php 
 namespace Models;
 use entity\ReportComment;
-require_once('Manager.php');
+
+require_once 'Manager.php';
 
 
 class CommentManager extends Manager {
@@ -9,9 +10,9 @@ class CommentManager extends Manager {
     // Obtenir commentaires
     public function getComments($postId) {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
         
-        $comments = $db->prepare('SELECT id, user, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y\') AS comment_date_fr FROM comments WHERE episode_id = ? ORDER BY comment_date DESC');
+        $comments = $bdd->prepare('SELECT id, user, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y\') AS comment_date_fr FROM comments WHERE episode_id = ? ORDER BY comment_date DESC');
 
         $comments->execute(array($postId));
 
@@ -21,9 +22,9 @@ class CommentManager extends Manager {
     // Créér un commentaire
     public function postComment($postId, $user, $comment) {
         
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
-        $comments = $db->prepare('INSERT INTO comments(episode_id, user, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $comments = $bdd->prepare('INSERT INTO comments(episode_id, user, comment, comment_date) VALUES(?, ?, ?, NOW())');
         
         $affectedLines = $comments->execute(array($postId, $user, $comment));
 
@@ -31,9 +32,9 @@ class CommentManager extends Manager {
     }
 
     public function delComment($commentId) {
-        $db = $this -> dbConnect();
+        $bdd = $this -> dbConnect();
 
-        $req = $db -> prepare("DELETE comments, reported_comms FROM `comments` 
+        $req = $bdd -> prepare("DELETE comments, reported_comms FROM `comments` 
                                           INNER JOIN reported_comms 
                                           WHERE comments.id = reported_comms.comment_id 
                                           AND comments.id = :id");
@@ -55,10 +56,10 @@ class CommentManager extends Manager {
     // Recupere la liste de commentaires signalés
     public function getReportedComments() {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
 
-        $req = $db->query('SELECT id, comment_id, episode_id, 
+        $req = $bdd->query('SELECT id, comment_id, episode_id, 
                                             reported_comment, user_id, GROUP_CONCAT(DISTINCT user_accuser SEPARATOR ", ") AS users_accusers, 
                                             DATE_FORMAT(reported_date, \'%d/%m/%Y à %Hh%i\') AS date_fr, SUM(num_reports) AS `total_reports` 
                                       FROM reported_comms GROUP BY comment_id
@@ -72,18 +73,18 @@ class CommentManager extends Manager {
 //    Métho pour signaler un commentaire
     public function reportComment (ReportComment $reporter) {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
         $commentId = $reporter->getCommentId();
         $user_accuser = strval( $reporter->getUserAccuser());
 
-        $selReportedComment = $db->prepare("SELECT episode_id FROM comments WHERE id = :comm_id");
+        $selReportedComment = $bdd->prepare("SELECT episode_id FROM comments WHERE id = :comm_id");
 
         $selReportedComment -> bindParam(':comm_id', $commentId);
         $selReportedComment -> execute();
         $result = $selReportedComment->fetch();
 
-        $req = $db->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`, `reported_date`, `num_reports`) 
+        $req = $bdd->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`, `reported_date`, `num_reports`) 
                                 VALUES (:comm_id, 
                                         (SELECT `comment` FROM `comments` WHERE `id` = :id_rep_comm),  
                                         (SELECT `episode_id` FROM `comments` WHERE `id` = :com_episode_id),
@@ -111,9 +112,9 @@ class CommentManager extends Manager {
      * */
     public function userHasReported($commentId) {
 
-        $db = $this->dbConnect();
+        $bdd = $this->dbConnect();
 
-        $reqSelUser = $db->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id AND user_accuser = :user_accuser");
+        $reqSelUser = $bdd->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id AND user_accuser = :user_accuser");
 
         $reqSelUser -> bindParam(':comm_id', $commentId);
         $reqSelUser -> bindParam(':user_accuser', $_SESSION['user']);
