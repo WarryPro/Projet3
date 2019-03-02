@@ -57,7 +57,7 @@ setInterval(() => {
 // MODAL SIGNALER
 for (const elmt of signaler) {
     elmt.addEventListener("click", () => {
-        const inputCommId = document.getElementById"commid"); // Input hidden pour l'id du commentaire à signaler
+        const inputCommId = document.getElementById("commid"); // Input hidden pour l'id du commentaire à signaler
         modal.classList.remove("hide");
         inputCommId.value = elmt.getAttribute("id"); // insert l'id du commentaire dans l'input hidden
 

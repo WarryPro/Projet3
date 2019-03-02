@@ -120,6 +120,8 @@ class PostManager extends Manager {
         
         $reqEp = $bdd -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
         $reqCo = $bdd -> prepare("DELETE FROM comments WHERE episode_id = :id");
+
+
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
             $reqEp -> bindValue( ':id', $postId);

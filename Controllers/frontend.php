@@ -97,9 +97,14 @@ function post() {
 
     $commentManager = new commentManager();
 
-    $post = $postManager->getPost($_GET['id']);
-    
-    $comments = $commentManager->getComments($_GET['id']);
+    if (isset($_GET['id']) && !empty($_GET['id'])) {
+
+        $id = $_GET['id'];
+
+        $post = $postManager->getPost($id);
+
+        $comments = $commentManager->getComments($id);
+    }
 
     require('views/frontend/postView.php');
 }

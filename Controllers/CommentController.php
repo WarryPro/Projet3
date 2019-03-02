@@ -41,13 +41,10 @@ class CommentController {
             }
         }
 
-//        si il a déjà signalé avant alors en envoie une alerte
-        else {
-
-            $sessionController->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
-            header('location: ../index.php?action=post&id='. $_SESSION['uri']);
-            unset($_SESSION['uri']); // Supp la session pour cette var
-        }
+//      si il a déjà signalé avant alors en envoie une alerte
+        $sessionController->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
+        header('location: ../index.php?action=post&id='. $_SESSION['uri']);
+        unset($_SESSION['uri']); // Supp la session pour cette var
 
     }
 

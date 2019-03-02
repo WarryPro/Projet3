@@ -5,7 +5,7 @@ namespace Controllers;
 use entity\User;
 use Models\UserManager;
 
-require_once ('Models/Manager.php');
+require_once 'Models/Manager.php';
 
 Class UserController {
 
@@ -18,10 +18,8 @@ Class UserController {
 
             throw new \Exception('Veuillez vérifier vos informations');
         }
-        else {
-            
-            header('location: index.php?action=admin');
-        }
+
+        header('location: index.php?action=admin');
     }
 
     public function editerUser($db, $userId) {
@@ -32,20 +30,19 @@ Class UserController {
 
             throw new \Exception('Veuillez vérifier vos informations');
         }
-        else {
-                var_dump($updateInfos);
-//            header('location: index.php?action=admin');
-        }
+
+        var_dump($updateInfos);
+        header('location: index.php?action=admin');
     }
 
-    public function emailExist($db, User $user) {
+    public function emailExist($bdd, User $user) {
 
-        $emailExist = new UserManager($db);
+        $emailExist = new UserManager($bdd);
 
         //todo: Metho compareEmail à créér dans la class UserManager
-        if($emailExist -> compareEmail($user) == 1) {
+//        if($emailExist -> compareEmail($user) == 1) {
             //todo: Demander à Max comment faire pour envoyer un email de recuperation à l'user
-        }
+//        }
     }
 
     /**
@@ -53,9 +50,9 @@ Class UserController {
      *
      *
      */
-    public function updatePass($db, User $user) {
+    public function updatePass($bdd, User $user) {
 
-        $pass = new UserManager($db);
+        $pass = new UserManager($bdd);
 
         $newpass = $pass -> updatePass($user);
         $id = mt_rand();

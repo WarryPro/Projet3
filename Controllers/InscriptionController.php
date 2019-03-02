@@ -16,9 +16,9 @@ class InscriptionController {
     /**
      *Gere les données du formulaire de'inscription (inscripForm) pour l'envoyer au model
      */
-    public function inscrUser($db, User $user) {
+    public function inscrUser($bdd, User $user) {
 
-        $UserManager = new UserManager($db);
+        $UserManager = new UserManager($bdd);
 
         $InscrUser = $UserManager->InscrUser($user);
 

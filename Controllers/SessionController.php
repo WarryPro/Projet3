@@ -31,7 +31,10 @@ class SessionController {
      * Obtient le @user qu'a une session initialisée
      **/
     public function getCurrentUser () {
-        return $_SESSION['user'];
+
+        $sessionUser = (isset($_SESSION['user'])) ? $_SESSION['user'] : NULL;
+
+        return $sessionUser;
     }
 
 

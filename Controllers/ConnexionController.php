@@ -21,12 +21,12 @@ class ConnexionController {
      *
      * @user à se connecter
      */
-    public function connUser($db, User $user) {
+    public function connUser($bdd, User $user) {
 
-        $db = new Manager(); //instance de la BDD
-        $db->dbConnect();
+        $bdd = new Manager(); //instance de la BDD
+        $bdd->dbConnect();
 
-        $UserManager = new UserManager($db);
+        $UserManager = new UserManager($bdd);
         $ConnUser = $UserManager -> connUser($user); // Connexion de @user return 1 si true 0 si false
         $userSession = New SessionController(); //Instance pour une session
 
