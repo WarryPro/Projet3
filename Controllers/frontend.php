@@ -58,10 +58,10 @@ function listUsers() {
 
     function updateUser (User $user) {
 
-        $db = new Manager(); //instance de la BDD
-        $db -> dbConnect();
+        $bdd = new Manager(); //instance de la BDD
+        $bdd -> dbConnect();
 
-        $userManager = New UserManager($db);
+        $userManager = New UserManager($bdd);
 
         $userSession = New SessionController(); //Instance pour une session
         $affectedLines = $userManager -> updateUser($user);
@@ -99,11 +99,11 @@ function post() {
 
     if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-        $id = $_GET['id'];
+        $idPost = $_GET['id'];
 
-        $post = $postManager->getPost($id);
+        $post = $postManager->getPost($idPost);
 
-        $comments = $commentManager->getComments($id);
+        $comments = $commentManager->getComments($idPost);
     }
 
     require('views/frontend/postView.php');
@@ -207,10 +207,7 @@ function addComment($post_id, $user, $comment) {
     }
 
     //Les données ont été insérées, on redirige donc le visiteur vers la page du billet pour qu'il puisse voir son commentaire 
-    else {
-        
-        header('Location: index.php?action=post&id=' . $post_id);
-    }
+    header('Location: index.php?action=post&id=' . $post_id);
 }
 
 
