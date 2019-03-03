@@ -12,11 +12,11 @@
     <ul class="pagination text-center">
         <?php
 
-            $page = intval($result[2]);
+            $page = (int)$result[2];
 
-            $totalPages = intval($result[0]);
+            $totalPages = (int)$result[0];
 
-            $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRING) : NULL;
+            $action = (isset($_GET['action'])) ? filter_var(stripslashes($_GET['action']), FILTER_SANITIZE_STRING) : NULL;
 
 
         //$uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
