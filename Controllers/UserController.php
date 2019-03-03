@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use entity\User;
+use Models\Manager;
 use Models\UserManager;
 
 require_once 'Models/Manager.php';
@@ -31,9 +32,35 @@ Class UserController {
             throw new \Exception('Veuillez vérifier vos informations');
         }
 
-        var_dump($updateInfos);
         header('location: index.php?action=admin');
     }
+
+
+    /**
+     * @param User $user données (id de user) reçus depuis la class User qui est utilisée dans l'index (routeur)
+     * @throws \Exception si l'utilisateur n'a pas le droit de editer / supprimer un user
+     */
+    public function deleteUser(User $user) {
+
+        $bdd = Manager::dbConnect();
+
+        $sessionFlash = New SessionController();
+
+        $userManager = New UserManager($bdd);
+
+        $suppUser = $userManager -> deleteUser($user);
+
+        if(!$suppUser) {
+
+            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
+        }
+
+        $sessionFlash -> setFlash('L\'utilisateur a été suprimé avec succès!', 'success');
+
+        header('Location: location: index.php?action=admin');
+    }
+
+
 
     public function emailExist($bdd, User $user) {
 
