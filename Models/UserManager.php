@@ -5,6 +5,7 @@ namespace Models;
 require_once('Manager.php');
 
 
+use Controllers\SessionController;
 use entity\User;
 
 class UserManager extends Manager {
@@ -126,7 +127,35 @@ class UserManager extends Manager {
         }
         else {
             echo "Erreur au momment de mettre à jour l'utilisateur, il faut se connecter en tant qu'admin...";
+            return false;
         }
+    }
+
+
+    /**
+     * @param User $user envoyé depuis le UserController -> deleteUser(User $user)
+     */
+    public function deleteUser(User $user) {
+
+        $sessionController = New SessionController();
+        $sessionUser = $sessionController->getSessionRole();
+
+        $bdd = $this -> dbConnect();
+
+        $req = $bdd -> prepare("DELETE FROM `users` WHERE id = :id LIMIT 1");
+
+
+        if(!isset($sessionUser) && $sessionUser !== "Admin") {
+
+            echo "Vous devez être connecté en tant qu'administrateur pour réaliser cette action...";
+
+            return false;
+        }
+            $req -> bindValue(':id', $user->getId());
+
+            $req -> execute();
+
+            return true;
     }
 
 
