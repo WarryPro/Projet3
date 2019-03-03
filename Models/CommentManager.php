@@ -74,7 +74,7 @@ class CommentManager extends Manager {
         $bdd = $this->dbConnect();
 
         $commentId = $reporter->getCommentId();
-        $user_accuser = strval( $reporter->getUserAccuser());
+        $user_accuser =  (string)$reporter->getUserAccuser();
 
         $selReportedComment = $bdd->prepare("SELECT episode_id FROM comments WHERE id = :comm_id");
 
