@@ -46,11 +46,10 @@
     <div class="small-12 large-7 grid-x admin-post-container">
         <?php
         if(isset($_SESSION['flash'])) {
-            $sessionFlash = $_SESSION['flash'];
             echo('<div id="alert-container" class="alert-container small-12">');
                 $message = New \Controllers\SessionController();
                 $message -> getFlash();
-                unset($sessionFlash); // Supp la session pour cette var
+                unset($_SESSION['flash']); // Supp la session pour cette var
             echo('</div>');
         }
         //Recuperer les infos de chaque épisode
