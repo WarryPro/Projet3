@@ -27,12 +27,26 @@ class SessionController {
     }
 
 
+    public function setSessionRole (User $user) {
+
+        $_SESSION['user_role'] = $user -> getRole(); //crée la session pour @user
+    }
+
+
     /*
      * Obtient le @user qu'a une session initialisée
      **/
     public function getCurrentUser () {
 
         $sessionUser = (isset($_SESSION['user'])) ? $_SESSION['user'] : NULL;
+
+        return $sessionUser;
+    }
+
+
+    public function getSessionRole () {
+
+        $sessionUser = (isset($_SESSION['user_role'])) ? $_SESSION['user_role'] : NULL;
 
         return $sessionUser;
     }
