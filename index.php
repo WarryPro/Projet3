@@ -254,6 +254,18 @@ try {
 
 
 
+        elseif($action === 'supprimeruser') {
+
+            $userController = New UserController();
+
+            $userId = (isset($_GET['id']))?filter_var($_GET['id']): NULL;
+            $user = New User(['id' => $userId]);
+            $userController -> deleteUser($user);
+
+        }
+
+
+
         elseif ($action === 'addPost') {
             // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
