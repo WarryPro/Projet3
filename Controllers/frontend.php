@@ -97,7 +97,7 @@ function post() {
 
     $commentManager = new commentManager();
 
-    $idPost = (isset($_GET['id'])) ? filter_var(htmlspecialchars($_GET['id']), FILTER_SANITIZE_STRIPPED) : NULL;
+    $idPost = (isset($_GET['id'])) ? filter_var(stripslashes($_GET['id']), FILTER_SANITIZE_STRIPPED) : NULL;
 
     if (!empty($idPost)) {
 
