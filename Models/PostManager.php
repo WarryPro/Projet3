@@ -29,9 +29,7 @@ class PostManager extends Manager {
 
                 return $affectedLines;
             }
-            else {
-                New \Exception( "Erreur, l'image n'a pas pu être sauvegardée.");
-            }
+            New \Exception( "Erreur, l'image n'a pas pu être sauvegardée.");
         }
     }
 
@@ -86,9 +84,7 @@ class PostManager extends Manager {
 
             return $post;
         }
-        else {
-            echo "Aucun épisode à éditer...";
-        }
+        echo "Aucun épisode à éditer...";
     }
 
 
@@ -108,9 +104,7 @@ class PostManager extends Manager {
 
             return $postUpdate;
         }
-        else {
-            echo "Erreur au momment de mettre à jour l'épisode";
-        }
+        echo "Erreur au momment de mettre à jour l'épisode";
     }
 
 
@@ -121,8 +115,8 @@ class PostManager extends Manager {
         $reqEp = $bdd -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
         $reqCo = $bdd -> prepare("DELETE FROM comments WHERE episode_id = :id");
 
-
-        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+        $sessionUserRole = $_SESSION['user_role'];
+        if(isset($sessionUserRole) && $sessionUserRole === 'Admin') {
 
             $reqEp -> bindValue( ':id', $postId);
             $reqCo -> bindValue( ':id', $postId);
