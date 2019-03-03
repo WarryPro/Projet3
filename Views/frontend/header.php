@@ -25,7 +25,7 @@
                     <?php
                     if(!isset($_SESSION['user']) && !isset($_SESSION['user_role']) ) {
 
-                        print_r('<li class="main-menu__item">
+                        echo('<li class="main-menu__item">
                                                 <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
                                             </li>
                                             
@@ -36,24 +36,24 @@
 
                     }
                     elseif (isset($_SESSION['user']) && $_SESSION['user_role'] === 'Admin') {
-                        print_r('<li class="main-menu__item">
-                                                <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
-                                            </li>
-                                            <li class="main-menu__item">
-                                                <a href="./index.php?action=admin" class="main-menu__link">Admin</a>
-                                            </li>
-                                            <li class="main-menu__item">
-                                                <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
-                                            </li>'
+                        echo('<li class="main-menu__item">
+                                 <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=admin" class="main-menu__link">Admin</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                              </li>'
                         );
                     }
                     else {
-                        print_r('<li class="main-menu__item">
-                                                <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
-                                            </li>
-                                            <li class="main-menu__item">
-                                                <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
-                                            </li>'
+                        echo('<li class="main-menu__item">
+                                 <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                              </li>'
                         );
                     }
                     ?>

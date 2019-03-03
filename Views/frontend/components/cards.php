@@ -14,10 +14,10 @@
 
         if($image !== '') {
 
-            print_r('<img src="'.$image.'" alt="" class="card__img">');
+            echo('<img src="'.$image.'" alt="" class="card__img">');
         }
         else {
-            print_r('<img src="https://images.pexels.com/photos/35637/alaska-glacier-ice-mountains.jpg?auto=compress" alt="" class="card__img">');
+            echo('<img src="https://images.pexels.com/photos/35637/alaska-glacier-ice-mountains.jpg?auto=compress" alt="" class="card__img">');
         }
     ?>
     <div class="card-section">

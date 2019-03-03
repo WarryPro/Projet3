@@ -26,7 +26,7 @@
             $reportedComments = listReportedComments();
 
             foreach($reportedComments as $comment) {
-                print_r('
+                echo('
                         <tr>
                             <td><a class="btn--alt valider--alt" href="./index.php?action=post&id='. $comment["episode_id"] .'">Voir l\'épisode</a></td>
                             <td>' . $comment["date_fr"] . '</td>

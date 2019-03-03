@@ -12,7 +12,7 @@ $data = listUsers();
     <div class="user-manager-container grid-x small-12">
     <?php
     foreach ($data as $user) {
-        print_r(
+        echo(
 '<div class="user grid-x medium-6 large-4">
                 <div class="user__info-container user-card grid-x small-12">
                     <div class="user__info grid-x">
