@@ -34,16 +34,40 @@ class CommentController {
 
                 echo "Une erreur est survenu";
             }
-            $sessionController->setFlash('Le commentaire a été signalé', 'success');
-            header('location: ../index.php?action=post&id='. $_SESSION['uri']);
-            unset($_SESSION['uri']); // Supp la session pour cette var
+            else {
+
+                $sessionController->setFlash('Le commentaire a été signalé', 'success');
+                header('location: ../index.php?action=post&id='. $_SESSION['uri']);
+                unset($_SESSION['uri']); // Supp la session pour cette var
+            }
         }
 
+        else {
 //      si il a déjà signalé avant alors en envoie une alerte
-        $sessionController->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
-        header('location: ../index.php?action=post&id='. $_SESSION['uri']);
-        unset($_SESSION['uri']); // Supp la session pour cette var
+            $sessionController->setFlash('Vous avez déjà signalé ce commentaire...', 'error');
+            header('location: ../index.php?action=post&id='. $_SESSION['uri']);
+            unset($_SESSION['uri']); // Supp la session pour cette var
 
+        }
+
+
+    }
+
+
+    public function validateComment(ReportComment $comment) {
+
+        $commentManager = New CommentManager();
+        $sessionController = New SessionController();
+
+        if(!$commentManager -> validateComment($comment)) {
+
+            throw new \Exception('Une erreur est survenue...');
+        }
+        else {
+            $sessionController -> setFlash('Le commentaire a été validé avec succès!', 'success');
+
+            header('Location: location: index.php?action=admin');
+        }
     }
 
     /*

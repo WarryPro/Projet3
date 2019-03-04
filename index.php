@@ -358,7 +358,7 @@ try {
         }
 
 
-//        supprimer un commentaire
+//        supprimer un commentaire signalé
         elseif ($action == 'supreportedcom') {
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
@@ -368,6 +368,17 @@ try {
 
                 throw new Exception('Une erreur est survenue, aucun commentaire à supprimer !');
             }
+        }
+
+        elseif($action === 'validatecomment') {
+
+            $idReportedComment = (isset($_GET['id']))?filter_var($_GET['id']): NULL;
+
+            $commentController = New \Controllers\CommentController();
+
+            $reportComment = New \entity\ReportComment(['commentId' => $idReportedComment]);
+
+            $commentController -> validateComment($reportComment);
         }
 
     }

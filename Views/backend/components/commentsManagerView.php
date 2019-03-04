@@ -38,7 +38,7 @@
                                 <a class="btn--alt error--alt" href="index.php?action=supreportedcom&id='. $comment['comment_id'].'">
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
-                                <a class="btn--alt valider" href="index.php?action=hidereportedcom&id='. $comment['comment_id'].'">
+                                <a class="btn--alt valider" href="index.php?action=validatecomment&id='. $comment['comment_id'] .'">
                                     <i class="fas fa-eye-slash"></i>
                                 </a>
                             </td>

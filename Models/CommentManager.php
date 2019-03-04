@@ -1,5 +1,6 @@
 <?php 
 namespace Models;
+use Controllers\SessionController;
 use entity\ReportComment;
 
 require_once 'Manager.php';
@@ -102,6 +103,29 @@ class CommentManager extends Manager {
         //on stocke l'id de l'épisode dans une session pour rediriger après l'utilisateur vers l'épisode correspondant
         $uri = $result['episode_id'];
         $_SESSION['uri'] = $uri;
+    }
+
+
+    public function validateComment(ReportComment $comment) {
+
+        $bdd = self::dbConnect();
+        $sessionController = New SessionController();
+
+        if(!$sessionController -> getSessionRole() === "Admin") {
+
+            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
+
+        }
+        else {
+
+            $req = $bdd -> prepare("DELETE FROM `reported_comms` WHERE comment_id = :id LIMIT 1");
+
+            $req -> bindValue(':id', $comment -> getCommentId());
+
+            $result = $req -> execute();
+
+            return $result;
+        }
     }
 
     /*

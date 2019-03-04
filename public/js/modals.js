@@ -54,6 +54,9 @@ setInterval(() => {
 }, 500);
 
 
+
+
+
 // MODAL SIGNALER
 for (const elmt of signaler) {
     elmt.addEventListener("click", () => {
