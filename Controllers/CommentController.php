@@ -58,16 +58,15 @@ class CommentController {
 
         $commentManager = New CommentManager();
         $sessionController = New SessionController();
+        $validedComment = $commentManager -> validateComment($comment);
 
-        if(!$commentManager -> validateComment($comment)) {
+        if(!$validedComment) {
 
             throw new \Exception('Une erreur est survenue...');
         }
-        else {
-            $sessionController -> setFlash('Le commentaire a été validé avec succès!', 'success');
 
-            header('Location: location: index.php?action=admin');
-        }
+        $sessionController -> setFlash('Le commentaire a été validé avec succès!', 'success');
+        header('Location: index.php?action=admin');
     }
 
     /*
