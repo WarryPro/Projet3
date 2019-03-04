@@ -111,12 +111,7 @@ class CommentManager extends Manager {
         $bdd = self::dbConnect();
         $sessionController = New SessionController();
 
-        if(!$sessionController -> getSessionRole() === "Admin") {
-
-            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
-
-        }
-        else {
+        if($sessionController -> getSessionRole() === "Admin") {
 
             $req = $bdd -> prepare("DELETE FROM `reported_comms` WHERE comment_id = :id LIMIT 1");
 
@@ -125,6 +120,11 @@ class CommentManager extends Manager {
             $result = $req -> execute();
 
             return $result;
+
+        }
+        else {
+
+            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
         }
     }
 
