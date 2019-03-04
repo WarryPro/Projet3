@@ -20,14 +20,16 @@ use entity\User;
 
 
 $db = \Models\Manager::dbConnect();
+
 try {
+
     $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRIPPED) : NULL;
 
-    if ($action) {
+    switch ($action) {
 
-        if ($action == 'billets') {
+        case "billets":
 
-//            listPosts();
+            //listPosts();
 
             $paginationController = New \Controllers\PaginationController();
 
@@ -43,22 +45,28 @@ try {
 
             $paginationController -> pagination($pagination);
 
-//            $viewController = New ViewController();
-//            $viewController -> listEpisodes($result);
-
-        }
+            break;
 
 
-//        Redirige vers la page de connection
-        elseif ($action === 'connexion') {
+        case "connexion":
 
             $view = new ViewController();
 
             $view -> connexion();
-        }
 
-        // VERIFIER la conn de l'utilisateur
-        elseif ($action === 'connectuser') {
+            break;
+
+
+        case "inscription":
+
+            $view = new ViewController();
+
+            $view -> inscription();
+
+            break;
+
+
+        case "connectuser":
 
             $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
             $postPass = (isset($_POST['pass'])) ? filter_var( $_POST['pass'], FILTER_SANITIZE_STRIPPED) : NULL;
@@ -77,19 +85,11 @@ try {
 
                 throw new \Exception('Il faut remplir tous les champs !');
             }
-        }
+
+            break;
 
 
-//        Redirige vers la page d'inscription
-        elseif ($action === 'inscription') {
-
-            $view = new ViewController();
-
-            $view -> inscription();
-        }
-
-
-        elseif($action === 'inscripuser') {
+        case "inscripuser":
 
             $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
             $postPass = (isset($_POST['pass'])) ? filter_var( $_POST['pass'], FILTER_SANITIZE_STRIPPED) : NULL;
@@ -107,79 +107,12 @@ try {
 
                 throw new \Exception('Il faut remplir tous les champs !');
             }
-        }
+
+            break;
 
 
+        case "updateuser":
 
-        //    redirige vers la page de recuperation de mdp (forgotpassword)
-        elseif($action === 'forgotpassword') {
-
-            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
-
-            if(!empty($postEmail)) {
-
-                $user = new User(['email' => $postEmail]);
-                $update = new UserController();
-                $update -> emailExist($db, $user);
-            }
-            else {
-                $view = new ViewController();
-                $view -> forgotPass();
-            }
-        }
-
-
-        elseif($action === 'deconnexion') {
-            // Si $_SESSION est active
-            $session = (isset($_SESSION['user'])) ? filter_var( $_SESSION['user'], FILTER_SANITIZE_STRIPPED) : NULL;
-
-            if($session) {
-                $deconnexion = new ConnexionController();
-
-                $deconnexion -> deconnexion();
-            }
-        }
-
-
-
-        elseif ($action == 'post') {
-
-            $getId = (isset($_GET['id'])) ? filter_var( $_GET['id'], FILTER_SANITIZE_STRIPPED) : NULL;
-
-            if ($getId > 0) {
-
-                post();
-            }
-
-            else {
-
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }
-
-
-        elseif ($action === 'admin') {
-
-//            adminListPosts();
-
-            $paginationController = New \Controllers\PaginationController();
-
-            $page = (isset($_GET['page'])) ? filter_var( $_GET['page'], FILTER_SANITIZE_STRIPPED) : NULL;
-
-            if($page) {
-
-                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $page, 'postsParPage' => 2]);
-            }else {
-                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 2]);
-            }
-
-            $paginationController -> pagination($pagination);
-
-        }
-
-
-
-        elseif ($action === 'updateuser') {
             //Sanitize vars POST
             $postUser = (isset($_POST['user'])) ? filter_var( $_POST['user'], FILTER_SANITIZE_STRIPPED) : NULL;
             $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
@@ -235,9 +168,9 @@ try {
 //               si les champs de des mot passes sont vides on màj que le nom, email et role
                 else {
                     $user = New User([  'id' => $userId,
-                                        'user' => $postUser,
-                                        'email' => $postEmail,
-                                        'role' => $postUserRole]);
+                        'user' => $postUser,
+                        'email' => $postEmail,
+                        'role' => $postUserRole]);
 
                     updateUser($user); // MàJ l'utilisateur avec le current mdp
                 }
@@ -250,11 +183,10 @@ try {
 //                throw new \Exception('Il faut remplir tous les champs !');
             }
 
-        }
+            break;
 
 
-
-        elseif($action === 'supprimeruser') {
+        case "supprimeruser":
 
             $userController = New UserController();
 
@@ -262,17 +194,82 @@ try {
             $user = New User(['id' => $userId]);
             $userController -> deleteUser($user);
 
-        }
+            break;
 
 
+        case "deconnexion":
 
-        elseif ($action === 'addPost') {
+            // Si $_SESSION est active
+            $session = (isset($_SESSION['user'])) ? filter_var( $_SESSION['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+            if($session) {
+                $deconnexion = new ConnexionController();
+
+                $deconnexion -> deconnexion();
+            }
+            break;
+
+
+        case "forgotpassword":
+
+            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
+
+            if(!empty($postEmail)) {
+
+                $user = new User(['email' => $postEmail]);
+                $update = new UserController();
+                $update -> emailExist($db, $user);
+            }
+            else {
+                $view = new ViewController();
+                $view -> forgotPass();
+            }
+            break;
+
+
+        case "admin":
+
+            //adminListPosts();
+
+            $paginationController = New \Controllers\PaginationController();
+
+            $page = (isset($_GET['page'])) ? filter_var( $_GET['page'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+            if($page) {
+
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => $page, 'postsParPage' => 2]);
+            }else {
+                $pagination = New \entity\Pagination(['table' => 'episodes', 'page' => 1, 'postsParPage' => 2]);
+            }
+
+            $paginationController -> pagination($pagination);
+
+            break;
+
+
+        case "post":
+
+            $getId = (isset($_GET['id'])) ? filter_var( $_GET['id'], FILTER_SANITIZE_STRIPPED) : NULL;
+
+            if ($getId > 0) {
+
+                post();
+            }
+            else {
+
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+            break;
+
+
+        case "addPost":
+
             // S'il y a un titre et contenu dans le post a ajouter
             if (!empty($_POST['titre']) && !empty($_POST['post-content'])) {
                 // Si est une image et sa taille est plus petite de 2MB
                 if ((($_FILES['img-post']['type'] === 'image/jpg') ||
-                    ($_FILES['img-post']['type'] === 'image/jpeg') ||
-                    ($_FILES['img-post']['type'] === 'image/png')) &&
+                        ($_FILES['img-post']['type'] === 'image/jpeg') ||
+                        ($_FILES['img-post']['type'] === 'image/png')) &&
                     ($_FILES['img-post']['size'] < 2000000) ) {
 
                     \Controllers\PostController::addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
@@ -284,10 +281,11 @@ try {
             else {
                 echo ('Tous les champs ne sont pas remplis !');
             }
-        }
+
+            break;
 
 
-        elseif ($action == 'supprimer') {
+        case "supprimer":
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -298,13 +296,10 @@ try {
 
                 throw new Exception('Aucun identifiant de billet supprimé...');
             }
-        }
+            break;
 
 
-
-        elseif ($action == 'editer') {
-
-//            require('Views/backend/postEditView.php');
+        case "editer":
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -315,29 +310,24 @@ try {
 
                 throw new Exception('Aucun identifiant de billet édité...');
             }
-        }
+            break;
 
-        elseif ($action === 'updatePost') {
+
+        case "updatePost":
 
             if(!empty($_POST['titre']) && !empty($_POST['post-content'])) {
-                $post = New Post(['id' => $_POST['post-id'] ,'title' => $_POST['titre'], 'content' => $_POST['post-content']]);
 
+                $post = New Post(['idPost' => $_POST['post-id'] ,'title' => $_POST['titre'], 'content' => $_POST['post-content']]);
 
                 updatePosts($post); // MàJ l'épisode
-
-
             }
             else {
                 throw new \Exception('Il faut remplir tous les champs !');
             }
-
-        }
-
+            break;
 
 
-
-//        ajouter un commentaire
-        elseif ($action == 'addComment') {
+        case "addComment":
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
@@ -350,16 +340,15 @@ try {
                     throw new Exception('Tous les champs ne sont pas remplis !');
                 }
             }
-
             else {
 
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
+
+            break;
 
 
-//        supprimer un commentaire signalé
-        elseif ($action == 'supreportedcom') {
+        case "supreportedcom":
 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 delComment($_GET['id']);
@@ -368,9 +357,10 @@ try {
 
                 throw new Exception('Une erreur est survenue, aucun commentaire à supprimer !');
             }
-        }
+            break;
 
-        elseif($action === 'validatecomment') {
+
+        case "validatecomment":
 
             $idReportedComment = (isset($_GET['id']))?filter_var($_GET['id']): NULL;
 
@@ -379,12 +369,13 @@ try {
             $reportComment = New \entity\ReportComment(['commentId' => $idReportedComment]);
 
             $commentController -> validateComment($reportComment);
-        }
 
-    }
-    else {
+            break;
 
-        derniersPosts();
+
+        default:
+
+            derniersPosts();
     }
 }
 catch(Exception $e) {
