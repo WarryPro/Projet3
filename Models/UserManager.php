@@ -123,7 +123,6 @@ class UserManager extends Manager {
 
                 return true;
             }
-
         }
         else {
             echo "Erreur au momment de mettre à jour l'utilisateur, il faut se connecter en tant qu'admin...";
@@ -142,20 +141,18 @@ class UserManager extends Manager {
 
         $bdd = $this -> dbConnect();
 
-        $req = $bdd -> prepare("DELETE FROM `users` WHERE id = :id LIMIT 1");
+        if(isset($sessionUser) && $sessionUser === "Admin") {
 
+            $req = $bdd -> prepare("DELETE FROM `users` WHERE id = :id LIMIT 1");
 
-        if(!isset($sessionUser) && $sessionUser !== "Admin") {
-
-            echo "Vous devez être connecté en tant qu'administrateur pour réaliser cette action...";
-
-            return false;
-        }
             $req -> bindValue(':id', $user->getId());
 
             $req -> execute();
 
             return true;
+        }
+
+        return false;
     }
 
 
@@ -243,8 +240,9 @@ class UserManager extends Manager {
         $bdd = $this -> dbConnect();
         $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
 
-        $req = $bdd -> prepare('UPDATE users SET pass = :pass');
+        $req = $bdd -> prepare('UPDATE users SET pass = :pass WHERE id = :id');
 
+        $req -> bindValue(':id',$user -> getId());
         $req -> bindValue(':pass',$hash);
 
         $req -> execute();
