@@ -23,6 +23,8 @@ Class UserController {
         header('location: index.php?action=admin');
     }
 
+
+
     public function editerUser($db, $userId) {
         $UserManager = new UserManager($db);
         $updateInfos = $UserManager -> updateUser($userId);
@@ -48,16 +50,13 @@ Class UserController {
 
         $userManager = New UserManager($bdd);
 
-        $suppUser = $userManager -> deleteUser($user);
+        if(!$userManager -> deleteUser($user)) {
 
-        if(!$suppUser) {
-
-            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
+            throw new \Exception("Vous devez être connecté en tant qu'administrateur pour réaliser cette action...");
         }
 
         $sessionFlash -> setFlash('L\'utilisateur a été suprimé avec succès!', 'success');
-
-        header('Location: location: index.php?action=admin');
+        header('Location: index.php?action=admin');
     }
 
 
