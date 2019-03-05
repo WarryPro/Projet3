@@ -96,9 +96,9 @@ class PostManager extends Manager {
 
         if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
 
-            $req -> bindValue( ':id', $post -> getIdPost());
-            $req -> bindValue( ':title', $post -> getTitle());
-            $req -> bindValue( ':content', $post -> getContent());
+            $req -> bindParam( ':id', $post -> getIdPost());
+            $req -> bindParam( ':title', $post -> getTitle());
+            $req -> bindParam( ':content', $post -> getContent());
 
             $postUpdate = $req -> execute();
 
