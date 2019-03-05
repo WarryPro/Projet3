@@ -228,10 +228,9 @@ class UserManager extends Manager {
 
         $requete -> bindValue(':pass', $hash);
 
-        $requete -> execute();
+        $addUser = $requete -> execute();
 
-
-        return $addUser = $requete;
+        return $addUser;
     }
 
 
