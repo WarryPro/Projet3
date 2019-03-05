@@ -10,9 +10,9 @@ require_once 'Models/Manager.php';
 
 Class UserController {
 
-    public function updateInfos($db, User $user) {
+    public function updateInfos($bdd, User $user) {
     
-        $UserManager = new UserManager($db);
+        $UserManager = new UserManager($bdd);
         $updateInfos = $UserManager -> setInfos($user);
 
         if ($updateInfos === FALSE) {
@@ -25,8 +25,8 @@ Class UserController {
 
 
 
-    public function editerUser($db, $userId) {
-        $UserManager = new UserManager($db);
+    public function editerUser($bdd, $userId) {
+        $UserManager = new UserManager($bdd);
         $updateInfos = $UserManager -> updateUser($userId);
 
         if ($updateInfos === FALSE) {

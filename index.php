@@ -19,7 +19,7 @@ use entity\User;
 \entity\Autoloader::register();
 
 
-$db = \Models\Manager::dbConnect();
+$bdd = \Models\Manager::dbConnect();
 
 try {
 
@@ -77,7 +77,7 @@ try {
 
                 $connexion = new ConnexionController();
 
-                $connexion -> connUser($db, $user);
+                $connexion -> connUser($bdd, $user);
 
             }
 
@@ -101,7 +101,7 @@ try {
 
                 $inscription = new InscriptionController();
 
-                $inscription -> inscrUser($db, $user);
+                $inscription -> inscrUser($bdd, $user);
             }
             elseif( empty( $postUser) OR empty( $postEmail) OR empty( $postPass)) {
 
@@ -123,7 +123,7 @@ try {
                 $userId = (isset($_POST['user-id'])) ? filter_var( $_POST['user-id'], FILTER_SANITIZE_STRIPPED) : NULL;
 
                 $user = New User( ['id' => $userId] );
-                $userManager = New \Models\UserManager($db);
+                $userManager = New \Models\UserManager($bdd);
                 $userDb = $userManager -> getUser($user->getId());
                 $passDb = $userDb['pass'];
 
@@ -218,7 +218,7 @@ try {
 
                 $user = new User(['email' => $postEmail]);
                 $update = new UserController();
-                $update -> emailExist($db, $user);
+                $update -> emailExist($bdd, $user);
             }
             else {
                 $view = new ViewController();

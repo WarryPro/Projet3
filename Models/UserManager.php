@@ -10,15 +10,15 @@ use entity\User;
 
 class UserManager extends Manager {
     
-    protected $db;
+    protected $bdd;
 
-    public function __construct($db) {
+    public function __construct($bdd) {
 
-        $this -> setDB($db);
+        $this -> setBDD($bdd);
     }
 
-    public function setDB($db) {
-        $this -> db = $db;
+    public function setBDD($bdd) {
+        $this -> bdd = $bdd;
     }
 
     public function getInfos() {
