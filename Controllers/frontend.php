@@ -117,19 +117,19 @@ function post() {
 function deletePosts($postId) {
 
     $postManager = new PostManager();
-
+    $sessionController = New SessionController();
     $post = $postManager -> deletePost($postId);
 
 
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
-    if ($post === false && $_SESSION['user_role'] !== 'Admin') {
+    if ($post === false && $sessionController -> getSessionRole() !== 'Admin') {
 
         echo 'Impossible de supprimer le post !';
     }
 
     //Les données ont été supprimés, on redirige donc le visiteur vers la page admin
     else {
-
+        $sessionController -> setFlash('L\'épisode a été supprimé avec succès!', 'success');
         header('Location: index.php?action=admin');
     }
 
