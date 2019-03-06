@@ -5,6 +5,8 @@
  * Date: 25/12/2018
  * Time: 22:46
  */
+$sessionController = New \Controllers\SessionController();
+
 ?>
 
 
@@ -45,10 +47,12 @@
 
     <div class="small-12 large-7 grid-x admin-post-container">
         <?php
-        if(isset($_SESSION['flash'])) {
+        $flashMessage = $sessionController -> getFlash();
+        if(isset($flashMessage)) {
             echo('<div id="alert-container" class="alert-container small-12">');
-                $message = New \Controllers\SessionController();
-                $message -> getFlash();
+
+                echo $flashMessage;
+
                 unset($_SESSION['flash']); // Supp la session pour cette var
             echo('</div>');
         }

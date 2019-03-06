@@ -34,13 +34,16 @@ class CommentManager extends Manager {
 
     public function delComment($commentId) {
         $bdd = $this -> dbConnect();
+        $sessionController = New SessionController();
 
         $req = $bdd -> prepare("DELETE comments, reported_comms FROM `comments` 
                                           INNER JOIN reported_comms 
                                           WHERE comments.id = reported_comms.comment_id 
                                           AND comments.id = :id");
 
-        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+        $userRole = $sessionController -> getSessionRole();
+
+        if(isset($userRole) && $userRole === 'Admin') {
 
             $req -> bindValue( ':id', $commentId);
             $req -> execute();
@@ -135,11 +138,13 @@ class CommentManager extends Manager {
     public function userHasReported($commentId) {
 
         $bdd = $this->dbConnect();
+        $sessionController = New SessionController();
+        $currentUser = $sessionController ->getCurrentUser();
 
         $reqSelUser = $bdd->prepare("SELECT user_accuser FROM reported_comms WHERE comment_id = :comm_id AND user_accuser = :user_accuser");
 
         $reqSelUser -> bindParam(':comm_id', $commentId);
-        $reqSelUser -> bindParam(':user_accuser', $_SESSION['user']);
+        $reqSelUser -> bindParam(':user_accuser', $currentUser);
 
         $reqSelUser -> execute();
         $result = $reqSelUser -> fetch(\PDO::FETCH_ASSOC);

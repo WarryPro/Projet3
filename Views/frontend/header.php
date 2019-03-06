@@ -23,7 +23,11 @@
                     </li>
 
                     <?php
-                    if(!isset($_SESSION['user']) && !isset($_SESSION['user_role']) ) {
+                    $sessionController = New \Controllers\SessionController();
+                    $currentUser = $sessionController -> getCurrentUser();
+                    $userRole = $sessionController -> getSessionRole();
+
+                    if(!isset($currentUser) && !isset($userRole) ) {
 
                         echo('<li class="main-menu__item">
                                                 <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
@@ -35,7 +39,7 @@
                         );
 
                     }
-                    elseif (isset($_SESSION['user']) && $_SESSION['user_role'] === 'Admin') {
+                    elseif (isset($currentUser) && $userRole === 'Admin') {
                         echo('<li class="main-menu__item">
                                  <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
                               </li>

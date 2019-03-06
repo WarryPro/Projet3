@@ -74,6 +74,10 @@ class UserManager extends Manager {
 
         $bdd = $this -> dbConnect();
 
+        $sessionController = New SessionController();
+
+        $userRole = $sessionController ->getSessionRole();
+
         $userId = $user->getId();
 
         $reqPass = $bdd -> query("SELECT pass FROM users WHERE id = $userId ");
@@ -91,7 +95,7 @@ class UserManager extends Manager {
         $req = $bdd -> prepare("UPDATE `users` SET `user` = :user,  `email` = :email, `pass` = :pass, `user_role` = :user_role WHERE `id` = :id ");
 
 
-        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+        if(isset($userRole) && $userRole === 'Admin') {
 
 
             $req -> setFetchMode(\PDO::FETCH_PROPS_LATE | \PDO::FETCH_CLASS, '\entity\User');

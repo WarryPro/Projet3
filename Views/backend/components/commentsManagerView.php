@@ -39,7 +39,7 @@
                                     <i class="fas fa-trash-alt"></i>
                                 </a>
                                 <a class="btn--alt valider" href="index.php?action=validatecomment&id='. $comment['comment_id'] .'">
-                                    <i class="fas fa-eye-slash"></i>
+                                    <i class="fas fa-check"></i>
                                 </a>
                             </td>
                         </tr>

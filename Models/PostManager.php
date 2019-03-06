@@ -1,6 +1,7 @@
 <?php 
 namespace Models;
 
+use Controllers\SessionController;
 use entity\Post;
 
 require_once('Manager.php');
@@ -91,10 +92,13 @@ class PostManager extends Manager {
     public function updatePost(Post $post) {
 
         $bdd = $this -> dbConnect();
+        $sessionController = New SessionController();
 
         $req = $bdd -> prepare("UPDATE `episodes` SET `title`= :title, `content`= :content, `modif_date` = NOW() WHERE `id` = :id LIMIT 1");
 
-        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'Admin') {
+        $userRole = $sessionController ->getSessionRole();
+
+        if(isset($userRole) && $userRole === 'Admin') {
 
             $req -> bindParam( ':id', $post -> getIdPost());
             $req -> bindParam( ':title', $post -> getTitle());
@@ -111,12 +115,14 @@ class PostManager extends Manager {
     public function deletePost($postId) {
 
         $bdd = $this -> dbConnect();
-        
+        $sessionController = New SessionController();
+
         $reqEp = $bdd -> prepare("DELETE FROM episodes WHERE id = :id LIMIT 1");
         $reqCo = $bdd -> prepare("DELETE FROM comments WHERE episode_id = :id");
 
-        $sessionUserRole = $_SESSION['user_role'];
-        if(isset($sessionUserRole) && $sessionUserRole === 'Admin') {
+        $userRole = $sessionController -> getSessionRole();
+
+        if(isset($userRole) && $userRole === 'Admin') {
 
             $reqEp -> bindValue( ':id', $postId);
             $reqCo -> bindValue( ':id', $postId);

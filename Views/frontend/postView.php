@@ -3,8 +3,10 @@
 <?php ob_start();
 
 use Controllers\CommentController;
+use Controllers\SessionController;
 
-$commentController = New CommentController()
+$commentController = New CommentController();
+$sessionController = New SessionController();
 
 ?>
 
@@ -16,7 +18,6 @@ $commentController = New CommentController()
     <div class="post-container small-12 medium-8 large-9">
 
         <?php require('components/bannerPost.php');
-        $sessionController = New \Controllers\SessionController();
         $sessionController ->getFlash();
         unset($_SESSION['flash']);
         ?>
@@ -40,7 +41,8 @@ $commentController = New CommentController()
 
         <div class="post form-comments grid-x">
             <?php
-            $sessionUser = $_SESSION['user'];
+
+            $sessionUser = $sessionController -> getCurrentUser();
             if(isset($sessionUser)) { ?>
                 <div class="container-form card">
                     <form class=" small-12" action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
@@ -82,7 +84,9 @@ $commentController = New CommentController()
                                 <span class="user__date"><?= $comment['comment_date_fr'] ?></span>
                                 <p class="comment__user-comment"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                                 <?php
-                                    $sessionUser = $_SESSION['user'];
+
+                                    $sessionUser = $sessionController -> getCurrentUser();
+
                                     if (!isset($sessionUser)) {
                                         NULL; // s'il n'y a pas session on ne fait rien
                                     }

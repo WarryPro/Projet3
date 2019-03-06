@@ -1,8 +1,11 @@
 
 <div class="card">
     <?php
+    $sessionController = New \Controllers\SessionController();
+    $currentUser = $sessionController -> getCurrentUser();
+    $userRole = $sessionController -> getSessionRole();
 
-    if((isset($_SESSION['user']) && isset($_SESSION['user_role'])) && ($_SESSION['user_role'] === 'Admin')) {
+    if((isset($currentUser) && isset($userRole)) && ($userRole === 'Admin')) {
 
         if(isset($_GET['action']) && $_GET['action'] === 'admin') {
 

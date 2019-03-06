@@ -76,7 +76,9 @@ class CommentController {
     public function userHasReported ($commentId) {
 
         $commentManager = New CommentManager();
-        $userAcusser = $_SESSION['user'];
+        $sessionController = New SessionController();
+
+        $userAcusser = $sessionController -> getCurrentUser();
 
         $userDB = $commentManager -> userHasReported($commentId);
 

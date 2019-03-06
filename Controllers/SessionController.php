@@ -69,9 +69,9 @@ class SessionController {
 
         if(isset($_SESSION['flash'])) {
 
-            echo ('<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
+            return '<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
                                 . $_SESSION['flash']['message']
-                            .'</p>');
+                            .'</p>';
         }
     }
 

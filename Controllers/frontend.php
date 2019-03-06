@@ -24,9 +24,13 @@ function listPosts() {
 
 function adminListPosts() {
 
+    $sessionController = New SessionController();
+
     $postManager = New PostManager(); // Création de l'objet postManager
 
-    if($_SESSION['user_role'] === 'Admin') {
+    $userRole = $sessionController -> getSessionRole();
+
+    if($userRole === 'Admin') {
 
         $posts = $postManager->getPosts(); // Appel de la methode getPosts() de cet objet
 
@@ -42,9 +46,12 @@ function adminListPosts() {
 function listUsers() {
     $bdd = new \Models\Manager(); //instance de la BDD
     $bdd -> dbConnect();
+    $sessionController = New SessionController();
     $userManager = New UserManager($bdd);
 
-    if($_SESSION['user_role'] === 'Admin') {
+    $userRole = $sessionController -> getSessionRole();
+
+    if($userRole === 'Admin') {
 
         $users = $userManager -> getUsers(); // Appel de la methode getInfos() de cet objet
 
@@ -139,10 +146,14 @@ function deletePosts($postId) {
 
 function editerPosts ($postId) {
 
+    $sessionController = New SessionController();
+
     $postManager = New PostManager();
 
+    $userRole = $sessionController -> getSessionRole();
+
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
-    if ($postId === false && $_SESSION['user_role'] !== 'Admin') {
+    if ($postId === false && $userRole !== 'Admin') {
 
         echo "Impossible d'éditer le post !";
     }
@@ -179,9 +190,13 @@ function updatePosts ($post) {
 
 function listReportedComments() {
 
+    $sessionController = New SessionController();
+
     $commentManager = new CommentManager(); // Création de l'objet CommentManager
 
-    if($_SESSION['user_role'] === 'Admin') {
+    $userRole = $sessionController -> getSessionRole();
+
+    if($userRole === 'Admin') {
 
         $reportedComments = $commentManager -> getReportedComments(); // Appel de la methode getReportedComments() de cet objet
 
@@ -197,15 +212,18 @@ function listReportedComments() {
 function addComment($post_id, $user, $comment) {
 
     $commentManager = new commentManager();
+    $sessionController = New SessionController();
 
     $affectedLines = $commentManager->postComment($post_id, $user, $comment);
 
     //On teste donc s'il y a eu une erreur et on arrête tout si jamais il y a eu un souci.
     if ($affectedLines === false) {
-        
-        echo "Impossible d'ajouter le commentaire !";
-    }
 
+        $sessionController -> setFlash("Impossible d'ajouter le commentaire!", 'error');
+        //Les données n'ont pas été insérées, on redirige donc le visiteur vers la page du billet
+        header('Location: index.php?action=post&id=' . $post_id);
+    }
+    $sessionController -> setFlash("Le commentaire a été ajouté!", 'success');
     //Les données ont été insérées, on redirige donc le visiteur vers la page du billet pour qu'il puisse voir son commentaire 
     header('Location: index.php?action=post&id=' . $post_id);
 }

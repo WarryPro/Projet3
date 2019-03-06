@@ -9,6 +9,7 @@ require ('Controllers/frontend.php');
 
 use Controllers\ConnexionController;
 use Controllers\InscriptionController;
+use Controllers\SessionController;
 use Controllers\UserController;
 use Controllers\ViewController;
 use entity\Post;
@@ -24,6 +25,7 @@ $bdd = \Models\Manager::dbConnect();
 try {
 
     $action = (isset($_GET['action'])) ? filter_var( $_GET['action'], FILTER_SANITIZE_STRIPPED) : NULL;
+    $sessionController = New SessionController();
 
     switch ($action) {
 
@@ -199,8 +201,9 @@ try {
 
         case "deconnexion":
 
+            $currentUser = $sessionController -> getCurrentUser();
             // Si $_SESSION est active
-            $session = (isset($_SESSION['user'])) ? filter_var( $_SESSION['user'], FILTER_SANITIZE_STRIPPED) : NULL;
+            $session = (isset($currentUser)) ? filter_var( $currentUser, FILTER_SANITIZE_STRIPPED) : NULL;
 
             if($session) {
                 $deconnexion = new ConnexionController();
@@ -329,11 +332,13 @@ try {
 
         case "addComment":
 
+            $currentUser = $sessionController -> getCurrentUser(); // Utilisateur avec une session
+
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
-                if (!empty($_SESSION['user']) && !empty($_POST['comment'])) {
+                if (!empty($currentUser) && !empty($_POST['comment'])) {
 
-                    addComment($_GET['id'], $_SESSION['user'], $_POST['comment']);
+                    addComment($_GET['id'], $currentUser, $_POST['comment']);
                 }
                 else {
 

@@ -15,8 +15,9 @@ require ('../Models/Autoloader.php');
 require ('../entity/Autoloader.php');
 require ('Autoloader.php');
 
-use \Controllers\CommentController;
-use \entity\ReportComment;
+use Controllers\CommentController;
+use Controllers\SessionController;
+use entity\ReportComment;
 
 Autoloader::register();
 \Controllers\Autoloader::register();
@@ -27,9 +28,12 @@ Autoloader::register();
 
 if (!empty($_POST['commid'])){
 
+    $sessionController = New SessionController();
     $commentController = New CommentController();
 
-    $reportComment = New ReportComment(['id' => '0','commentId' => $_POST['commid'], 'userAccuser' => $_SESSION['user']]);
+    $currentUser = $sessionController ->getCurrentUser();
+
+    $reportComment = New ReportComment(['id' => '0','commentId' => $_POST['commid'], 'userAccuser' => $currentUser]);
 
     $commentController -> reportComment($reportComment);
 
