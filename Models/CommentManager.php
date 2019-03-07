@@ -84,7 +84,7 @@ class CommentManager extends Manager {
 
         $selReportedComment -> bindParam(':comm_id', $commentId);
         $selReportedComment -> execute();
-        $result = $selReportedComment->fetch();
+        $episodeId = $selReportedComment->fetch();
 
         $req = $bdd->prepare("INSERT INTO `reported_comms`(`comment_id`, `reported_comment`, `episode_id`, `user_id`, `user_accuser`, `reported_date`, `num_reports`) 
                                 VALUES (:comm_id, 
@@ -102,10 +102,13 @@ class CommentManager extends Manager {
         $req -> setFetchMode(\PDO::FETCH_PROPS_LATE | \PDO::FETCH_CLASS, '\entity\ReportComment');
 
         $req -> fetch(\PDO::FETCH_ASSOC);
-        $req->execute();
+        $result = $req -> execute();
+
         //on stocke l'id de l'épisode dans une session pour rediriger après l'utilisateur vers l'épisode correspondant
-        $uri = $result['episode_id'];
+        $uri = $episodeId['episode_id'];
         $_SESSION['uri'] = $uri;
+
+        return $result;
     }
 
 
