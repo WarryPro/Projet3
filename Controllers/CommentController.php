@@ -30,13 +30,8 @@ class CommentController {
 //        $uri = $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
             $reportComment = $commentManager -> reportComment($report);
 
-            if($reportComment === FALSE) {
-
-                echo "Une erreur est survenu";
-            }
-            else {
-
-                $sessionController->setFlash('Le commentaire a été signalé', 'success');
+            if($reportComment) {
+                $sessionController->setFlash('Le commentaire a été signalé avec succès!', 'success');
                 header('location: ../index.php?action=post&id='. $_SESSION['uri']);
                 unset($_SESSION['uri']); // Supp la session pour cette var
             }
@@ -49,8 +44,6 @@ class CommentController {
             unset($_SESSION['uri']); // Supp la session pour cette var
 
         }
-
-
     }
 
 
