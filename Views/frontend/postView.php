@@ -18,7 +18,7 @@ $sessionController = New SessionController();
     <div class="post-container small-12 medium-8 large-9">
 
         <?php require('components/bannerPost.php');
-        $sessionController ->getFlash();
+        echo $sessionController -> getFlash();
         unset($_SESSION['flash']);
         ?>
 
