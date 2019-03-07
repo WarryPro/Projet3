@@ -52,18 +52,30 @@ try {
 
         case "connexion":
 
+            $currentUser = $sessionController -> getCurrentUser();
+
             $view = new ViewController();
 
-            $view -> connexion();
+            if(!isset($currentUser)) {
+
+                $view -> connexion();
+            }
+            derniersPosts();
 
             break;
 
 
         case "inscription":
 
+            $currentUser = $sessionController -> getCurrentUser();
+
             $view = new ViewController();
 
-            $view -> inscription();
+            if(!isset($currentUser)) {
+
+                $view -> inscription();
+            }
+            derniersPosts();
 
             break;
 
