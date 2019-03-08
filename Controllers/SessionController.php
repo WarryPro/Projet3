@@ -38,7 +38,7 @@ class SessionController {
      **/
     public function getCurrentUser () {
 
-        $sessionUser = (isset($_SESSION['user'])) ? $_SESSION['user'] : NULL;
+        $sessionUser = (isset($_SESSION['user'])) ? strip_tags($_SESSION['user']) : NULL;
 
         return $sessionUser;
     }
@@ -46,7 +46,7 @@ class SessionController {
 
     public function getSessionRole () {
 
-        $sessionUser = (isset($_SESSION['user_role'])) ? $_SESSION['user_role'] : NULL;
+        $sessionUser = (isset($_SESSION['user_role'])) ? strip_tags($_SESSION['user_role']) : NULL;
 
         return $sessionUser;
     }
@@ -69,8 +69,8 @@ class SessionController {
 
         if(isset($_SESSION['flash'])) {
 
-            return '<p id="alert" class="alert alert__' . $_SESSION['flash']['type'] .'">'
-                                . $_SESSION['flash']['message']
+            return '<p id="alert" class="alert alert__' . strip_tags($_SESSION['flash']['type']) .'">'
+                                . strip_tags($_SESSION['flash']['message'])
                             .'</p>';
         }
     }
