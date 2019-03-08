@@ -15,7 +15,7 @@
 
     if (isset($_GET['action'])) {
 
-        $action = $_GET['action'];
+        $action = strip_tags(trim($_GET['action']));
 
         if ($action !== 'post') {
 
