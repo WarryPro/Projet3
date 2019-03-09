@@ -21,15 +21,46 @@
                     <li class="main-menu__item">
                         <a href="./index.php?action=billets" class="main-menu__link">Billets</a>
                     </li>
-                    <li class="main-menu__item">
+
+                    <?php
+                    $sessionController = New \Controllers\SessionController();
+                    $currentUser = $sessionController -> getCurrentUser();
+                    $userRole = $sessionController -> getSessionRole();
+
+                    if(!isset($currentUser) && !isset($userRole) ) {
+
+                        echo(' <li class="main-menu__item">
                         <a href="./index.php?action=contact" class="main-menu__link">Contact</a>
                     </li>
                     <li class="main-menu__item">
                         <a href="./index.php?action=connexion" class="main-menu__link">Se connecter</a>
                     </li>
                     <li class="main-menu__item">
-                        <a href="./index.php?action=inscription" class="main-menu__link">S'inscrire</a>
-                    </li>
+                        <a href="./index.php?action=inscription" class="main-menu__link">S\'inscrire</a>
+                    </li>');
+                    }
+                    elseif (isset($currentUser) && $userRole === 'Admin') {
+                        echo('<li class="main-menu__item">
+                                 <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=admin" class="main-menu__link">Admin</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                              </li>'
+                        );
+                    }
+                    else {
+                        echo('<li class="main-menu__item">
+                                 <a href="./index.php?action=profil" class="main-menu__link">Profil</a>
+                              </li>
+                              <li class="main-menu__item">
+                                 <a href="./index.php?action=deconnexion" class="main-menu__link">Se deconnecter</a>
+                              </li>'
+                        );
+                    }
+                    ?>
                 </ul>
             </nav>
         </div>
