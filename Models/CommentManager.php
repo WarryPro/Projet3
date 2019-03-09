@@ -128,10 +128,7 @@ class CommentManager extends Manager {
             return $result;
 
         }
-        else {
-
-            throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
-        }
+        throw new \Exception('Une erreur est survenue, vous devez être admin pour réaliser cette action...');
     }
 
     /*
