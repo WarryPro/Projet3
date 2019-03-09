@@ -41,6 +41,12 @@ class ViewController {
         require('Views/backend/addPostsView.php');
     }
 
+
+    public function userProfil() {
+
+        include('Views/frontend/userProfil.php');
+    }
+
     /*
      * appel le compossant pagination
      * */
