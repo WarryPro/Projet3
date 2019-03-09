@@ -202,9 +202,9 @@ function listReportedComments() {
 
         return $reportedComments;
     }
-    else {
-        header('location: ./index.php');
-    }
+//    si n'a pas une session admin
+    header('location: ./index.php');
+
 }
 
 
