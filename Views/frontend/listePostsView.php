@@ -1,6 +1,6 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Épisodes';
 
-<?php ob_start(); ?>
+ob_start(); ?>
 
 <div class="container-titre grid-x small-12">
     <h2 class="main-header__title">Liste de billets </h2>
@@ -30,6 +30,8 @@
 </div>
 
 
-<?php $content = ob_get_clean(); ?>
+<?php
+    $content = ob_get_clean();
 
-<?php require('template.php'); ?>
+    require('template.php');
+?>

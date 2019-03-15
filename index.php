@@ -262,6 +262,18 @@ try {
             break;
 
 
+        case "profil":
+            $currentUser = $sessionController -> getCurrentUser();
+
+            $view = new ViewController();
+
+            if(!isset($currentUser)) {
+
+                derniersPosts();
+            }
+            $view -> userProfil();
+            break;
+
         case "post":
 
             $getId = (isset($_GET['id'])) ? filter_var( $_GET['id'], FILTER_SANITIZE_STRIPPED) : NULL;

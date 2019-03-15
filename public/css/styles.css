@@ -29,54 +29,55 @@ h1, h2, h3 {
   color: #555555;
   font-weight: 500;
   text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 0;
 }
 
-/* line 24, public/scss/blocks/base.scss */
+/* line 26, public/scss/blocks/base.scss */
 h1 {
   font-size: 1.8rem;
 }
 
-/* line 25, public/scss/blocks/base.scss */
+/* line 27, public/scss/blocks/base.scss */
 h2 {
   font-size: 1.5rem;
 }
 
-/* line 26, public/scss/blocks/base.scss */
+/* line 28, public/scss/blocks/base.scss */
 h3 {
   font-size: 1.1rem;
-  margin-bottom: 0;
 }
 
-/* line 31, public/scss/blocks/base.scss */
+/* line 30, public/scss/blocks/base.scss */
 a {
   color: #555555;
   text-transform: uppercase;
   font-size: 0.875rem;
 }
 
-/* line 35, public/scss/blocks/base.scss */
+/* line 34, public/scss/blocks/base.scss */
 a:hover {
   color: #999999;
 }
 
-/* line 40, public/scss/blocks/base.scss */
+/* line 39, public/scss/blocks/base.scss */
 p {
   font-size: 0.95rem;
 }
 
-/* line 41, public/scss/blocks/base.scss */
+/* line 40, public/scss/blocks/base.scss */
 span, p {
   color: #999999;
   font-weight: 400;
 }
 
-/* line 46, public/scss/blocks/base.scss */
+/* line 45, public/scss/blocks/base.scss */
 span {
   font-size: 0.8rem;
   font-family: "Roboto", sans-serif;
 }
 
-/* line 49, public/scss/blocks/base.scss */
+/* line 48, public/scss/blocks/base.scss */
 span:hover {
   color: #555555;
 }
@@ -84,10 +85,36 @@ span:hover {
 /*
     PADDING
 */
-/* line 60, public/scss/blocks/base.scss */
+/* line 59, public/scss/blocks/base.scss */
 .pd-top-btm {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+
+/* line 64, public/scss/blocks/base.scss */
+.pd-l-r {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* line 69, public/scss/blocks/base.scss */
+.pd-l {
+  padding-left: 1rem;
+}
+
+/* line 73, public/scss/blocks/base.scss */
+.pd-l {
+  padding-right: 1rem;
+}
+
+/* line 77, public/scss/blocks/base.scss */
+.pd-t {
+  padding-top: 1rem;
+}
+
+/* line 81, public/scss/blocks/base.scss */
+.pd-b {
+  padding-bottom: 1rem;
 }
 
 /* line 1, public/scss/blocks/header.scss */
@@ -842,7 +869,7 @@ span:hover {
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
-  background-image: url("https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress");
+  background-image: url("../images/default.jpeg");
   background-position: center;
   background-size: cover;
   min-height: 200px;
@@ -1325,4 +1352,49 @@ tbody td {
   .user-manager-container .user__controls .admin-crud__btn {
     margin: 0 0 .2rem;
   }
+}
+
+/* line 1, public/scss/components/page-profil.scss */
+.container-profil {
+  padding: 2rem 1rem;
+}
+
+/* line 3, public/scss/components/page-profil.scss */
+.container-profil.profil-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #48549D;
+  min-height: 30vh;
+  border-radius: 5px 0 0 5px;
+}
+
+/* line 11, public/scss/components/page-profil.scss */
+.container-profil.profil-content {
+  background-color: #fff;
+  border-radius: 0 5px 5px 0;
+}
+
+/* line 17, public/scss/components/page-profil.scss */
+.profil-image {
+  border-radius: 50%;
+  padding: .1rem;
+  overflow: hidden;
+  border: 0.1rem solid #fff;
+}
+
+/* line 22, public/scss/components/page-profil.scss */
+.profil-image .image {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/* line 29, public/scss/components/page-profil.scss */
+.profil__nom, .profil__email {
+  color: #fff;
+}
+
+/* line 32, public/scss/components/page-profil.scss */
+.profil__role {
+  color: #fad917;
 }

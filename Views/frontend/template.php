@@ -21,7 +21,7 @@
 
             print('<header class ="grid-x main-header">');
 
-                if($action == 'billets' || $action == 'contact'
+                if($action == 'billets' || $action == 'contact' || $action == 'profil'
                     || $action == 'connexion' || $action == 'inscription'
                     || $action == 'admin' || $action == 'editer') {
 
