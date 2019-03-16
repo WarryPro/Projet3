@@ -17,11 +17,25 @@
 .profil-image {
   border-radius: 50%;
   padding: .1rem;
-  overflow: hidden;
   border: .1rem solid $whiteColor;
+  position: relative;
   .image {
     max-width: 100px;
     max-height: 100px;
+  }
+  .button {
+    color: $whiteColor;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    .fas {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.5rem;
+    }
   }
 }
 
@@ -31,5 +45,17 @@
   }
   &__role {
     color: $postThirdColor;
+  }
+}
+
+.form-edit-profil {
+  position: relative;
+  .button.editer {
+    position: absolute;
+    right: 0;
+    top: -1rem;
+    padding: .5rem;
+    border-radius: 5px;
+    color: $whiteColor;
   }
 }
