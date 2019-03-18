@@ -40,17 +40,31 @@
 }
 
 .profil {
-  &__nom, &__email {
+  &__nom {
     color: $whiteColor;
   }
   &__role {
     color: $postThirdColor;
   }
+
+  &__coords {
+    .form-group {
+      width: 100%;
+      padding: .5rem;
+      background: $whiteColor;
+      margin-bottom: 1rem;
+      border-radius: 3px;
+    }
+
+    .profil__email {
+      color: $postFirstColor;
+    }
+  }
 }
 
 .form-edit-profil {
   position: relative;
-  .button.editer {
+  .button.editer, .button.error {
     position: absolute;
     right: 0;
     top: -1rem;
