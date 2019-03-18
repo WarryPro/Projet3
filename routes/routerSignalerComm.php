@@ -28,17 +28,17 @@ Autoloader::register();
 
 if (!empty($_POST['commid'])){
 
+    $commId = trim($_POST['commid']);
+
     $sessionController = New SessionController();
     $commentController = New CommentController();
 
     $currentUser = $sessionController ->getCurrentUser();
 
-    $reportComment = New ReportComment(['id' => '0','commentId' => $_POST['commid'], 'userAccuser' => $currentUser]);
+    $reportComment = New ReportComment(['id' => '0','commentId' => $commId, 'userAccuser' => $currentUser]);
 
     $commentController -> reportComment($reportComment);
-
-    echo  json_encode($_POST['commid']);
 }
 else {
-    echo json_encode('Une erreur est survenu...');
+    throw new \Exception('Erreur au momment de signaler le commentaire...!');
 }

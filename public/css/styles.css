@@ -1062,26 +1062,37 @@ span:hover {
 }
 
 /* line 19, public/scss/components/buttons.scss */
+.success {
+  color: #fff;
+  background-color: #00D184;
+}
+
+/* line 22, public/scss/components/buttons.scss */
+.success:hover {
+  background-color: #00b874;
+}
+
+/* line 26, public/scss/components/buttons.scss */
 .valider {
   background-color: #48549D;
 }
 
-/* line 21, public/scss/components/buttons.scss */
+/* line 28, public/scss/components/buttons.scss */
 .valider:hover {
   background-color: #404b8c;
 }
 
-/* line 26, public/scss/components/buttons.scss */
+/* line 33, public/scss/components/buttons.scss */
 .error {
   background-color: #e35656;
 }
 
-/* line 28, public/scss/components/buttons.scss */
+/* line 35, public/scss/components/buttons.scss */
 .error:hover {
   background-color: #df4040;
 }
 
-/* line 33, public/scss/components/buttons.scss */
+/* line 40, public/scss/components/buttons.scss */
 .signaler {
   background-color: #c5c5c5;
   display: flex;
@@ -1091,13 +1102,13 @@ span:hover {
   padding: .3rem;
 }
 
-/* line 40, public/scss/components/buttons.scss */
+/* line 47, public/scss/components/buttons.scss */
 .signaler:hover {
   background-color: #b8b8b8;
   color: #fff;
 }
 
-/* line 47, public/scss/components/buttons.scss */
+/* line 54, public/scss/components/buttons.scss */
 .btn--alt {
   padding: 0.7rem;
   margin: 0;
@@ -1109,27 +1120,27 @@ span:hover {
   color: #00000033;
 }
 
-/* line 57, public/scss/components/buttons.scss */
+/* line 64, public/scss/components/buttons.scss */
 .btn--alt:hover {
   color: #fff;
 }
 
-/* line 61, public/scss/components/buttons.scss */
+/* line 68, public/scss/components/buttons.scss */
 .valider--alt {
   color: #48549D;
 }
 
-/* line 63, public/scss/components/buttons.scss */
+/* line 70, public/scss/components/buttons.scss */
 .valider--alt:hover {
   background-color: #48549D;
 }
 
-/* line 69, public/scss/components/buttons.scss */
+/* line 76, public/scss/components/buttons.scss */
 .error--alt:hover {
   background-color: #e35656;
 }
 
-/* line 77, public/scss/components/buttons.scss */
+/* line 84, public/scss/components/buttons.scss */
 .admin-crud__btn {
   color: #fff;
   padding: 0.1rem 1rem;
@@ -1137,23 +1148,23 @@ span:hover {
   transition: background-color .3s ease;
 }
 
-/* line 82, public/scss/components/buttons.scss */
+/* line 89, public/scss/components/buttons.scss */
 .admin-crud__btn--editer {
   background-color: rgba(72, 84, 157, 0.8);
 }
 
-/* line 84, public/scss/components/buttons.scss */
+/* line 91, public/scss/components/buttons.scss */
 .admin-crud__btn--editer:hover {
   background-color: #48549d;
   color: #fff;
 }
 
-/* line 89, public/scss/components/buttons.scss */
+/* line 96, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer {
   background-color: rgba(227, 86, 86, 0.8);
 }
 
-/* line 91, public/scss/components/buttons.scss */
+/* line 98, public/scss/components/buttons.scss */
 .admin-crud__btn--supprimer:hover {
   background-color: #e35656;
   color: #fff;
@@ -1408,7 +1419,7 @@ tbody td {
 }
 
 /* line 43, public/scss/components/page-profil.scss */
-.profil__nom, .profil__email {
+.profil__nom {
   color: #fff;
 }
 
@@ -1418,12 +1429,26 @@ tbody td {
 }
 
 /* line 51, public/scss/components/page-profil.scss */
+.profil__coords .form-group {
+  width: 100%;
+  padding: .5rem;
+  background: #fff;
+  margin-bottom: 1rem;
+  border-radius: 3px;
+}
+
+/* line 59, public/scss/components/page-profil.scss */
+.profil__coords .profil__email {
+  color: #48549D;
+}
+
+/* line 65, public/scss/components/page-profil.scss */
 .form-edit-profil {
   position: relative;
 }
 
-/* line 53, public/scss/components/page-profil.scss */
-.form-edit-profil .button.editer {
+/* line 67, public/scss/components/page-profil.scss */
+.form-edit-profil .button.editer, .form-edit-profil .button.error {
   position: absolute;
   right: 0;
   top: -1rem;

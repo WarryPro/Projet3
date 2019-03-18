@@ -16,6 +16,13 @@
   }
 }
 
+.success {
+  color: $whiteColor;
+  background-color: $postSecondColor;
+  &:hover {
+    background-color: darken($postSecondColor, 5);
+  }
+}
 .valider {
   background-color: $postFirstColor;
   &:hover {

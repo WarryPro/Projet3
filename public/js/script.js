@@ -27,3 +27,32 @@ const postMainContainer = document.querySelector("main > .post-main-container");
 if(postMainContainer !== null) {
         bodyPagePost.className = "body-bg-post";
 }
+
+
+// **** EDITER PROFIL *** //
+const btnEditerProfil = document.getElementById("btn-editer-profil");
+const btnAnnuler = document.getElementById("btn-annuler");
+
+btnEditerProfil.addEventListener("click", (e) => {
+    e.preventDefault();
+    const formGroup = document.getElementById("changermdp");
+    const btnMaJ = document.getElementById("maj-profil");
+
+    formGroup.classList.remove("hide");
+    btnMaJ.classList.remove("hide");
+    btnEditerProfil.classList.add("hide");
+    btnAnnuler.classList.remove("hide");
+});
+
+btnAnnuler.addEventListener("click", (e) => {
+    e.preventDefault();
+    const formGroup = document.getElementById("changermdp");
+    const btnMaJ = document.getElementById("maj-profil");
+
+    formGroup.classList.add("hide");
+    btnMaJ.classList.add("hide");
+    btnEditerProfil.classList.remove("hide");
+    btnAnnuler.classList.add("hide");
+});
+
+// **** FIN EDITER PROFIL *** //
