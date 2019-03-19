@@ -36,7 +36,7 @@ class UserManager extends Manager {
         $bdd = $this->dbConnect();
 
         // Recupere la liste d'utilisateurs
-        $req = $bdd->query('SELECT `id`, `user`, `email`, `user_role` FROM users ORDER BY id DESC');
+        $req = $bdd->query('SELECT `id`, `user`, `email`, `user_role`, `user_image` FROM users ORDER BY id DESC');
 
         return $req;
     }
@@ -44,7 +44,7 @@ class UserManager extends Manager {
     public function getUser($userId) {
 
         $bdd = $this->dbConnect();
-        $req = $bdd->query("SELECT `id`, `user`, `email`, `pass`, `user_role` FROM users WHERE id = $userId");
+        $req = $bdd->query("SELECT `id`, `user`, `email`, `pass`, `user_role`, `user_image` FROM users WHERE id = $userId");
 
         $user = $req -> fetch();
 
