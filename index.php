@@ -271,7 +271,17 @@ try {
 
                 derniersPosts();
             }
-            $view -> userProfil();
+            else {
+
+                $user = New User( ['user' => $currentUser]);
+
+                $userController = New UserController();
+
+                $userProfil = $userController -> userProfil($user);
+
+                $view -> userProfil($userProfil);
+            }
+
             break;
 
         case "post":
