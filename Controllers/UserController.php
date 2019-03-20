@@ -25,6 +25,17 @@ Class UserController {
 
 
 
+    public function userProfil(User $user) {
+        $bdd = Manager::dbConnect();
+
+        $userManager = New UserManager($bdd);
+
+        $userDb = $userManager -> getUserProfil($user->getUser());
+
+        return $userDb;
+    }
+
+
     public function editerUser($bdd, $userId) {
         $UserManager = new UserManager($bdd);
         $updateInfos = $UserManager -> updateUser($userId);

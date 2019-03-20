@@ -52,6 +52,21 @@ class UserManager extends Manager {
 
     }
 
+    public function getUserProfil($userProfil) {
+
+        $bdd = $this->dbConnect();
+
+        $req = $bdd->prepare("SELECT `id`, `user`, `email`, `pass`, `user_role`, `user_image` FROM users WHERE user = :userProfil");
+
+        $req -> bindValue(':userProfil', $userProfil);
+        $req -> execute();
+
+        $user = $req -> fetch();
+
+        return $user;
+
+    }
+
     public function setInfos(User $user) {
 
         $bdd = $this -> dbConnect();

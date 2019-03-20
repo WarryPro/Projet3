@@ -9,7 +9,7 @@ $sessionController = New \Controllers\SessionController();
 
  ob_start();
 
- ?>
+?>
 
 <div class="container-titre grid-x small-12">
     <h2 class="main-header__title">Mon profil</h2>
@@ -20,16 +20,17 @@ $sessionController = New \Controllers\SessionController();
         <button title="Éditer profil" id="btn-editer-profil" class="button warning editer"><i class="fas fa-pencil-alt"></i></button>
         <button title="annuler" id="btn-annuler" class="button error hide"><i class="fas fa-times"></i></button>
         <div class="profil-image">
-            <img src="./public/images/user.svg <?php ?>" alt="Image profil" class="image">
-            <button id="editer-image-profil" class="button hide"><i class="fas fa-pencil-alt"></i></button>
+            <img src="./<?= $user["user_image"]; ?>" alt="Image profil" class="image">
+            <input type="file" name="image-profil" id="input-image-profil" class="button hide">
+            <label id="editer-image-profil" for="input-image-profil" class="button hide"><i class="fas fa-pencil-alt"></i></label>
         </div>
-        <div class="profil profil__name text-center pd-t">
-            <h2 class="profil__nom">Dany Restrepo</h2>
-            <p class="profil__role">Administrateur</p>
+        <div class="profil profil__name text-center pd-t small-12">
+            <h2 class="profil__nom"><?= $user["user"]; ?></h2>
+            <p class="profil__role"><?= $user["user_role"]; ?></p>
         </div>
         <div class="profil profil__coords small-12 text-center">
             <div class="form-group">
-                <a href="mailto:dannyfr.03@gmail.com" class="profil__email">Dannyfr.03@gmail.com</a>
+                <a href="mailto:<?= $user["email"];?>" class="profil__email"><?= $user["email"];?></a>
             </div>
             <div id="changermdp" class="form-group hide">
                 <p class="text-center">Changer le mot de passe</p>
