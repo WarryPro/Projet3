@@ -6,6 +6,7 @@ require_once('Manager.php');
 
 
 use Controllers\SessionController;
+use entity\Image;
 use entity\User;
 
 class UserManager extends Manager {
@@ -41,6 +42,7 @@ class UserManager extends Manager {
         return $req;
     }
 
+
     public function getUser($userId) {
 
         $bdd = $this->dbConnect();
@@ -51,6 +53,7 @@ class UserManager extends Manager {
         return $user;
 
     }
+
 
     public function getUserProfil($userProfil) {
 
@@ -67,15 +70,43 @@ class UserManager extends Manager {
 
     }
 
-    public function setInfos(User $user) {
+
+
+    public function setInfosProfil(User $user, Image $image) {
 
         $bdd = $this -> dbConnect();
-        $requete = $bdd -> prepare('UPDATE users SET user = :user, email = :email, user_role = :user_role WHERE id = :id');
+        $userPass = $user ->getPass();
+
+        if(!isset($userPass) && isset($image)) {
+
+            $tmpImage = $_FILES["image-profil"];
+
+            if(is_uploaded_file($tmpImage['tmp_name'])) {
+                $path = $image -> getPath();
+                $imageName = $image -> getName();
+
+                copy($tmpImage['tmp_name'], $path . $imageName);
+
+                $requete = $bdd -> prepare('UPDATE users SET user_image = :image WHERE user = :user');
+
+                $requete -> bindValue(':user', $user -> getUser());
+
+                $requete -> bindValue(':image', $path . $imageName);
+
+                $requete -> execute();
+
+                $infos = $requete;
+
+                return $infos;
+
+            }
+
+        }
+
+        $requete = $bdd -> prepare('UPDATE users SET pass = :pass,  user_image = :image WHERE user = :user');
 
         $requete -> bindValue(':user', $user -> getUser());
-        $requete -> bindValue(':email', $user -> getEmail());
-        $requete -> bindValue(':user_role', $user -> getUserRole());
-        $requete -> bindValue(':id', $user -> getId());
+        $requete -> bindValue(':image', $image -> getName());
 
         $requete -> execute();
 
@@ -228,7 +259,6 @@ class UserManager extends Manager {
         }
     }
 
-
     /*
      * Méthode pour inscrire un nouvel utilisateur
      * @user à inscrire
@@ -256,13 +286,38 @@ class UserManager extends Manager {
     public function updatePass(User $user) {
 
         $bdd = $this -> dbConnect();
+
         $hash = password_hash($user -> getPass(), PASSWORD_DEFAULT);
 
-        $req = $bdd -> prepare('UPDATE users SET pass = :pass WHERE id = :id');
+        $req = $bdd -> prepare('UPDATE users SET pass = :pass WHERE user = :user');
 
-        $req -> bindValue(':id',$user -> getId());
+        $req -> bindValue(':user',$user -> getUser());
         $req -> bindValue(':pass',$hash);
 
         $req -> execute();
+    }
+
+
+    public function passVerify($user, $currentPass, $newPass) {
+
+        $bdd = $this -> dbConnect();
+        $req = $bdd -> prepare("SELECT pass FROM users WHERE user = :user");
+        $req ->bindValue(':user', $user);
+        $req -> execute();
+
+        $userPass = $req -> fetch();
+        $userPassDb = "";
+
+        if($req -> rowCount() > 0) {
+            $userPassDb = $userPass['pass'];
+        }
+        if(password_verify( $currentPass, $userPassDb)) {
+
+            if($newPass !== $currentPass) {
+                return true;
+            }
+        }
+        return false;
+
     }
 }
