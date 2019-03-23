@@ -9,6 +9,7 @@ class User {
 	protected $email;
 	protected $pass;
 	protected $role;
+	protected $image;
 
 
 	function __construct($donnee =[]) {
@@ -61,7 +62,15 @@ class User {
 
         return $this -> role;
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
     
 
 	//setters
@@ -93,5 +102,15 @@ class User {
 
 		$this -> role = $role;
 	}
+
+    /**
+     * @param mixed $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+
 	
 }
