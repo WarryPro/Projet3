@@ -17,15 +17,16 @@ class InscriptionController {
      *Gere les données du formulaire de'inscription (inscripForm) pour l'envoyer au model
      */
     public function inscrUser($bdd, User $user) {
-
+        $sessionController = New SessionController();
         $UserManager = new UserManager($bdd);
 
         $InscrUser = $UserManager->InscrUser($user);
 
         if ($InscrUser == FALSE) {
-            throw new \Exception("Erreur d'inscription d'un nouveau utilisateur");
+            $sessionController -> setFlash("Erreur d'inscription d'un nouveau utilisateur");
+            header('location: index.php');
         }
-
+        $sessionController -> setFlash("L'utilisateur a été créé, vous pouvez vous connecter maintenant!", "success");
         header('location: index.php');
     }
 }
