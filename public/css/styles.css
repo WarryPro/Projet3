@@ -1471,14 +1471,18 @@ tbody td {
 /* line 18, public/scss/components/users.scss */
 .user-manager-container .user__photo img {
   max-height: 100%;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-/* line 22, public/scss/components/users.scss */
+/* line 25, public/scss/components/users.scss */
 .user-manager-container .user__controls {
   padding: 0;
 }
 
-/* line 24, public/scss/components/users.scss */
+/* line 27, public/scss/components/users.scss */
 .user-manager-container .user__controls .admin-crud__btn {
   padding: .4rem .5rem;
   border-radius: 5px;
@@ -1486,13 +1490,13 @@ tbody td {
 }
 
 @media screen and (min-width: 64em) {
-  /* line 50, public/scss/components/users.scss */
+  /* line 53, public/scss/components/users.scss */
   .user-manager-container .user__controls {
     display: flex;
     flex-direction: column;
     width: initial;
   }
-  /* line 54, public/scss/components/users.scss */
+  /* line 57, public/scss/components/users.scss */
   .user-manager-container .user__controls .admin-crud__btn {
     margin: 0 0 .2rem;
   }
