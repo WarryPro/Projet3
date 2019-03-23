@@ -13,11 +13,6 @@ use entity\User;
 
 class SessionController {
 
-    public function __construct() {
-//        session_start();
-
-    }
-
     /*
      * méthode pour recuperer @user pour initialiser une session
      **/
