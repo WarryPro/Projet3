@@ -1039,6 +1039,22 @@ span:hover {
   margin: 0 1rem 1rem;
 }
 
+/* line 1, public/scss/components/tables.scss */
+thead {
+  background-color: #48549D;
+  color: #fff;
+}
+
+/* line 6, public/scss/components/tables.scss */
+tbody td {
+  padding: 1rem;
+}
+
+/* line 11, public/scss/components/tables.scss */
+.action-bouttons .btn--alt {
+  margin-right: 1rem;
+}
+
 /* line 2, public/scss/components/buttons.scss */
 .btn, .btn--alt {
   display: inline-flex;
@@ -1170,20 +1186,132 @@ span:hover {
   color: #fff;
 }
 
-/* line 1, public/scss/components/tables.scss */
-thead {
-  background-color: #48549D;
-  color: #fff;
+/* line 2, public/scss/components/animations.scss */
+.slide-out-top {
+  -webkit-animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+          animation: slide-out-top 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
-/* line 6, public/scss/components/tables.scss */
-tbody td {
-  padding: 1rem;
+/* line 7, public/scss/components/animations.scss */
+.slide-in-top {
+  -webkit-animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
-/* line 11, public/scss/components/tables.scss */
-.action-bouttons .btn--alt {
-  margin-right: 1rem;
+/* line 11, public/scss/components/animations.scss */
+.slide-out-left {
+  -webkit-animation: slide-out-left 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+          animation: slide-out-left 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
+}
+
+@-webkit-keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
+  80% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0.2;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-top {
+  0% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
+  80% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0.2;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0.5;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+@keyframes slide-out-top {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+  20% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+    opacity: 0.5;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateY(-1000px);
+            transform: translateY(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+@-webkit-keyframes slide-out-left {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
+}
+
+@keyframes slide-out-left {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+    max-height: initial;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+    max-height: 0;
+  }
 }
 
 /* line 4, public/scss/components/admin-crud-btns.scss */
@@ -1340,12 +1468,17 @@ tbody td {
   margin-right: 1rem;
 }
 
-/* line 19, public/scss/components/users.scss */
+/* line 18, public/scss/components/users.scss */
+.user-manager-container .user__photo img {
+  max-height: 100%;
+}
+
+/* line 22, public/scss/components/users.scss */
 .user-manager-container .user__controls {
   padding: 0;
 }
 
-/* line 21, public/scss/components/users.scss */
+/* line 24, public/scss/components/users.scss */
 .user-manager-container .user__controls .admin-crud__btn {
   padding: .4rem .5rem;
   border-radius: 5px;
@@ -1353,13 +1486,13 @@ tbody td {
 }
 
 @media screen and (min-width: 64em) {
-  /* line 47, public/scss/components/users.scss */
+  /* line 50, public/scss/components/users.scss */
   .user-manager-container .user__controls {
     display: flex;
     flex-direction: column;
     width: initial;
   }
-  /* line 51, public/scss/components/users.scss */
+  /* line 54, public/scss/components/users.scss */
   .user-manager-container .user__controls .admin-crud__btn {
     margin: 0 0 .2rem;
   }
@@ -1367,10 +1500,24 @@ tbody td {
 
 /* line 1, public/scss/components/page-profil.scss */
 .container-profil {
+  position: relative;
   padding: 2rem 1rem;
 }
 
-/* line 3, public/scss/components/page-profil.scss */
+/* line 4, public/scss/components/page-profil.scss */
+.container-profil .alert-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  margin: 0;
+}
+
+/* line 9, public/scss/components/page-profil.scss */
+.container-profil .alert-container .alert {
+  margin: 0;
+}
+
+/* line 13, public/scss/components/page-profil.scss */
 .container-profil.profil-info {
   display: flex;
   flex-direction: column;
@@ -1380,27 +1527,34 @@ tbody td {
   border-radius: 5px 0 0 5px;
 }
 
-/* line 11, public/scss/components/page-profil.scss */
+/* line 21, public/scss/components/page-profil.scss */
 .container-profil.profil-content {
   background-color: #fff;
   border-radius: 0 5px 5px 0;
 }
 
-/* line 17, public/scss/components/page-profil.scss */
+/* line 27, public/scss/components/page-profil.scss */
 .profil-image {
   border-radius: 50%;
   padding: .1rem;
   border: 0.1rem solid #fff;
   position: relative;
-}
-
-/* line 22, public/scss/components/page-profil.scss */
-.profil-image .image {
   max-width: 100px;
   max-height: 100px;
+  min-width: 100px;
+  min-height: 100px;
 }
 
-/* line 26, public/scss/components/page-profil.scss */
+/* line 36, public/scss/components/page-profil.scss */
+.profil-image .image {
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 42, public/scss/components/page-profil.scss */
 .profil-image .button {
   color: #fff;
   position: absolute;
@@ -1408,9 +1562,10 @@ tbody td {
   width: 100%;
   height: 100%;
   background-color: transparent;
+  border-radius: 50%;
 }
 
-/* line 33, public/scss/components/page-profil.scss */
+/* line 50, public/scss/components/page-profil.scss */
 .profil-image .button .fas {
   position: absolute;
   right: 0;
@@ -1418,17 +1573,22 @@ tbody td {
   font-size: 1.5rem;
 }
 
-/* line 43, public/scss/components/page-profil.scss */
+/* line 56, public/scss/components/page-profil.scss */
+.profil-image .button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* line 63, public/scss/components/page-profil.scss */
 .profil__nom {
   color: #fff;
 }
 
-/* line 46, public/scss/components/page-profil.scss */
+/* line 66, public/scss/components/page-profil.scss */
 .profil__role {
   color: #fad917;
 }
 
-/* line 51, public/scss/components/page-profil.scss */
+/* line 71, public/scss/components/page-profil.scss */
 .profil__coords .form-group {
   width: 100%;
   padding: .5rem;
@@ -1437,17 +1597,17 @@ tbody td {
   border-radius: 3px;
 }
 
-/* line 59, public/scss/components/page-profil.scss */
+/* line 79, public/scss/components/page-profil.scss */
 .profil__coords .profil__email {
   color: #48549D;
 }
 
-/* line 65, public/scss/components/page-profil.scss */
+/* line 85, public/scss/components/page-profil.scss */
 .form-edit-profil {
   position: relative;
 }
 
-/* line 67, public/scss/components/page-profil.scss */
+/* line 87, public/scss/components/page-profil.scss */
 .form-edit-profil .button.editer, .form-edit-profil .button.error {
   position: absolute;
   right: 0;
