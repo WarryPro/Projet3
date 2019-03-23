@@ -32,25 +32,30 @@ if(postMainContainer !== null) {
 // **** EDITER PROFIL *** //
 const btnEditerProfil = document.getElementById("btn-editer-profil");
 const btnAnnuler = document.getElementById("btn-annuler");
+const formGroup = document.getElementById("changermdp");
+const btnMaJ = document.getElementById("maj-profil");
+const btnEditerImageProfil = document.getElementById("editer-image-profil");
 
 btnEditerProfil.addEventListener("click", (e) => {
     e.preventDefault();
-    const formGroup = document.getElementById("changermdp");
-    const btnMaJ = document.getElementById("maj-profil");
-
-    formGroup.classList.remove("hide");
-    btnMaJ.classList.remove("hide");
+    formGroup.classList.replace("hide", "slide-in-top");
+    btnMaJ.classList.replace("hide", "slide-in-top");
+    btnEditerImageProfil.classList.remove("hide");
     btnEditerProfil.classList.add("hide");
     btnAnnuler.classList.remove("hide");
 });
 
 btnAnnuler.addEventListener("click", (e) => {
     e.preventDefault();
-    const formGroup = document.getElementById("changermdp");
-    const btnMaJ = document.getElementById("maj-profil");
+    formGroup.classList.replace("slide-in-top", "slide-out-top");
+    btnMaJ.classList.replace("slide-in-top", "slide-out-top");
+    btnEditerImageProfil.classList.add("hide");
 
-    formGroup.classList.add("hide");
-    btnMaJ.classList.add("hide");
+    setTimeout(() => {
+        btnMaJ.classList.replace("slide-out-top", "hide");
+        formGroup.classList.replace("slide-out-top", "hide");
+    }, 100);
+
     btnEditerProfil.classList.remove("hide");
     btnAnnuler.classList.add("hide");
 });
