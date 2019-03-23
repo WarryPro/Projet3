@@ -12,6 +12,7 @@ use Controllers\InscriptionController;
 use Controllers\SessionController;
 use Controllers\UserController;
 use Controllers\ViewController;
+use entity\Image;
 use entity\Post;
 use entity\User;
 
@@ -97,7 +98,8 @@ try {
 
             elseif( empty( $postUser) OR empty( $postPass) ) {
 
-                throw new \Exception('Il faut remplir tous les champs !');
+                $sessionController -> setFlash('Il faut remplir tous les champs !');
+                header('location: index.php?action=connexion');
             }
 
             break;
@@ -134,7 +136,7 @@ try {
 
             if(!empty($postUser) && !empty($postEmail) && !empty($postUserRole)) {
 
-                $userId = (isset($_POST['user-id'])) ? filter_var( $_POST['user-id'], FILTER_SANITIZE_STRIPPED) : NULL;
+                $userId = $_POST['user-id'];
 
                 $user = New User( ['id' => $userId] );
                 $userManager = New \Models\UserManager($bdd);
@@ -152,7 +154,7 @@ try {
 
                         if($newPass !== $currentPass) {
 
-                            $user = New User([  'id' => intval($userId['user-id']),
+                            $user = New User([  'id' => $userId,
                                 'user' => $postUser,
                                 'email' => $postEmail,
                                 'pass' => $newPass,
@@ -174,8 +176,8 @@ try {
                     }
 //                    si le current pass et le mdp de la BDD ne sont pas egaux
                     else {
-
-                        echo "<p>Mot de passe invalide, il faut mettre votre mot de passe actuel!</p>";
+                        $sessionController->setFlash('Mot de passe invalide, il faut mettre votre mot de passe actuel!');
+                        header('location: ../index.php?action=admin');
                     }
                 }
 
@@ -193,8 +195,8 @@ try {
 //            si les champs obligatoires (nom, email et role) sont vides
             else {
 
-                return "<p>Les champs user, email et role sont obligatoires!</p>";
-//                throw new \Exception('Il faut remplir tous les champs !');
+                $sessionController->setFlash('Les champs user, email et role sont obligatoires!');
+                header('location: ../index.php?action=admin');
             }
 
             break;
@@ -280,6 +282,113 @@ try {
                 $userProfil = $userController -> userProfil($user);
 
                 $view -> userProfil($userProfil);
+            }
+
+            break;
+
+
+        case "editprofil":
+
+            $currentPass = (!empty($_POST["current-password"])) ? strip_tags($_POST["current-password"]) : NULL;
+
+            $newPass = (!empty($_POST["new-password"])) ? strip_tags($_POST["new-password"]) : NULL;
+
+            $newImageProfil = (isset($_FILES["image-profil"])) ? $_FILES["image-profil"] : NULL;
+
+
+            // si on modifie que la photo
+            if(((!isset($currentPass)) && (!isset($newPass))) && (!empty($newImageProfil['name']))) {
+                $userController = New UserController();
+                //créé un instance de Image et recupère les données
+                $imageEntity = New Image(['path' => 'public/images/',
+                                        'type' => $newImageProfil['type'],
+                                        'size' => $newImageProfil['size'],
+                                        'name' => $newImageProfil['name'],
+                                        'tmp_name' => $newImageProfil['tmp_name']]);
+
+                $currentUser = $sessionController->getCurrentUser();
+
+                $user = New User(['user' => $currentUser]);
+
+                $userController -> updateProfil($bdd, $user, $imageEntity);
+
+                $sessionController -> setFlash("La photo a été modifiée!", "success");
+                header('Location: index.php?action=profil');
+
+            }
+            //si on veut modifier que le mdp
+            elseif (((isset($currentPass)) && (isset($newPass))) && (empty($newImageProfil['name']))) {
+
+                if($currentPass === $newPass) {
+
+                    $sessionController -> setFlash("Le nouveau mot de passe doit être different à l'actuel !");
+                    header('Location: index.php?action=profil');
+                }
+                else {
+
+                    $userController = New UserController();
+                    $currentUser = $sessionController->getCurrentUser();
+
+                    $passwordVerify = $userController -> passVerify($currentUser, $currentPass, $newPass);
+
+                    if($passwordVerify) {
+
+                        $user = New User(['user' => $currentUser,'pass' => $newPass]);
+
+                        $userController -> updatePass($bdd, $user);
+                        $sessionController -> setFlash('Le mot de passe a été modifié!', 'success');
+                        header('Location: index.php?action=profil');
+                    }
+
+                    else {
+                        $sessionController -> setFlash('Le mot de passe actuel est incorrect!');
+                        header('Location: index.php?action=profil');
+
+                    }
+                }
+            }
+            // si on veut modifier la photo et le mdp
+            elseif (((isset($currentPass)) && (isset($newPass))) && (!empty($newImageProfil['name']))) {
+
+                if($currentPass === $newPass) {
+
+                    $sessionController -> setFlash("Le nouveau mot de passe doit être different à l'actuel !");
+
+                    header('Location: index.php?action=profil');
+                }
+                else {
+
+                    $userController = New UserController();
+                    $currentUser = $sessionController->getCurrentUser();
+
+                    $passwordVerify = $userController -> passVerify($currentUser, $currentPass, $newPass);
+
+                    if($passwordVerify) {
+
+                        $user = New User(['user' => $currentUser,'pass' => $newPass]);
+                        //créé un instance de Image et recupère les données
+                        $imageEntity = New Image(['path' => 'public/images/',
+                            'type' => $newImageProfil['type'],
+                            'size' => $newImageProfil['size'],
+                            'name' => $newImageProfil['name'],
+                            'tmp_name' => $newImageProfil['tmp_name']]);
+
+                        $userController -> updateProfil($bdd, $user, $imageEntity);
+                        $sessionController -> setFlash('Le profil a été modifié!', 'success');
+                        header('Location: index.php?action=profil');
+                    }
+
+                    else {
+                        $sessionController -> setFlash('Le mot de passe actuel est incorrect!');
+                        header('Location: index.php?action=profil');
+
+                    }
+                }
+            }
+            // si l'utilisateur n'a pas remplis aucun champs
+            else {
+                $sessionController -> setFlash("Il faut remplir les champs!");
+                header('Location: index.php?action=profil');
             }
 
             break;
