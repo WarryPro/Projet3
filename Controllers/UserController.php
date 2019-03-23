@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use entity\Image;
 use entity\User;
 use Models\Manager;
 use Models\UserManager;
@@ -10,17 +11,17 @@ require_once 'Models/Manager.php';
 
 Class UserController {
 
-    public function updateInfos($bdd, User $user) {
-    
+    public function updateProfil($bdd, User $user, Image $image) {
+
         $UserManager = new UserManager($bdd);
-        $updateInfos = $UserManager -> setInfos($user);
+
+        $updateInfos = $UserManager -> setInfosProfil($user, $image);
 
         if ($updateInfos === FALSE) {
-
-            throw new \Exception('Veuillez vérifier vos informations');
+            return false;
+        }else {
+            return true;
         }
-
-        header('location: index.php?action=admin');
     }
 
 
@@ -38,11 +39,12 @@ Class UserController {
 
     public function editerUser($bdd, $userId) {
         $UserManager = new UserManager($bdd);
+        $sessionFlash = New SessionController();
         $updateInfos = $UserManager -> updateUser($userId);
 
         if ($updateInfos === FALSE) {
 
-            throw new \Exception('Veuillez vérifier vos informations');
+            $sessionFlash -> setFlash('Veuillez vérifier vos informations');
         }
 
         header('location: index.php?action=admin');
@@ -62,24 +64,11 @@ Class UserController {
         $userManager = New UserManager($bdd);
 
         if(!$userManager -> deleteUser($user)) {
-
-            throw new \Exception("Vous devez être connecté en tant qu'administrateur pour réaliser cette action...");
+            $sessionFlash -> setFlash("Vous devez être connecté en tant qu'administrateur pour réaliser cette action...");
         }
 
         $sessionFlash -> setFlash('L\'utilisateur a été suprimé avec succès!', 'success');
         header('Location: index.php?action=admin');
-    }
-
-
-
-    public function emailExist($bdd, User $user) {
-
-        $emailExist = new UserManager($bdd);
-
-        //todo: Metho compareEmail à créér dans la class UserManager
-//        if($emailExist -> compareEmail($user) == 1) {
-            //todo: Demander à Max comment faire pour envoyer un email de recuperation à l'user
-//        }
     }
 
     /**
@@ -89,16 +78,30 @@ Class UserController {
      */
     public function updatePass($bdd, User $user) {
 
-        $pass = new UserManager($bdd);
+        $sessionController = New SessionController();
+        $userManager = new UserManager($bdd);
 
-        $newpass = $pass -> updatePass($user);
-        $id = mt_rand();
+        $updatePass = $userManager -> updatePass($user);
 
-        if ($newpass === FALSE) {
 
-            throw new \Exception('Veuillez saisir un mot de passe valide');
+        if (!$updatePass) {
+
+            return $updatePass;
+        }else {
+
+            return $updatePass;
         }
+    }
 
-        header('location: index.php?action=connexion');
+
+    public function passVerify($user, $currentPass, $newPass) {
+
+        $bdd = Manager::dbConnect();
+
+        $userManager = New UserManager($bdd);
+
+        $passVerify = $userManager -> passVerify($user, $currentPass, $newPass);
+
+        return $passVerify;
     }
 }
