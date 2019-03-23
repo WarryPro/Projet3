@@ -1,0 +1,25 @@
+{
+  "name": "projet3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WarryPro/Projet3.git"
+  },
+  "author": "dannyfr.03@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WarryPro/Projet3/issues"
+  },
+  "homepage": "https://github.com/WarryPro/Projet3#readme"
+}
