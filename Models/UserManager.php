@@ -93,26 +93,35 @@ class UserManager extends Manager {
 
                 $requete -> bindValue(':image', $path . $imageName);
 
-                $requete -> execute();
-
-                $infos = $requete;
+                $infos = $requete -> execute();
 
                 return $infos;
 
             }
 
         }
+        elseif(isset($userPass) && isset($image)) {
+            $hash = password_hash($userPass, PASSWORD_DEFAULT);
+            $tmpImage = $_FILES["image-profil"];
 
-        $requete = $bdd -> prepare('UPDATE users SET pass = :pass,  user_image = :image WHERE user = :user');
+            if(is_uploaded_file($tmpImage['tmp_name'])) {
+                $path = $image -> getPath();
+                $imageName = $image -> getName();
 
-        $requete -> bindValue(':user', $user -> getUser());
-        $requete -> bindValue(':image', $image -> getName());
+                copy($tmpImage['tmp_name'], $path . $imageName);
 
-        $requete -> execute();
+                $requete = $bdd -> prepare('UPDATE users SET pass = :pass,  user_image = :image WHERE user = :user');
 
-        $infos = $requete;
+                $requete -> bindValue(':user', $user -> getUser());
+                $requete -> bindValue(':pass', $hash);
+                $requete -> bindValue(':image', $path . $imageName);
 
-        return $infos;
+                $infos = $requete -> execute();
+
+                return $infos;
+            }
+        }
+        return New \Exception( "Une erreur est survenue...");
     }
 
 
@@ -317,7 +326,9 @@ class UserManager extends Manager {
                 return true;
             }
         }
-        return false;
+        else {
 
+            return false;
+        }
     }
 }
