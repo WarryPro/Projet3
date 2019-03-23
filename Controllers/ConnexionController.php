@@ -40,10 +40,13 @@ class ConnexionController {
             // si @user a le role Admin
             if($isAdmin) {
 
-                header('location: index.php?admin');
-            }
+                $userSession -> setFlash("Vous êtes connecté avec succeès!", "success");
+                header('location: index.php?action=admin');
 
-            header('location: index.php');
+            }else {
+                $userSession -> setFlash("Vous êtes connecté avec succeès!", "success");
+                header('location: index.php');
+            }
         }
 
         //s'il n'y a pas une connexion (mdp incorrect ou @user n'existe pas dans la BDD)
