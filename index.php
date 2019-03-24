@@ -61,7 +61,10 @@ try {
 
                 $view -> connexion();
             }
-            derniersPosts();
+            else {
+
+                derniersPosts();
+            }
 
             break;
 
@@ -76,7 +79,10 @@ try {
 
                 $view -> inscription();
             }
-            derniersPosts();
+            else {
+
+                derniersPosts();
+            }
 
             break;
 
@@ -121,7 +127,8 @@ try {
             }
             elseif( empty( $postUser) OR empty( $postEmail) OR empty( $postPass)) {
 
-                throw new \Exception('Il faut remplir tous les champs !');
+                $sessionController -> setFlash("Il faut remplir tous les champs !");
+                header('location: index.php?action=inscription');
             }
 
             break;
@@ -223,23 +230,6 @@ try {
                 $deconnexion = new ConnexionController();
 
                 $deconnexion -> deconnexion();
-            }
-            break;
-
-
-        case "forgotpassword":
-
-            $postEmail = (isset($_POST['email'])) ? filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL) : NULL;
-
-            if(!empty($postEmail)) {
-
-                $user = new User(['email' => $postEmail]);
-                $update = new UserController();
-                $update -> emailExist($bdd, $user);
-            }
-            else {
-                $view = new ViewController();
-                $view -> forgotPass();
             }
             break;
 
@@ -422,11 +412,13 @@ try {
                     \Controllers\PostController::addPosts($_POST['post-id'], $_POST['titre'], $_POST['post-content'], $_FILES['img-post']);
                 }
                 else {
-                    echo 'Il faut charger une image PNG, JPEG ou JPG maximum de 2MB ...';
+                    $sessionController->setFlash('Il faut charger une image PNG, JPEG ou JPG maximum de 2MB ...');
+                    header('location: index.php?action=admin');
                 }
             }
             else {
-                echo ('Tous les champs ne sont pas remplis !');
+                $sessionController->setFlash('Tous les champs ne sont pas remplis !');
+                header('location: index.php?action=admin');
             }
 
             break;
@@ -440,8 +432,8 @@ try {
             }
 
             else {
-
-                throw new Exception('Aucun identifiant de billet supprimé...');
+                $sessionController->setFlash('Aucun identifiant de billet supprimé...');
+                header('location: index.php?action=admin');
             }
             break;
 
@@ -454,8 +446,8 @@ try {
             }
 
             else {
-
-                throw new Exception('Aucun identifiant de billet édité...');
+                $sessionController->setFlash('Aucun identifiant de billet édité...');
+                header('location: index.php?action=admin');
             }
             break;
 
@@ -469,7 +461,8 @@ try {
                 updatePosts($post); // MàJ l'épisode
             }
             else {
-                throw new \Exception('Il faut remplir tous les champs !');
+                $sessionController->setFlash('Il faut remplir tous les champs !');
+                header('location: index.php?action=admin');
             }
             break;
 
@@ -477,7 +470,7 @@ try {
         case "addComment":
 
             $currentUser = $sessionController -> getCurrentUser(); // Utilisateur avec une session
-
+            $postId = $_GET['id'];
             if (isset($_GET['id']) && $_GET['id'] > 0) {
 
                 if (!empty($currentUser) && !empty($_POST['comment'])) {
@@ -485,8 +478,9 @@ try {
                     addComment($_GET['id'], $currentUser, $_POST['comment']);
                 }
                 else {
-
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    $sessionController -> setFlash("Il faut remplir tous les champs!");
+                    //Les données n'ont pas été insérées, on redirige donc le visiteur vers la page du billet
+                    header('Location: index.php?action=post&id=' . $postId);
                 }
             }
             else {
@@ -503,8 +497,8 @@ try {
                 delComment($_GET['id']);
             }
             else {
-
-                throw new Exception('Une erreur est survenue, aucun commentaire à supprimer !');
+                $sessionController->setFlash('Une erreur est survenue, aucun commentaire à supprimer !');
+                header('location: index.php?action=admin');
             }
             break;
 

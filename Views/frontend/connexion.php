@@ -30,7 +30,7 @@
 
                 <div class="form-group group-mdp-oublie">
                     <p class="mdp-oublie">
-                        <a class="mdp-oublie__link" href="index.php?action=forgotpassword">Mot de passe oublié?</a>
+                        <a class="mdp-oublie__link" href="#">Mot de passe oublié?</a>
                     </p>
                 </div>
                 <div class="form-group group-valider">

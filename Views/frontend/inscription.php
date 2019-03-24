@@ -6,6 +6,11 @@
 <div class="container-logout">
 
     <div class="main-container-form card">
+        <?php
+        $error = New \Controllers\SessionController();
+        echo $error -> getFlash();
+        unset($_SESSION['flash']); // Supp la session pour cette var
+        ?>
         <div class="container-photo-profile">
             <div class="photo-profile">
 

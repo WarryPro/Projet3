@@ -13,7 +13,7 @@
                     <div class="form-group">
 
                         <div class="small-12 medium-4">
-                            <input type="email" name="email" id="email" class="email form-control" required>
+                            <input type="email" name="email" id="email" class="email form-control" required placeholder="email">
                         </div>
                     </div>
                 </div>
