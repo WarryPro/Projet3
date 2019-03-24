@@ -10,7 +10,7 @@ use Models\UserManager;
 require_once('Models/PostManager.php');
 require_once('Models/CommentManager.php');
 
-
+//affiche la liste d'épisodes
 function listPosts() {
 
     $postManager = new PostManager(); // Création de l'objet postManager
@@ -20,8 +20,7 @@ function listPosts() {
     require('Views/frontend/listePostsView.php');
 }
 
-
-
+//affiche la liste d'épisodes dans la page Admin
 function adminListPosts() {
 
     $sessionController = New SessionController();
@@ -42,52 +41,7 @@ function adminListPosts() {
 
 }
 
-
-function listUsers() {
-    $bdd = new \Models\Manager(); //instance de la BDD
-    $bdd -> dbConnect();
-    $sessionController = New SessionController();
-    $userManager = New UserManager($bdd);
-
-    $userRole = $sessionController -> getSessionRole();
-
-    if($userRole === 'Admin') {
-
-        $users = $userManager -> getUsers(); // Appel de la methode getInfos() de cet objet
-
-        return $users;
-
-    }
-
-    header('location: ./index.php');
-}
-
-
-    function updateUser (User $user) {
-
-        $bdd = new Manager(); //instance de la BDD
-        $bdd -> dbConnect();
-
-        $userManager = New UserManager($bdd);
-
-        $userSession = New SessionController(); //Instance pour une session
-        $affectedLines = $userManager -> updateUser($user);
-
-
-        if ($affectedLines === false) {
-            $userSession -> setFlash("Vous ne pouvez pas éditer cet utilisateur!");
-            header('Location: ./index.php?action=admin');
-        }
-        else {
-
-            $userSession -> setFlash("L'utilisateur a été mise à jour!", 'success');
-
-            header('Location: ./index.php?action=admin');
-        }
-    }
-
-
-
+//affiche les trois derniers épisodes dans la homepage
 function derniersPosts() {
 
     $postManager = new PostManager(); // Création de l'objet postManager
@@ -97,9 +51,9 @@ function derniersPosts() {
     require('Views/frontend/derniersPostsView.php');
 }
 
-
+//affiche la page d'un épisode
 function post() {
-    
+
     $postManager = new PostManager();
 
     $commentManager = new commentManager();
@@ -116,11 +70,7 @@ function post() {
     require('views/frontend/postView.php');
 }
 
-
-
-
-
-
+//Supp un épisode par rapport à son id
 function deletePosts($postId) {
 
     $postManager = new PostManager();
@@ -143,7 +93,7 @@ function deletePosts($postId) {
 
 }
 
-
+//Recupère un épisode à éditer
 function editerPosts ($postId) {
 
     $sessionController = New SessionController();
@@ -167,7 +117,7 @@ function editerPosts ($postId) {
     }
 }
 
-
+//Màj un épisode
 function updatePosts ($post) {
 
     $postManager = New PostManager();
@@ -188,6 +138,54 @@ function updatePosts ($post) {
 }
 
 
+
+//Affichege d'utilisateurs dans la page Admin
+function listUsers() {
+    $bdd = new \Models\Manager(); //instance de la BDD
+    $bdd -> dbConnect();
+    $sessionController = New SessionController();
+    $userManager = New UserManager($bdd);
+
+    $userRole = $sessionController -> getSessionRole();
+
+    if($userRole === 'Admin') {
+
+        $users = $userManager -> getUsers(); // Appel de la methode getInfos() de cet objet
+
+        return $users;
+
+    }
+
+    header('location: ./index.php');
+}
+
+//Màj un utilisateur
+function updateUser (User $user) {
+
+    $bdd = new Manager(); //instance de la BDD
+    $bdd -> dbConnect();
+
+    $userManager = New UserManager($bdd);
+
+    $userSession = New SessionController(); //Instance pour une session
+    $affectedLines = $userManager -> updateUser($user);
+
+
+    if ($affectedLines === false) {
+            $userSession -> setFlash("Vous ne pouvez pas éditer cet utilisateur!");
+            header('Location: ./index.php?action=admin');
+        }
+else {
+
+            $userSession -> setFlash("L'utilisateur a été mise à jour!", 'success');
+
+            header('Location: ./index.php?action=admin');
+        }
+}
+
+
+
+//Affiche dans la page admin les épisodes signalés
 function listReportedComments() {
 
     $sessionController = New SessionController();
@@ -207,8 +205,7 @@ function listReportedComments() {
 
 }
 
-
-
+//Ajoute un commentaire
 function addComment($post_id, $user, $comment) {
 
     $commentManager = new commentManager();
@@ -228,7 +225,7 @@ function addComment($post_id, $user, $comment) {
     header('Location: index.php?action=post&id=' . $post_id);
 }
 
-
+//Supp un commentaire
 function delComment($commentId) {
     $commentManager = new commentManager();
     $userSession = New SessionController(); //Instance pour une session

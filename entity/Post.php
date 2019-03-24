@@ -74,7 +74,6 @@ class Post {
         $this -> title = $title;
     }
 
-
     public function setContent($content) {
 
         $this -> content = $content;

@@ -83,7 +83,4 @@ class Pagination {
         $this->postsParPage = $postsParPage;
     }
 
-
-
-
 }

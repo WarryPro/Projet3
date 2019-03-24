@@ -38,7 +38,7 @@ class SessionController {
         return $sessionUser;
     }
 
-
+    // Obtien le role de l'utilisateur connecté
     public function getSessionRole () {
 
         $sessionUser = (isset($_SESSION['user_role'])) ? strip_tags($_SESSION['user_role']) : NULL;

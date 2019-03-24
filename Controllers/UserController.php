@@ -25,7 +25,6 @@ Class UserController {
     }
 
 
-
     public function userProfil(User $user) {
         $bdd = Manager::dbConnect();
 

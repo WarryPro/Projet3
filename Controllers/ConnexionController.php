@@ -60,7 +60,7 @@ class ConnexionController {
 
 
     /**
-     *finalisation de la connexion admin
+     *finalisation de la connexion admin/user
      */
     public function deconnexion() {
 

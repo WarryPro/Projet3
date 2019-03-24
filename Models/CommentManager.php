@@ -71,7 +71,6 @@ class CommentManager extends Manager {
     }
 
 
-
 //    Métho pour signaler un commentaire
     public function reportComment (ReportComment $reporter) {
 
