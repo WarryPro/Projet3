@@ -103,7 +103,7 @@ span:hover {
 }
 
 /* line 73, public/scss/blocks/base.scss */
-.pd-l {
+.pd-r {
   padding-right: 1rem;
 }
 
@@ -1615,7 +1615,7 @@ tbody td {
 .form-edit-profil .button.editer, .form-edit-profil .button.error {
   position: absolute;
   right: 0;
-  top: -1rem;
+  top: 0;
   padding: .5rem;
   border-radius: 5px;
   color: #fff;
