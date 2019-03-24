@@ -77,7 +77,6 @@ Class UserController {
      */
     public function updatePass($bdd, User $user) {
 
-        $sessionController = New SessionController();
         $userManager = new UserManager($bdd);
 
         $updatePass = $userManager -> updatePass($user);
