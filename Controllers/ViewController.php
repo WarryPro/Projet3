@@ -42,7 +42,7 @@ class ViewController {
     }
 
 
-    public function userProfil($user) {
+    public function userProfil($user, $episodes) {
 
         include('Views/frontend/userProfil.php');
     }

@@ -265,9 +265,10 @@ try {
 
 
         case "profil":
-            $currentUser = $sessionController -> getCurrentUser();
-
+            $postController = New \Controllers\PostController();
             $view = new ViewController();
+
+            $currentUser = $sessionController -> getCurrentUser();
 
             if(!isset($currentUser)) {
 
@@ -279,9 +280,9 @@ try {
 
                 $userController = New UserController();
 
-                $userProfil = $userController -> userProfil($user);
-
-                $view -> userProfil($userProfil);
+                $userProfil = $userController -> userProfil($user); // Recupère les infos de l'utilisateur
+                $episodes = $postController -> postsUserHasCommented($currentUser); //obtient les episodes que l'utilisateur a commenté
+                $view -> userProfil($userProfil, $episodes);
             }
 
             break;

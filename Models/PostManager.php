@@ -45,6 +45,7 @@ class PostManager extends Manager {
         return $req;
     }
 
+
     public function getDerniersPosts() {
 
         $bdd = $this->dbConnect();
@@ -68,7 +69,6 @@ class PostManager extends Manager {
     
         return $post;
     }
-
 
 
     public function getPostEditer($postId) {
@@ -134,6 +134,24 @@ class PostManager extends Manager {
 
         echo "Erreur, l'URL spécifié n'existe pas";
 
+    }
+
+
+    // Recupère les épisodes où l'utilisateur a commenté
+    public function getPostsUserHasCommented($user) {
+
+        $bdd = $this->dbConnect();
+
+        $req = $bdd->prepare("SELECT episodes.id, episodes.title, episodes.content, DATE_FORMAT(created_date, '%d/%m/%Y') AS created_date_fr, episodes.image_episode FROM episodes 
+                                          INNER JOIN comments 
+                                          WHERE comments.user = :user AND episodes.id = comments.episode_id");
+
+        $req -> bindValue(':user', $user);
+        $req -> execute();
+
+        $episodes = $req -> fetchAll();
+
+        return $episodes;
     }
 
 }

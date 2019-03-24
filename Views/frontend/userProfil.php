@@ -49,8 +49,22 @@ $sessionController = New \Controllers\SessionController();
     </form>
 </div>
 
-<div class="container-profil profil-content small-12 medium-auto">
-
+<div class="container-profil profil-content small-12 medium-auto grid-x">
+    <div class="small-12 text-center pd-b">
+        <h3 class="card__title pd-b">Épisodes que vous avez commenté</h3>
+    </div>
+    <?php
+    //Recuperer les infos de chaque épisode
+    if($episodes) {
+        foreach ($episodes as $data) {
+            ?>
+            <div class="news small-12 medium-6">
+                <?php require('./Views/frontend/components/cards.php') ?>
+            </div>
+            <?php
+        }
+    }
+    ?>
 </div>
 
 

@@ -34,4 +34,17 @@ class PostController {
         //Les données ont été insérées, on redirige donc le visiteur vers la page admin
         header('Location: index.php?action=admin');
     }
+
+
+    public function postsUserHasCommented($user) {
+
+      $postManager = New PostManager();
+
+      $episodes = $postManager -> getPostsUserHasCommented($user);
+
+      if($episodes) {
+          return $episodes;
+      }
+      return false;
+    }
 }
