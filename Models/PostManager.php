@@ -56,7 +56,7 @@ class PostManager extends Manager {
         return $req;
     }
 
-
+    //Recupère un épisode par rapport à son id
     public function getPost($postId) {
 
         $bdd = $this->dbConnect();
@@ -70,7 +70,7 @@ class PostManager extends Manager {
         return $post;
     }
 
-
+    //Recupère un épisode par rapport à son id pour l'éditer
     public function getPostEditer($postId) {
 
         $bdd = $this->dbConnect();

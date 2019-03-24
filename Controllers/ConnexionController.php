@@ -40,11 +40,11 @@ class ConnexionController {
             // si @user a le role Admin
             if($isAdmin) {
 
-                $userSession -> setFlash("Vous êtes connecté avec succeès!", "success");
+                $userSession -> setFlash("Vous êtes connecté avec succès!", "success");
                 header('location: index.php?action=admin');
 
             }else {
-                $userSession -> setFlash("Vous êtes connecté avec succeès!", "success");
+                $userSession -> setFlash("Vous êtes connecté avec succès!", "success");
                 header('location: index.php');
             }
         }
