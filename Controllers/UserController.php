@@ -26,7 +26,8 @@ Class UserController {
 
 
     public function userProfil(User $user) {
-        $bdd = Manager::dbConnect();
+        $manager = New Manager();
+        $bdd = $manager -> dbConnect();
 
         $userManager = New UserManager($bdd);
 
@@ -56,7 +57,8 @@ Class UserController {
      */
     public function deleteUser(User $user) {
 
-        $bdd = Manager::dbConnect();
+        $manager = New Manager();
+        $bdd = $manager -> dbConnect();
 
         $sessionFlash = New SessionController();
 
@@ -94,7 +96,8 @@ Class UserController {
 
     public function passVerify($user, $currentPass, $newPass) {
 
-        $bdd = Manager::dbConnect();
+        $manager = New Manager();
+        $bdd = $manager -> dbConnect();
 
         $userManager = New UserManager($bdd);
 
